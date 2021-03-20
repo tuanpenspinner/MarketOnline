@@ -1,10 +1,5 @@
 function App() {
-  return (
-    <div className="App">
-      <button className="btn btn-success">f</button>
-      <i className="fas fa-plus"></i>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
