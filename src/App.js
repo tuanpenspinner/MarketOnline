@@ -1,5 +1,5 @@
 import Routes from "./configs/routers.config";
-import "./css/css.css";
+import "./css/index";
 function App() {
   return <Routes></Routes>;
 }

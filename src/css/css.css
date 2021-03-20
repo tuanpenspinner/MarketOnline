@@ -40,6 +40,13 @@ html {
     height: 100%;
   }
 }
+a {
+  color: unset;
+}
+a:hover {
+  color: unset;
+  text-decoration: none;
+}
 .page-footer {
   background-color: #929fba;
 }
@@ -57,3 +64,8 @@ html {
   height: 100px;
   text-align: center;
 }
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 
 export default class MenuHorizontal extends Component {
@@ -26,12 +27,16 @@ export default class MenuHorizontal extends Component {
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <div className="nav-link ">
-                    <button className="btn btn-success"> Trang chủ</button>
+                    <button className="btn btn-success">
+                      <Link to="/home">Trang chủ</Link>
+                    </button>
                   </div>
                 </li>
                 <li className="nav-item">
                   <div className="nav-link ">
-                    <button className="btn btn-success"> Giới thiếu</button>
+                    <button className="btn btn-success">
+                      <Link to="/introduce">Giới thiệu</Link>
+                    </button>
                   </div>
                 </li>
                 <li className="nav-item">
@@ -46,7 +51,9 @@ export default class MenuHorizontal extends Component {
                 </li>
                 <li className="nav-item">
                   <div className="nav-link ">
-                    <button className="btn btn-success"> Liên hệ</button>
+                    <button className="btn btn-success">
+                      <Link to="/contract">Liên hệ</Link>
+                    </button>
                   </div>
                 </li>
               </ul>
