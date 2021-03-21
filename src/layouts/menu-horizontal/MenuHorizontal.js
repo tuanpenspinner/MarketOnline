@@ -54,7 +54,7 @@ export default class MenuHorizontal extends Component {
                   <li className="nav-item">
                     <div className="nav-link ">
                       <button className="btn ">
-                        <Link to="/category">Của hàng</Link>
+                        <Link to="/category">Cửa hàng</Link>
                       </button>
                     </div>
                   </li>

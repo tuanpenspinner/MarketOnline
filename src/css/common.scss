@@ -2,3 +2,29 @@
   background-color: #8cc63f;
   color: #fff;
 }
+.rating {
+  color: #ffa000;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+.overlay {
+  overflow: hidden;
+  img {
+    transition-duration: 4s;
+    &:hover {
+      transform: scale(2);
+      -webkit-transform: scale(2);
+      -moz-transform: scale(2);
+      z-index: 0;
+    }
+  }
+}
+.title-blog {
+  font-weight: 700 !important;
+  font-size: 23px;
+}
+.time-blog {
+  font-size: 15px;
+  color: #9d9797;
+}

@@ -1,7 +1,104 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Checkout from "./Checkout";
 
 export default class Card extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isCheckOut: false,
+    };
+  }
+  onCheckout = () => {
+    this.setState({
+      isCheckOut: true,
+    });
+  };
   render() {
-    return <div>Giỏ hàng</div>;
+    const { isCheckOut } = this.state;
+    if (isCheckOut) return <Checkout></Checkout>;
+    return (
+      <div className="container bg-white mb-4">
+        <div className="row">
+          <div className="col-12">
+            <div className="table-responsive">
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col"> </th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col" className="text-center">
+                      Số lượng
+                    </th>
+                    <th scope="col" className="text-right">
+                      Giá
+                    </th>
+                    <th> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img
+                        alt="fdsf"
+                        src="https://images6.alphacoders.com/652/thumb-1920-652742.jpg"
+                        width="50"
+                        height="50"
+                      />
+                    </td>
+                    <td>Dâu tây</td>
+                    <td>
+                      <input
+                        className="form-control"
+                        type="number"
+                        name="number"
+                        defaultValue="1"
+                      />
+                    </td>
+                    <td className="text-right">100,000 VNĐ</td>
+                    <td className="text-right">
+                      <button className="btn btn-sm btn-danger">
+                        <i className="fa fa-trash" />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td />
+                    <td />
+                    <td />
+                    <td>
+                      <strong>Tổng</strong>
+                    </td>
+                    <td className="text-right">
+                      <strong>100,000 VNĐ</strong>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="col mb-2">
+            <div className="row">
+              <div className="col-sm-12 col-md-6 mb-2 text-right">
+                <Link
+                  to="/"
+                  className="btn btn-lg btn-block btn-success text-uppercase"
+                >
+                  Tiếp tục mua sắm
+                </Link>
+              </div>
+              <div className="col-sm-12 col-md-6  mb-2  text-right">
+                <div
+                  onClick={this.onCheckout}
+                  className="btn btn-lg btn-block btn-info text-uppercase"
+                >
+                  Thanh toán
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }

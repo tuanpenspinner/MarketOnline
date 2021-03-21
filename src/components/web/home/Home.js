@@ -36,7 +36,7 @@ export default class Home extends Component {
               );
             })}
           </div>
-          <div className="best-seller">
+          <div className="best-seller ">
             <div className="title-best-seller">SẢN PHẨM NỔI BẬT</div>
             <div className="text-center">
               <div className="row wow fadeIn px-3">
