@@ -154,9 +154,22 @@
       }
     }
   }
+  .box-contract {
+    .banner-contract {
+      background-image: url(https://images2.alphacoders.com/339/thumb-1920-3392.jpg);
+      height: 200px;
+      color: #fff;
+      font-size: 30px;
+      text-align: center;
+      line-height: 200px;
+    }
+    h5 {
+      font-size: 30px !important;
+    }
+  }
 }
 .footer {
-  background: #8cc63f;
+  background-image: url(https://images5.alphacoders.com/377/thumb-1920-377782.jpg);
   height: 100px;
   text-align: center;
   line-height: 100px;
