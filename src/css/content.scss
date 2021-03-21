@@ -1,0 +1,102 @@
+.content {
+  width: 100%;
+  margin-top: 100px;
+  min-height: calc(100vh - 100px);
+  height: 100%;
+  background-color: #ebebeb;
+  margin-bottom: 0;
+  .banner-home {
+    background: url(https://images6.alphacoders.com/383/thumb-1920-383146.jpg);
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .text-banner {
+      text-align: center;
+      div {
+        color: #fff;
+        font-size: 60px;
+        text-align: center;
+        font-weight: 900;
+      }
+      .btn-buy-now {
+        background-color: #8cc63f !important;
+        border-color: #8cc63f !important;
+        height: 60px;
+        color: #fff;
+        font-weight: 600;
+        border-radius: 20px;
+        padding: 0 20px;
+        div {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+  .content-home {
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+    .category-carousel {
+      margin: 20px 0;
+      height: auto;
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0 3px 6px -4px #ccc, 0 3px 6px #ccc;
+      padding: 20px 0;
+      border-radius: 5px;
+      .item-category {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 10px;
+        &:hover {
+          color: #8cc63f;
+          box-shadow: 0 1px 1px -4px #ccc;
+        }
+      }
+    }
+    .best-seller {
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0 3px 6px -4px #ccc, 0 3px 6px #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      .title-best-seller {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 40px;
+        font-weight: 700;
+      }
+      .title-blog {
+        font-weight: 700 !important;
+        font-size: 23px;
+      }
+      .time-blog {
+        font-size: 15px;
+        color: #9d9797;
+      }
+      .content-blog {
+      }
+    }
+  }
+  .box-introduce {
+    background-color: #fff;
+    min-height: 80vh;
+  }
+}
+.footer {
+  background: #8cc63f;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+}

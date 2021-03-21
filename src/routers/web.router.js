@@ -2,6 +2,10 @@ import MenuHorizontal from "../layouts/menu-horizontal/MenuHorizontal";
 import Home from "../components/web/home/Home";
 import Introduce from "../components/web/introduce/Introduce";
 import Contract from "../components/web/contract/Contract";
+import Product from "../components/web/product/Product";
+import Category from "../components/web/category/Category";
+import Cart from "../components/web/cart/Cart";
+import Blog from "../components/web/blog/Blog";
 
 const routes = [
   {
@@ -27,6 +31,30 @@ const routes = [
     path: "/contract",
     exact: true,
     component: Contract,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/product",
+    exact: true,
+    component: Product,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/cart",
+    exact: true,
+    component: Cart,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/category",
+    exact: true,
+    component: Category,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/blog",
+    exact: true,
+    component: Blog,
   },
 ];
 export default routes;

@@ -27,33 +27,70 @@ export default class MenuHorizontal extends Component {
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <div className="nav-link ">
-                    <button className="btn btn-success">
-                      <Link to="/home">Trang chủ</Link>
-                    </button>
+                    <Link to="/home">
+                      <img
+                        src="http://mauweb.monamedia.net/vuonrau/wp-content/uploads/2019/05/mona-2.png"
+                        width="150"
+                        alt="logo"
+                      ></img>
+                    </Link>
+                  </div>
+                </li>
+                <div className="d-flex justify-content-center">
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn">
+                        <Link to="/home">Trang chủ</Link>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn ">
+                        <Link to="/introduce">Giới thiệu</Link>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn ">
+                        <Link to="/category">Của hàng</Link>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn ">
+                        <Link to="/blog">Blog</Link>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn ">
+                        <Link to="/contract">Liên hệ</Link>
+                      </button>
+                    </div>
+                  </li>
+                </div>
+
+                <li className="nav-item">
+                  <div className="nav-link position-relative ">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Tìm kiếm"
+                    />
+                    <i className="fas fa-search icon-search-menu"></i>
                   </div>
                 </li>
                 <li className="nav-item">
-                  <div className="nav-link ">
-                    <button className="btn btn-success">
-                      <Link to="/introduce">Giới thiệu</Link>
-                    </button>
-                  </div>
-                </li>
-                <li className="nav-item">
-                  <div className="nav-link ">
-                    <button className="btn btn-success"> Của hàng</button>
-                  </div>
-                </li>
-                <li className="nav-item">
-                  <div className="nav-link ">
-                    <button className="btn btn-success"> Kiến thức</button>
-                  </div>
-                </li>
-                <li className="nav-item">
-                  <div className="nav-link ">
-                    <button className="btn btn-success">
-                      <Link to="/contract">Liên hệ</Link>
-                    </button>
+                  <div className="nav-link position-relative ">
+                    <Link to="/cart">
+                      <i className="fas fa-cart-plus icon-cart-menu">
+                        Giỏ hàng
+                      </i>
+                    </Link>
                   </div>
                 </li>
               </ul>
