@@ -41,7 +41,7 @@ export default class Introduce extends Component {
                       type="text"
                       id="contact-name"
                       className="form-control"
-                      placeHolder="Họ tên"
+                      placeholder="Họ tên"
                     />
                     <label htmlFor="contact-name" className></label>
                   </div>
@@ -53,7 +53,7 @@ export default class Introduce extends Component {
                       type="text"
                       id="contact-email"
                       className="form-control"
-                      placeHolder="Email"
+                      placeholder="Email"
                     />
                     <label htmlFor="contact-email" className></label>
                   </div>
@@ -66,7 +66,7 @@ export default class Introduce extends Component {
                       type="text"
                       id="contact-name"
                       className="form-control"
-                      placeHolder="Số điện thoại"
+                      placeholder="Số điện thoại"
                     />
                     <label htmlFor="contact-name" className></label>
                   </div>
@@ -78,7 +78,7 @@ export default class Introduce extends Component {
                       type="text"
                       id="contact-email"
                       className="form-control"
-                      placeHolder="Địa chỉ"
+                      placeholder="Địa chỉ"
                     />
                     <label htmlFor="contact-email" className></label>
                   </div>
@@ -93,7 +93,7 @@ export default class Introduce extends Component {
                       id="contact-message"
                       className="md-textarea form-control"
                       rows={3}
-                      placeHolder="Lời nhắn"
+                      placeholder="Lời nhắn"
                     />
                     <label htmlFor="contact-message"></label>
                   </div>

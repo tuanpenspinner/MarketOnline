@@ -35,136 +35,47 @@ class Cart extends Component {
             <div className="card">
               <form className="card-body">
                 <div className="row">
-                  <div className="col-md-6 mb-2">
+                  <div className="col-md-6 mb-3">
                     <div className="md-form ">
                       <input
                         type="text"
                         id="firstName"
                         className="form-control"
+                        placeholder="Họ tên"
                       />
-                      <label htmlFor="firstName">Họ</label>
                     </div>
                   </div>
-                  <div className="col-md-6 mb-2">
+                  <div className="col-md-6 mb-3">
                     {/*lastName*/}
                     <div className="md-form">
                       <input
                         type="text"
                         id="lastName"
                         className="form-control"
+                        placeholder="Số điện thoại"
                       />
-                      <label htmlFor="lastName">Tên</label>
                     </div>
                   </div>
                 </div>
 
-                <div className="md-form mb-5">
+                <div className="md-form mb-3">
                   <input
                     type="text"
                     id="email"
                     className="form-control"
-                    placeholder=""
+                    placeholder="Email"
                   />
-                  <label htmlFor="email">Email</label>
                 </div>
                 {/*address*/}
-                <div className="md-form mb-5">
-                  <input type="text" id="address" className="form-control" />
-                  <label htmlFor="address">Địa chỉ</label>
+                <div className="md-form mb-3">
+                  <input
+                    type="text"
+                    id="address"
+                    className="form-control"
+                    placeholder="Địa chỉ"
+                  />
                 </div>
 
-                <hr />
-                <h5>Hình thức thanh toán</h5>
-
-                <div className="d-block my-3">
-                  <div className="custom-control custom-radio">
-                    <input
-                      id="credit"
-                      name="paymentMethod"
-                      type="radio"
-                      className="custom-control-input"
-                      defaultChecked
-                      onChange={this.onChange}
-                      required
-                      value="0"
-                    />
-                    <label className="custom-control-label" htmlFor="credit">
-                      Tiền mặt
-                    </label>
-                  </div>
-
-                  <div className="custom-control custom-radio">
-                    <input
-                      id="paypal"
-                      name="paymentMethod"
-                      type="radio"
-                      value="1"
-                      className="custom-control-input"
-                      onChange={this.onChange}
-                      required
-                    />
-                    <label className="custom-control-label" htmlFor="paypal">
-                      Credit Card
-                    </label>
-                  </div>
-                </div>
-                <div style={{ display: this.state.isCard }}>
-                  <div className="row">
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="cc-name">Name on card</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cc-name"
-                        required
-                      />
-                      <small className="text-muted">
-                        Full name as displayed on card
-                      </small>
-                      <div className="invalid-feedback">
-                        Name on card is required
-                      </div>
-                    </div>
-                    <div className="col-md-6 mb-3">
-                      <label htmlFor="cc-number">Credit card number</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cc-number"
-                        required
-                      />
-                      <div className="invalid-feedback">
-                        Credit card number is required
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-3 mb-3">
-                      <label htmlFor="cc-expiration">Expiration</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cc-expiration"
-                        required
-                      />
-                      <div className="invalid-feedback">
-                        Expiration date required
-                      </div>
-                    </div>
-                    <div className="col-md-3 mb-3">
-                      <label htmlFor="cc-expiration">CVV</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="cc-cvv"
-                        required
-                      />
-                      <div className="invalid-feedback">
-                        Security code required
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <hr className="mb-4" />
                 <button
                   className="btn btn-primary btn-lg btn-block"
