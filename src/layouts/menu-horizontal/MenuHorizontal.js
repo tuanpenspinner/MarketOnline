@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 
 export default class MenuHorizontal extends Component {
+  componentDidMount() {
+    const nowPath = this.props.location.pathname;
+    const list = document.getElementsByClassName("route-menu");
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].children[0].getAttribute("href") === nowPath)
+        list[i].classList.add("menu-active");
+    }
+  }
   render() {
     return (
       <div>
@@ -39,35 +47,35 @@ export default class MenuHorizontal extends Component {
                 <div className="d-flex justify-content-center">
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn">
+                      <button className="btn route-menu">
                         <Link to="/home">Trang chủ</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn ">
+                      <button className="btn route-menu ">
                         <Link to="/introduce">Giới thiệu</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn ">
+                      <button className="btn route-menu ">
                         <Link to="/category">Cửa hàng</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn ">
+                      <button className="btn route-menu ">
                         <Link to="/blog">Blog</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn ">
+                      <button className="btn route-menu ">
                         <Link to="/contract">Liên hệ</Link>
                       </button>
                     </div>
@@ -85,7 +93,7 @@ export default class MenuHorizontal extends Component {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <div className="nav-link position-relative ">
+                  <div className="nav-link position-relative  ">
                     <Link to="/cart">
                       <i className="fas fa-cart-plus icon-cart-menu">
                         Giỏ hàng
