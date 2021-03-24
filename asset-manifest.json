@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/MarketOnline/static/css/main.16735f77.chunk.css",
-    "main.js": "/MarketOnline/static/js/main.2905f78d.chunk.js",
-    "main.js.map": "/MarketOnline/static/js/main.2905f78d.chunk.js.map",
+    "main.js": "/MarketOnline/static/js/main.d01c3e77.chunk.js",
+    "main.js.map": "/MarketOnline/static/js/main.d01c3e77.chunk.js.map",
     "runtime-main.js": "/MarketOnline/static/js/runtime-main.367a2bb5.js",
     "runtime-main.js.map": "/MarketOnline/static/js/runtime-main.367a2bb5.js.map",
     "static/js/2.fec047fa.chunk.js": "/MarketOnline/static/js/2.fec047fa.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.367a2bb5.js",
     "static/js/2.fec047fa.chunk.js",
     "static/css/main.16735f77.chunk.css",
-    "static/js/main.2905f78d.chunk.js"
+    "static/js/main.d01c3e77.chunk.js"
   ]
 }
