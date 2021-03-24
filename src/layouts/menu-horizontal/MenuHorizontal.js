@@ -5,9 +5,10 @@ import Footer from "../footer/Footer";
 export default class MenuHorizontal extends Component {
   componentDidMount() {
     const nowPath = this.props.location.pathname;
+    console.log(nowPath);
     const list = document.getElementsByClassName("route-menu");
     for (let i = 0; i < list.length; i++) {
-      if (list[i].children[0].getAttribute("href") === nowPath)
+      if (list[i].children[0].getAttribute("href") === "#" + nowPath)
         list[i].classList.add("menu-active");
     }
   }
