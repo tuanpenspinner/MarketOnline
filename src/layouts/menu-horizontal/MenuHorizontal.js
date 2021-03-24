@@ -39,7 +39,7 @@ export default class MenuHorizontal extends Component {
                   <div className="nav-link ">
                     <Link to="/home">
                       <img
-                        src="/assets/image/logo.png"
+                        src="assets/image/logo.png"
                         width="150"
                         alt="logo"
                       ></img>
