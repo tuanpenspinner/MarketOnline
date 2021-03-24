@@ -12,6 +12,8 @@ export default class MenuHorizontal extends Component {
     }
   }
   render() {
+    const nowPath = this.props.location.pathname;
+
     return (
       <div>
         <nav className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
@@ -37,7 +39,7 @@ export default class MenuHorizontal extends Component {
                   <div className="nav-link ">
                     <Link to="/home">
                       <img
-                        src="http://mauweb.monamedia.net/vuonrau/wp-content/uploads/2019/05/mona-2.png"
+                        src="/assets/image/logo.png"
                         width="150"
                         alt="logo"
                       ></img>
@@ -47,35 +49,46 @@ export default class MenuHorizontal extends Component {
                 <div className="d-flex justify-content-center">
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn route-menu">
+                      <button
+                        className={`btn btn-transparent route-menu ${
+                          nowPath === "/" ? "menu-active" : ""
+                        }`}
+                      >
                         <Link to="/home">Trang chủ</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn route-menu ">
+                      <button className="btn btn-transparent route-menu ">
                         <Link to="/introduce">Giới thiệu</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
-                    <div className="nav-link ">
-                      <button className="btn route-menu ">
-                        <Link to="/category">Cửa hàng</Link>
+                    <div className="nav-link dropdown">
+                      <button className="btn btn-transparent route-menu  ">
+                        <Link to="/category">
+                          Cửa hàng <i class="fas fa-chevron-down"></i>
+                        </Link>
                       </button>
+                      <div className="dropdown-content">
+                        <Link to="/category">Trái cây</Link>
+                        <Link to="/category">Hoa quả</Link>
+                        <Link to="/category">Đồ uống</Link>
+                      </div>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn route-menu ">
+                      <button className="btn btn-transparent route-menu ">
                         <Link to="/blog">Blog</Link>
                       </button>
                     </div>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button className="btn route-menu ">
+                      <button className="btn btn-transparent route-menu ">
                         <Link to="/contract">Liên hệ</Link>
                       </button>
                     </div>

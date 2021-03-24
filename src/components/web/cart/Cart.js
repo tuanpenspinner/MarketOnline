@@ -10,16 +10,20 @@ export default class Card extends Component {
     };
   }
   onCheckout = () => {
+    const { isCheckOut } = this.state;
     this.setState({
-      isCheckOut: true,
+      isCheckOut: !isCheckOut,
     });
   };
   render() {
     const { isCheckOut } = this.state;
-    if (isCheckOut) return <Checkout></Checkout>;
+    if (isCheckOut) return <Checkout onCheckout={this.onCheckout}></Checkout>;
     return (
-      <div className="container bg-white mb-4">
+      <div className="container cart bg-white mb-4">
         <div className="row">
+          <div className="title-cart">
+            Giỏ hàng <i className="fas fa-shopping-cart"></i>
+          </div>
           <div className="col-12">
             <div className="table-responsive">
               <table className="table table-striped">
@@ -84,7 +88,8 @@ export default class Card extends Component {
                   to="/"
                   className="btn btn-lg btn-block btn-success text-uppercase"
                 >
-                  Tiếp tục mua sắm
+                  <i className="fas fa-hand-point-left"></i>
+                  &nbsp; Tiếp tục mua sắm
                 </Link>
               </div>
               <div className="col-sm-12 col-md-6  mb-2  text-right">
@@ -92,7 +97,8 @@ export default class Card extends Component {
                   onClick={this.onCheckout}
                   className="btn btn-lg btn-block btn-info text-uppercase"
                 >
-                  Thanh toán
+                  <i className="fas fa-money-check-alt"></i>
+                  &nbsp;Thanh toán
                 </div>
               </div>
             </div>

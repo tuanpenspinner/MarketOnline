@@ -85,8 +85,17 @@ export default class Category extends Component {
           </div>
 
           <div className="col-lg-9">
-            <div className="row">
-              <div className="col-md-4 mt-3">{/* /.Sort by */}</div>
+            <div className="row justify-content-end mr-3">
+              <div className="form-group d-flex flex-row col-md-6 p-0 justify-content-center">
+                <p className="col-md-4 mt-2">Sắp xếp theo</p>
+                <select className="form-control">
+                  <option>Mức độ phổ biến</option>
+                  <option>Đánh giá cao</option>
+                  <option>Mới nhất</option>
+                  <option>Giá từ thấp tới cao</option>
+                  <option>Giá từ cao tới thấp</option>
+                </select>
+              </div>
             </div>
             <div className="row wow fadeIn px-3">
               {listProduct.map((item, key) => {

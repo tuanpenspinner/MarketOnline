@@ -15,11 +15,10 @@ export default class MenuVertical extends Component {
                 <Link to="/admin/category">Danh mục</Link>
               </li>
               <li className="sidebar-brand">
-                <Link to="/admin/block">Blog</Link>
+                <Link to="/admin/blog">Blog</Link>
               </li>
             </ul>
           </div>
-
           <div id="page-content-wrapper">
             <div className="">{this.props.children}</div>
           </div>

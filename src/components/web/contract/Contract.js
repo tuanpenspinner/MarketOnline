@@ -2,21 +2,28 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default class Introduce extends Component {
+  static defaultProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33,
+    },
+    zoom: 11,
+  };
   render() {
     return (
-      <div className="box-contract">
+      <div className="box-contract bg-white">
         <div className="banner-contract">Liên hệ</div>
-        <div className="row container bg-white m-auto">
-          <div className="col-lg-6">
-            <div style={{ height: "100vh", width: "100%" }}>
-              <GoogleMapReact
-                bootstrapURLKeys="dfd"
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
-              >
-                <AnyReactComponent lat={59.955413} lng={30.337844} />
-              </GoogleMapReact>
-            </div>
+        <div className="row container  m-auto">
+          <div className="col-lg-6 mt-5">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.282319902536!2d106.8007311145205!3d10.86611849226071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175275bc75f790d%3A0xeff189fa708d0e16!2sSuoi%20Tien%20Theme%20Park!5e0!3m2!1sen!2s!4v1616595340981!5m2!1sen!2s"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              title="address"
+              height="500px"
+              width="100%"
+            />
           </div>
           <div className="col-lg-6 contract-form mt-5">
             <div>

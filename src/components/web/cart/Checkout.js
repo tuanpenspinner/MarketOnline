@@ -27,9 +27,14 @@ class Cart extends Component {
     });
   };
   render() {
+    const { onCheckout } = this.props;
     return (
-      <div className="container bg-white wow fadeIn">
-        <h2 className="my-5 h2 text-center">Thanh toán</h2>
+      <div className="container cart bg-white wow fadeIn position-relative">
+        <i
+          className="fas fa-arrow-left icon-back"
+          onClick={() => onCheckout()}
+        ></i>
+        <h2 className="title-cart">Thanh toán</h2>
         <div className="row">
           <div className="col-md-8 mb-4">
             <div className="card">
@@ -81,7 +86,8 @@ class Cart extends Component {
                   className="btn btn-primary btn-lg btn-block"
                   onClick={this.checkOut}
                 >
-                  Thanh toán
+                  <i className="fas fa-money-check-alt"></i>
+                  &nbsp; Thanh toán
                 </button>
               </form>
             </div>
@@ -115,7 +121,7 @@ class Cart extends Component {
               <div className="input-group mt-3">
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control border-right-0"
                   placeholder="Mã giảm giá"
                 />
                 <div className="input-group-append">

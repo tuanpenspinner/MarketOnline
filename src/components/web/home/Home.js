@@ -74,7 +74,7 @@ export default class Home extends Component {
               <button className="btn btn-custom">Xem thêm</button>
             </div>
           </div>
-          <div className="best-seller">
+          <div className="best-seller mb-0">
             <div className="title-best-seller">TIN TỨC</div>
             <div className="text-center">
               <div className="row wow fadeIn px-3">

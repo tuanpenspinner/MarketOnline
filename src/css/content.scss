@@ -4,12 +4,32 @@
   min-height: calc(100vh - 100px);
   height: 100%;
   background-color: #ebebeb;
-  padding-bottom: 10px;
   .card {
     border: none !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
+    .overlay {
+      overflow: hidden;
+      img {
+        transition-duration: 4s;
+      }
+    }
+    &:hover {
+      box-shadow: rgba(34, 102, 74, 0.25) 0px 13px 27px -5px,
+        rgba(23, 43, 31, 0.3) 0px 8px 16px -8px;
+
+      .overlay {
+        overflow: hidden;
+        img {
+          transform: scale(2);
+          -webkit-transform: scale(2);
+          -moz-transform: scale(2);
+          z-index: 0;
+        }
+      }
+    }
   }
+
   .banner-home {
     background: url(https://images6.alphacoders.com/383/thumb-1920-383146.jpg);
     height: 70vh;
@@ -154,6 +174,8 @@
       }
     }
   }
+  .box-cart {
+  }
   .box-contract {
     .banner-contract {
       background-image: url(https://images2.alphacoders.com/339/thumb-1920-3392.jpg);
@@ -165,6 +187,23 @@
     }
     h5 {
       font-size: 30px !important;
+    }
+  }
+  .cart {
+    .title-cart {
+      width: 100%;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 30px;
+      color: #28a745;
+      font-weight: 600;
+    }
+    .icon-back {
+      position: absolute;
+      top: 36px;
+      font-size: 35px;
+      left: 20px;
+      color: #28a745;
     }
   }
 }
