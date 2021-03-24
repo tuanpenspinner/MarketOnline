@@ -3,8 +3,58 @@ import { Link } from "react-router-dom";
 
 export default class Category extends Component {
   render() {
-    const listProduct = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const listNewBlog = [1, 2, 3, 4];
+    const listProduct = [
+      {
+        title: "Thịt heo tốt sức khỏe",
+        img: "https://images7.alphacoders.com/681/thumbbig-681542.jpg",
+      },
+      {
+        title: "Thịt cuộn và tác dụng ",
+        img: "https://images.alphacoders.com/735/thumbbig-735019.jpg",
+      },
+      {
+        title: "Nướng thịt với bắp ",
+        img: "https://images4.alphacoders.com/873/thumbbig-873348.jpg",
+      },
+      {
+        title: "Thịt heo tốt sức khỏe",
+        img: "https://images7.alphacoders.com/681/thumbbig-681542.jpg",
+      },
+      {
+        title: "Thịt cuộn và tác dụng ",
+        img: "https://images.alphacoders.com/735/thumbbig-735019.jpg",
+      },
+      {
+        title: "Nướng thịt với bắp ",
+        img: "https://images4.alphacoders.com/873/thumbbig-873348.jpg",
+      },
+    ];
+    const listNewBlog = [
+      {
+        title: "Thịt heo tốt sức khỏe",
+        img: "https://images7.alphacoders.com/681/thumbbig-681542.jpg",
+      },
+      {
+        title: "Thịt cuộn và tác dụng ",
+        img: "https://images.alphacoders.com/735/thumbbig-735019.jpg",
+      },
+      {
+        title: "Nướng thịt với bắp ",
+        img: "https://images4.alphacoders.com/873/thumbbig-873348.jpg",
+      },
+      {
+        title: "Thịt heo tốt sức khỏe",
+        img: "https://images7.alphacoders.com/681/thumbbig-681542.jpg",
+      },
+      {
+        title: "Thịt cuộn và tác dụng ",
+        img: "https://images.alphacoders.com/735/thumbbig-735019.jpg",
+      },
+      {
+        title: "Nướng thịt với bắp ",
+        img: "https://images4.alphacoders.com/873/thumbbig-873348.jpg",
+      },
+    ];
     return (
       <div className="blog">
         <div className="row pt-4">
@@ -27,13 +77,13 @@ export default class Category extends Component {
                 return (
                   <div className="blog-item" key={key}>
                     <img
-                      src="https://images6.alphacoders.com/368/thumb-1920-368872.jpg"
+                      src={item.img}
                       alt=""
                       width="40"
                       height="40"
                       className="mr-3 "
                     />
-                    <div>Ăn trái cây nhiều tốt sức khỏe</div>
+                    <div>{item.title}</div>
                   </div>
                 );
               })}
@@ -51,17 +101,11 @@ export default class Category extends Component {
                     <Link to="/blog">
                       <div className="card">
                         <div className="view overlay">
-                          <img
-                            src="https://images7.alphacoders.com/997/thumb-1920-997191.jpg"
-                            className="card-img-top"
-                            alt=""
-                          />
-
+                          <img src={item.img} className="card-img-top" alt="" />
                           <div className="mask rgba-white-slight" />
                         </div>
-
                         <div className="card-body text-left">
-                          <h5 className="title-blog">Tác dụng của dâu tây</h5>
+                          <h5 className="title-blog">{item.title}</h5>
                           <div className="time-blog">10/10/2021</div>
                           <div className="content-blog">
                             Ăn dâu tây tăng cường sức khỏe

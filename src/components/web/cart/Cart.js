@@ -19,7 +19,7 @@ export default class Card extends Component {
     const { isCheckOut } = this.state;
     if (isCheckOut) return <Checkout onCheckout={this.onCheckout}></Checkout>;
     return (
-      <div className="container cart bg-white mb-4">
+      <div className="container box-cart bg-white">
         <div className="row">
           <div className="title-cart">
             Giỏ hàng <i className="fas fa-shopping-cart"></i>

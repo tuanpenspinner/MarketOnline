@@ -3,7 +3,24 @@ import { Link } from "react-router-dom";
 
 export default class Product extends Component {
   render() {
-    const listProduct = [1, 2, 3, 4];
+    const listProduct = [
+      {
+        name: "Cam",
+        img: "https://images4.alphacoders.com/100/thumbbig-10054.jpg",
+      },
+      {
+        name: "Bí đỏ",
+        img: "https://images4.alphacoders.com/118/thumbbig-11814.jpg",
+      },
+      {
+        name: "Dâu tây",
+        img: "https://images6.alphacoders.com/422/thumbbig-422673.jpg",
+      },
+      {
+        name: "Xoài",
+        img: "https://images4.alphacoders.com/233/thumbbig-233204.jpg",
+      },
+    ];
     return (
       <div className="detail-product">
         <div className="row wow fadeIn">
@@ -64,18 +81,14 @@ export default class Product extends Component {
                   <div className="card">
                     <Link to="/product">
                       <div className="view overlay">
-                        <img
-                          src="https://images5.alphacoders.com/643/thumb-1920-643478.jpg"
-                          className="card-img-top"
-                          alt=""
-                        />
+                        <img src={item.img} className="card-img-top" alt="" />
 
                         <div className="mask rgba-white-slight" />
                       </div>
                     </Link>
                     <div className="card-body text-center">
                       <Link to="/product">
-                        <strong>Dâu tây Đà Lạt</strong>
+                        <h5 className="text-success">{item.name}</h5>
                         <h5 className="mt-3">1000,0000 đ</h5>
                       </Link>
                       <button className="btn btn-custom">Thêm vào giỏ</button>

@@ -89,3 +89,22 @@
 .form-control {
   border-radius: 10px !important;
 }
+.icon-sideshow:hover {
+  color: #a8e618;
+}
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  border-bottom: 0 !important;
+  .nav-link {
+    border: none !important;
+    margin-right: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .nav-link.active {
+    color: #3e8e41;
+  }
+}

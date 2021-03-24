@@ -11,7 +11,9 @@ export default class Introduce extends Component {
   render() {
     return (
       <div className="box-contract bg-white">
-        <div className="banner-contract">Liên hệ</div>
+        <div className="banner-contract">
+          Liên hệ <i className="fas fa-id-card"></i>
+        </div>
         <div className="row container  m-auto">
           <div className="col-lg-6 mt-5">
             <iframe

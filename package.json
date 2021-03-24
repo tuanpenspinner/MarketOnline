@@ -4,10 +4,10 @@
   "private": true,
   "homepage": "https://tuanpenspinnner.github.io/MarketOnline",
   "dependencies": {
-    "google-map-react": "^2.1.9",
     "node-sass": "^5.0.0",
     "node-sass-chokidar": "^1.5.0",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
     "react-multi-carousel": "^2.6.2",
     "react-redux": "^7.2.2",
