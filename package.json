@@ -2,6 +2,7 @@
   "name": "marketonline",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tuanpenspinnner.github.io/MarketOnline",
   "dependencies": {
     "google-map-react": "^2.1.9",
     "node-sass": "^5.0.0",
