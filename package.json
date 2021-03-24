@@ -5,6 +5,7 @@
   "dependencies": {
     "google-map-react": "^2.1.9",
     "node-sass": "^5.0.0",
+    "node-sass-chokidar": "^1.5.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-multi-carousel": "^2.6.2",
@@ -21,7 +22,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build-css": "node-sass-chokidar ./src ./node_modules -o ./src",
+    "watch-css": "npm run build-css && node-sass-chokidar ./src ./node_modules -o ./src --watch --recursive"
   },
   "eslintConfig": {
     "extends": [
