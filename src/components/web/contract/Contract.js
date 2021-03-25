@@ -14,7 +14,7 @@ export default class Introduce extends Component {
         <div className="banner-contract">
           Liên hệ <i className="fas fa-id-card"></i>
         </div>
-        <div className="row container  m-auto">
+        <div className="row max-width-1300 m-auto">
           <div className="col-lg-6 mt-5">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.282319902536!2d106.8007311145205!3d10.86611849226071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175275bc75f790d%3A0xeff189fa708d0e16!2sSuoi%20Tien%20Theme%20Park!5e0!3m2!1sen!2s!4v1616595340981!5m2!1sen!2s"
@@ -27,15 +27,21 @@ export default class Introduce extends Component {
             />
           </div>
           <div className="col-lg-6 contract-form mt-5">
-            <div>
-              <i className="fas fa-map-marked mr-3"></i> 227 Nguyễn Văn Cừ, Quận
-              5, Tp HCM.
-            </div>
-            <div>
-              <i className="fas fa-phone mr-3"></i> 0123456789
-            </div>
-            <div>
-              <i className="fas fa-envelope-square mr-3"></i> email@gmail.com
+            <div className="d-flex flex-colum">
+              <img src="assets/image/logo.png" width="150" alt="logo"></img>
+              <div>
+                <div>
+                  <i className="fas fa-map-marked mr-3"></i> 152 Hoa Đào, Phường
+                  1, Quận Phú Nhuận, Thành Phố Hồ Chí Minh
+                </div>
+                <div className="mt-3">
+                  <i className="fas fa-phone mr-3"></i> 0888651198
+                </div>
+                <div className="mt-3">
+                  <i className="fas fa-envelope-square mr-3"></i>{" "}
+                  kadonfarm@gmail.com
+                </div>
+              </div>
             </div>
 
             <div div className="text-center mt-5 mb-5">

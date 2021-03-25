@@ -128,20 +128,7 @@ export default class Home extends Component {
         img: "https://images4.alphacoders.com/118/thumbbig-11814.jpg",
       },
     ];
-    const listProductDiscount = [
-      {
-        name: "Ớt chuông",
-        img: "https://images4.alphacoders.com/196/thumbbig-19614.jpg",
-      },
-      {
-        name: "Măng tây",
-        img: "https://images4.alphacoders.com/233/thumbbig-233204.jpg",
-      },
-      {
-        name: "Chân giò",
-        img: "https://images8.alphacoders.com/741/thumbbig-741273.jpg",
-      },
-    ];
+
     const listBlog = [
       {
         title: "Thịt heo tốt sức khỏe",

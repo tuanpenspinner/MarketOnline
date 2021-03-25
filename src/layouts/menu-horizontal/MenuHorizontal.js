@@ -83,7 +83,7 @@ export default class MenuHorizontal extends Component {
                   <li className="nav-item">
                     <div className="nav-link ">
                       <button className="btn btn-transparent route-menu ">
-                        <Link to="/blog">Blog</Link>
+                        <Link to="/blog">Kiến thức</Link>
                       </button>
                     </div>
                   </li>

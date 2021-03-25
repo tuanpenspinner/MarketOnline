@@ -93,7 +93,7 @@ export default class Category extends Component {
                   <strong>Xếp hạng</strong>
                 </h5>
                 <div className="divider" />
-                <div className="row ml-1">
+                <div className="row ml-2 mt-2">
                   <ul className="rating mb-0">
                     <li>
                       <i className="fas fa-star blue-text" />
@@ -115,7 +115,7 @@ export default class Category extends Component {
                     </li>
                   </ul>
                 </div>
-                <div className="row ml-1">
+                <div className="row ml-2">
                   <ul className="rating mb-0">
                     <li>
                       <i className="fas fa-star blue-text" />
@@ -135,7 +135,7 @@ export default class Category extends Component {
                     </li>
                   </ul>
                 </div>
-                <div className="row ml-1">
+                <div className="row ml-2">
                   <ul className="rating mb-0">
                     <li>
                       <i className="fas fa-star blue-text" />

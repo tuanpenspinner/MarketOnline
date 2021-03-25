@@ -10,10 +10,14 @@ export default class Footer extends Component {
               <div className="col-xs-12 col-sm-6 col-md-3">
                 <div className="widget subscribe no-box">
                   <h5 className="widget-title">
-                    Tên công ty
+                    KADON COLLECTIVE
                     <span />
                   </h5>
-                  <p>Giới thiệu công ty đoạn nay </p>
+                  <p>
+                    Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn
+                    có thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành
+                    cùng vườn canh tác theo mô hình thuận tự nhiên.
+                  </p>
                   <img src="assets/image/logo.png" width="150" alt="logo"></img>
                 </div>
               </div>
@@ -72,7 +76,7 @@ export default class Footer extends Component {
                   </h5>
                   <p>
                     <a href="mailto:info@domain.com" title="glorythemes">
-                      info@domain.com
+                      huynhtaro@gmail.com
                     </a>
                   </p>
                   <ul className="social-footer2">
@@ -92,7 +96,7 @@ export default class Footer extends Component {
                     </li>
                     <li className>
                       <a
-                        href="https://www.facebook.com/"
+                        href="https://www.facebook.com/kadonfarm"
                         target="_blank"
                         title="Facebook"
                       >
