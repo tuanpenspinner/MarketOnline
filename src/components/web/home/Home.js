@@ -343,7 +343,7 @@ export default class Home extends Component {
           </div>
 
           <div className="best-seller mb-0 mt-3">
-            <div className="title-best-seller">TIN TỨC</div>
+            <div className="title-best-seller">Blog - Chia sẻ kinh nghiệm</div>
             <div className="text-center">
               <div className="row wow fadeIn px-3">
                 {listBlog.map((item, key) => {
