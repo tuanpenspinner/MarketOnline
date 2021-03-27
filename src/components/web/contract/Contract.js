@@ -31,44 +31,32 @@ export default class Introduce extends Component {
               <img src="assets/image/logo.png" width="150" alt="logo"></img>
               <div>
                 <div>
-                  <i className="fas fa-map-marked mr-3"></i> 152 Hoa Đào, Phường
-                  1, Quận Phú Nhuận, Thành Phố Hồ Chí Minh
+                  <i className="fas fa-map-marked mr-3"></i> 152 Hoa Đào, Phường 1, Quận Phú Nhuận, Thành Phố Hồ Chí Minh
                 </div>
                 <div className="mt-3">
                   <i className="fas fa-phone mr-3"></i> 0888651198
                 </div>
                 <div className="mt-3">
-                  <i className="fas fa-envelope-square mr-3"></i>{" "}
-                  kadonfarm@gmail.com
+                  <i className="fas fa-envelope-square mr-3"></i> kadonfarm@gmail.com
                 </div>
               </div>
             </div>
 
             <div div className="text-center mt-5 mb-5">
-              <h5>Liên hệ với chúng tôi</h5>
+              <h3 className="font-weight-bold">Liên hệ với chúng tôi</h3>
             </div>
             <form>
               <div className="row">
                 <div className="col-md-6">
                   <div className="md-form">
-                    <input
-                      type="text"
-                      id="contact-name"
-                      className="form-control"
-                      placeholder="Họ tên"
-                    />
+                    <input type="text" id="contact-name" className="form-control" placeholder="Họ tên" />
                     <label htmlFor="contact-name" className></label>
                   </div>
                 </div>
 
                 <div className="col-md-6">
                   <div className="md-form">
-                    <input
-                      type="text"
-                      id="contact-email"
-                      className="form-control"
-                      placeholder="Email"
-                    />
+                    <input type="text" id="contact-email" className="form-control" placeholder="Email" />
                     <label htmlFor="contact-email" className></label>
                   </div>
                 </div>
@@ -76,24 +64,14 @@ export default class Introduce extends Component {
               <div className="row">
                 <div className="col-md-6">
                   <div className="md-form">
-                    <input
-                      type="text"
-                      id="contact-name"
-                      className="form-control"
-                      placeholder="Số điện thoại"
-                    />
+                    <input type="text" id="contact-name" className="form-control" placeholder="Số điện thoại" />
                     <label htmlFor="contact-name" className></label>
                   </div>
                 </div>
 
                 <div className="col-md-6">
                   <div className="md-form">
-                    <input
-                      type="text"
-                      id="contact-email"
-                      className="form-control"
-                      placeholder="Địa chỉ"
-                    />
+                    <input type="text" id="contact-email" className="form-control" placeholder="Địa chỉ" />
                     <label htmlFor="contact-email" className></label>
                   </div>
                 </div>
@@ -102,13 +80,7 @@ export default class Introduce extends Component {
               <div className="row">
                 <div className="col-md-12">
                   <div className="md-form">
-                    <textarea
-                      type="text"
-                      id="contact-message"
-                      className="md-textarea form-control"
-                      rows={3}
-                      placeholder="Lời nhắn"
-                    />
+                    <textarea type="text" id="contact-message" className="md-textarea form-control" rows={3} placeholder="Lời nhắn" />
                     <label htmlFor="contact-message"></label>
                   </div>
                 </div>
