@@ -7,6 +7,10 @@ export default class MenuVertical extends Component {
       <div>
         <div id="wrapper">
           <div id="sidebar-wrapper">
+            <div className="text-center">
+              <img src="assets/image/logo-login.png" alt="" width="100"></img>
+            </div>
+
             <ul className="sidebar-nav">
               <li className="sidebar-brand">
                 <Link to="/admin/product">Sản phẩm</Link>
@@ -16,6 +20,12 @@ export default class MenuVertical extends Component {
               </li>
               <li className="sidebar-brand">
                 <Link to="/admin/blog">Blog</Link>
+              </li>
+              <li className="sidebar-brand">
+                <Link to="/admin/order">Đơn đặt hàng</Link>
+              </li>
+              <li className="sidebar-brand">
+                <Link to="/admin/comment">Bình luận</Link>
               </li>
             </ul>
           </div>

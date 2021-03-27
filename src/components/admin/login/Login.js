@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
 
-export default class Login extends Component {
-  onSubmit = () => {};
+class Login extends Component {
+  onSubmit = () => {
+    this.props.history.push("/admin/product");
+  };
 
   render() {
     return (
@@ -9,11 +12,15 @@ export default class Login extends Component {
         <div className="container-login">
           <div className="col-left">
             <div className="login-text">
-              <h2>Logo</h2>
+              <img
+                src="/assets/image/logo-login.png"
+                width="150"
+                alt="logo"
+              ></img>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                eget eros dapibus, ultricies tellus vitae, consectetur tortor.
-                Etiam rutrum placerat
+                Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn có
+                thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành cùng vườn
+                canh tác theo mô hình thuận tự nhiên.
               </p>
             </div>
           </div>
@@ -43,3 +50,4 @@ export default class Login extends Component {
     );
   }
 }
+export default withRouter(Login);

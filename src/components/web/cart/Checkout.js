@@ -30,11 +30,8 @@ class Cart extends Component {
     const { onCheckout } = this.props;
     return (
       <div className="container box-cart bg-white wow fadeIn position-relative">
-        <i
-          className="fas fa-arrow-left icon-back"
-          onClick={() => onCheckout()}
-        ></i>
-        <h2 className="title-cart">Thanh toán</h2>
+        <i className="fas fa-arrow-left icon-back" onClick={() => onCheckout()}></i>
+        <h2 className="title-cart">Đặt hàng</h2>
         <div className="row">
           <div className="col-md-8 mb-4">
             <div className="card">
@@ -42,53 +39,32 @@ class Cart extends Component {
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <div className="md-form ">
-                      <input
-                        type="text"
-                        id="firstName"
-                        className="form-control"
-                        placeholder="Họ tên"
-                      />
+                      <input type="text" id="firstName" className="form-control" placeholder="Họ tên" />
                     </div>
                   </div>
                   <div className="col-md-6 mb-3">
                     {/*lastName*/}
                     <div className="md-form">
-                      <input
-                        type="text"
-                        id="lastName"
-                        className="form-control"
-                        placeholder="Số điện thoại"
-                      />
+                      <input type="text" id="lastName" className="form-control" placeholder="Số điện thoại" />
                     </div>
                   </div>
                 </div>
 
                 <div className="md-form mb-3">
-                  <input
-                    type="text"
-                    id="email"
-                    className="form-control"
-                    placeholder="Email"
-                  />
+                  <input type="text" id="email" className="form-control" placeholder="Email" />
                 </div>
                 {/*address*/}
                 <div className="md-form mb-3">
-                  <input
-                    type="text"
-                    id="address"
-                    className="form-control"
-                    placeholder="Địa chỉ"
-                  />
+                  <input type="text" id="address" className="form-control" placeholder="Địa chỉ" />
                 </div>
 
                 <hr className="mb-4" />
-                <button
-                  className="btn btn-primary btn-lg btn-block"
-                  onClick={this.checkOut}
-                >
-                  <i className="fas fa-money-check-alt"></i>
-                  &nbsp; Thanh toán
-                </button>
+                <div className="d-flex justify-content-center">
+                  <button className="btn btn-primary  btn-block" onClick={this.checkOut}>
+                    <i className="fas fa-money-check-alt"></i>
+                    &nbsp; Đặt hàng
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -119,16 +95,9 @@ class Cart extends Component {
               </li>
 
               <div className="input-group mt-3">
-                <input
-                  type="text"
-                  className="form-control border-right-0"
-                  placeholder="Mã giảm giá"
-                />
+                <input type="text" className="form-control border-right-0" placeholder="Mã giảm giá" />
                 <div className="input-group-append">
-                  <button
-                    className="btn btn-secondary btn-md waves-effect m-0"
-                    type="button"
-                  >
+                  <button className="btn btn-secondary btn-md waves-effect m-0" type="button">
                     Áp dụng
                   </button>
                 </div>

@@ -43,21 +43,11 @@ export default class Card extends Component {
                 <tbody>
                   <tr>
                     <td>
-                      <img
-                        alt="fdsf"
-                        src="https://images6.alphacoders.com/652/thumb-1920-652742.jpg"
-                        width="50"
-                        height="50"
-                      />
+                      <img alt="fdsf" src="https://images6.alphacoders.com/652/thumb-1920-652742.jpg" width="50" height="50" />
                     </td>
                     <td>Dâu tây</td>
                     <td>
-                      <input
-                        className="form-control"
-                        type="number"
-                        name="number"
-                        defaultValue="1"
-                      />
+                      <input className="form-control" type="number" name="number" defaultValue="1" />
                     </td>
                     <td className="text-right">100,000 VNĐ</td>
                     <td className="text-right">
@@ -81,27 +71,17 @@ export default class Card extends Component {
               </table>
             </div>
           </div>
-          <div className="col mb-2">
-            <div className="row">
-              <div className="col-sm-12 col-md-6 mb-2 text-right">
-                <Link
-                  to="/"
-                  className="btn btn-lg btn-block btn-success text-uppercase"
-                >
-                  <i className="fas fa-hand-point-left"></i>
-                  &nbsp; Tiếp tục mua sắm
-                </Link>
-              </div>
-              <div className="col-sm-12 col-md-6  mb-2  text-right">
-                <div
-                  onClick={this.onCheckout}
-                  className="btn btn-lg btn-block btn-info text-uppercase"
-                >
-                  <i className="fas fa-money-check-alt"></i>
-                  &nbsp;Thanh toán
-                </div>
-              </div>
-            </div>
+          <div className="group-btn">
+            <button className="btn  btn-success text-uppercase">
+              <Link to="/">
+                <i className="fas fa-hand-point-left"></i>
+                &nbsp; Tiếp tục mua sắm
+              </Link>
+            </button>
+            <button onClick={this.onCheckout} className="btn  btn-info text-uppercase m-0">
+              <i className="fas fa-money-check-alt"></i>
+              &nbsp;Đặt hàng
+            </button>
           </div>
         </div>
       </div>

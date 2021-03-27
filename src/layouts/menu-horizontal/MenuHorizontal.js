@@ -8,8 +8,7 @@ export default class MenuHorizontal extends Component {
 
     const list = document.getElementsByClassName("route-menu");
     for (let i = 0; i < list.length; i++) {
-      if (list[i].children[0].getAttribute("href") === "#" + nowPath)
-        list[i].classList.add("menu-active");
+      if (list[i].children[0].getAttribute("href") === "#" + nowPath) list[i].classList.add("menu-active");
     }
   }
   render() {
@@ -17,7 +16,7 @@ export default class MenuHorizontal extends Component {
 
     return (
       <div>
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar header">
           <div className="container">
             <button
               className="navbar-toggler"
@@ -31,30 +30,19 @@ export default class MenuHorizontal extends Component {
               <span className="navbar-toggler-icon" />
             </button>
 
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <div className="nav-link ">
                     <Link to="/home">
-                      <img
-                        src="assets/image/logo.png"
-                        width="150"
-                        alt="logo"
-                      ></img>
+                      <img src="assets/image/logo.png" width="150" alt="logo"></img>
                     </Link>
                   </div>
                 </li>
                 <div className="d-flex justify-content-center">
                   <li className="nav-item">
                     <div className="nav-link ">
-                      <button
-                        className={`btn btn-transparent route-menu ${
-                          nowPath === "/" ? "menu-active" : ""
-                        }`}
-                      >
+                      <button className={`btn btn-transparent route-menu ${nowPath === "/" ? "menu-active" : ""}`}>
                         <Link to="/home">Trang chủ</Link>
                       </button>
                     </div>
@@ -83,7 +71,7 @@ export default class MenuHorizontal extends Component {
                   <li className="nav-item">
                     <div className="nav-link ">
                       <button className="btn btn-transparent route-menu ">
-                        <Link to="/blog">Kiến thức</Link>
+                        <Link to="/blog">Bếp Kadon</Link>
                       </button>
                     </div>
                   </li>
@@ -98,20 +86,14 @@ export default class MenuHorizontal extends Component {
 
                 <li className="nav-item">
                   <div className="nav-link position-relative ">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Tìm kiếm"
-                    />
+                    <input type="text" className="form-control" placeholder="Tìm kiếm" />
                     <i className="fas fa-search icon-search-menu"></i>
                   </div>
                 </li>
                 <li className="nav-item">
                   <div className="nav-link position-relative  ">
                     <Link to="/cart">
-                      <i className="fas fa-cart-plus icon-cart-menu">
-                        Giỏ hàng
-                      </i>
+                      <i className="fas fa-cart-plus icon-cart-menu">Giỏ hàng</i>
                     </Link>
                   </div>
                 </li>

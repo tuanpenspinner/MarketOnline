@@ -3,9 +3,25 @@ import React, { Component } from "react";
 export default class Footer extends Component {
   render() {
     return (
-      <footer id="footer" className="footer-1">
+      <footer id="footer" className="footer-1 mt-5">
+        <div className="footer-form">
+          <img src="https://images7.alphacoders.com/328/thumb-1920-328672.jpg" className="bg-form-footer" alt=""></img>
+          <div className="blur-img">dfds</div>
+          <div className="form">
+            <h5>Đăng kí để nhận cập nhật</h5>
+            <div className="mt-1">
+              <img src="http://wpbingosite.com/wordpress/kola/wp-content/themes/kola/images/bottom3.png" height="20" alt="logo"></img>
+            </div>
+
+            <div>Để lại email để không bỏ lỡ bất kì ưu đãi nào</div>
+            <div className="input-group mb-3">
+              <input type="text" className="form-control" />
+              <button className="btn btn-custom">Đăng kí</button>
+            </div>
+          </div>
+        </div>
         <div className="main-footer widgets-dark typo-light">
-          <div className="container">
+          <div className="box-footer">
             <div className="row">
               <div className="col-xs-12 col-sm-6 col-md-3">
                 <div className="widget subscribe no-box">
@@ -14,9 +30,8 @@ export default class Footer extends Component {
                     <span />
                   </h5>
                   <p>
-                    Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn
-                    có thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành
-                    cùng vườn canh tác theo mô hình thuận tự nhiên.
+                    Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn có thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành cùng vườn
+                    canh tác theo mô hình thuận tự nhiên.
                   </p>
                   <img src="assets/image/logo.png" width="150" alt="logo"></img>
                 </div>
@@ -45,7 +60,7 @@ export default class Footer extends Component {
                     </li>
                     <li>
                       <div className="thumb-content">
-                        <a href="#.">Kiến thức</a>
+                        <a href="#.">Bếp Kadon</a>
                       </div>
                     </li>
                     <li>
@@ -81,11 +96,7 @@ export default class Footer extends Component {
                   </p>
                   <ul className="social-footer2">
                     <li className>
-                      <a
-                        title="youtube"
-                        target="_blank"
-                        href="https://www.youtube.com/"
-                      >
+                      <a title="youtube" target="_blank" href="https://www.youtube.com/">
                         <img
                           alt="youtube"
                           width={30}
@@ -95,11 +106,7 @@ export default class Footer extends Component {
                       </a>
                     </li>
                     <li className>
-                      <a
-                        href="https://www.facebook.com/kadonfarm"
-                        target="_blank"
-                        title="Facebook"
-                      >
+                      <a href="https://www.facebook.com/kadonfarm" target="_blank" title="Facebook">
                         <img
                           alt="Facebook"
                           width={30}
@@ -109,11 +116,7 @@ export default class Footer extends Component {
                       </a>
                     </li>
                     <li className>
-                      <a
-                        href="https://twitter.com"
-                        target="_blank"
-                        title="Twitter"
-                      >
+                      <a href="https://twitter.com" target="_blank" title="Twitter">
                         <img
                           alt="Twitter"
                           width={30}
@@ -123,11 +126,7 @@ export default class Footer extends Component {
                       </a>
                     </li>
                     <li className>
-                      <a
-                        title="instagram"
-                        target="_blank"
-                        href="https://www.instagram.com/"
-                      >
+                      <a title="instagram" target="_blank" href="https://www.instagram.com/">
                         <img
                           alt="instagram"
                           width={30}
