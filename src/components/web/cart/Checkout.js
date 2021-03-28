@@ -30,12 +30,20 @@ class Cart extends Component {
     const { onCheckout } = this.props;
     return (
       <div className="container box-cart bg-white wow fadeIn position-relative">
-        <i className="fas fa-arrow-left icon-back" onClick={() => onCheckout()}></i>
-        <h2 className="title-cart">Đặt hàng</h2>
-        <div className="row">
+        <div className="banner-check-out">
+          <i className="fas fa-arrow-left icon-back" onClick={() => onCheckout()}></i>
+          <img src="https://images.alphacoders.com/920/thumb-1920-920580.jpg" alt="" className="img-banner-check-out"></img>
+          <div className="blur-check-out"></div>
+          <h2 className="title-cart">
+            Đặt hàng <i className="fas fa-money-check-alt"></i>
+          </h2>
+        </div>
+
+        <div className="row mt-3">
           <div className="col-md-8 mb-4">
             <div className="card">
               <form className="card-body">
+                <h4 className="text-center w-100 mb-3 ">Thông tin cá nhân</h4>
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <div className="md-form ">
@@ -70,14 +78,12 @@ class Cart extends Component {
           </div>
 
           <div className="card  col-md-4 mb-4">
-            <h4 className="d-flex justify-content-between align-items-center mb-3">
-              <span className="text-muted">Giỏ của bạn</span>
-            </h4>
+            <h4 className="text-center w-100 my-3">Giỏ của bạn</h4>
             <ul className="list-group mb-3 z-depth-1">
               <li className="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
                   <h6 className="my-0">Name: Dâu tây</h6>
-                  <small className="text-muted">Số lượng:10</small>
+                  <small className="text-muted">Số lượng:2</small>
                 </div>
                 <span className="text-muted">200,000 VNĐ</span>
               </li>

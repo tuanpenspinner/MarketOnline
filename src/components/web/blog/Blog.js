@@ -60,11 +60,7 @@ export default class Category extends Component {
         <div className="row pt-4">
           <div className="col-lg-3 pl-4">
             <div className="input-group mb-3">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Tìm kiếm"
-              />
+              <input type="text" className="form-control" placeholder="Tìm kiếm" />
               <div className="input-group-append">
                 <button className="btn btn-success" type="submit">
                   <i className="fas fa-search"></i>
@@ -76,13 +72,7 @@ export default class Category extends Component {
               {listNewBlog.map((item, key) => {
                 return (
                   <div className="blog-item" key={key}>
-                    <img
-                      src={item.img}
-                      alt=""
-                      width="40"
-                      height="40"
-                      className="mr-3 "
-                    />
+                    <img src={item.img} alt="" width="40" height="40" className="mr-3 " />
                     <div>{item.title}</div>
                   </div>
                 );
@@ -98,7 +88,7 @@ export default class Category extends Component {
               {listProduct.map((item, key) => {
                 return (
                   <div className="col-lg-4 col-md-6 mb-4" key={key}>
-                    <Link to="/blog">
+                    <Link to="/detail-blog">
                       <div className="card">
                         <div className="view overlay">
                           <img src={item.img} className="card-img-top" alt="" />
@@ -107,9 +97,7 @@ export default class Category extends Component {
                         <div className="card-body text-left">
                           <h5 className="title-blog">{item.title}</h5>
                           <div className="time-blog">10/10/2021</div>
-                          <div className="content-blog">
-                            Ăn dâu tây tăng cường sức khỏe
-                          </div>
+                          <div className="content-blog">Ăn dâu tây tăng cường sức khỏe</div>
                         </div>
                       </div>
                     </Link>
