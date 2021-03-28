@@ -5,6 +5,8 @@ export default class Introduce extends Component {
     return (
       <div className="box-introduce">
         <div className="banner-introduce">
+          <img src="https://images4.alphacoders.com/670/thumb-1920-670512.jpg" alt="" className="img-banner-introduce"></img>
+          <div className="blur-banner-introduce"></div>
           <h5>Giới thiệu</h5>
         </div>
         <div className="content-introduce">
@@ -12,13 +14,9 @@ export default class Introduce extends Component {
             <h5>Kadonfarm </h5>
           </div>
           <div className="description">
-            Dự án “Nông nghiệp canh tác thuận tự nhiên” mang tên Kadon
-            Collective quyết định thực hiện chương trình tiên phong trồng rau
-            sạch canh tác theo phương pháp thuận tự nhiên với mong muốn đưa
-            nguồn rau sạch đến với cộng đồng, tạo điều kiện để người nông dân
-            được trồng rau sạch trên mảnh vườn của họ, cải thiện được môi trường
-            đất và nước từ năm 2018, bắt đầu từ vùng đất Đơn Dương thuộc tỉnh
-            Lâm Đồng
+            Dự án “Nông nghiệp canh tác thuận tự nhiên” mang tên Kadon Collective quyết định thực hiện chương trình tiên phong trồng rau sạch canh tác
+            theo phương pháp thuận tự nhiên với mong muốn đưa nguồn rau sạch đến với cộng đồng, tạo điều kiện để người nông dân được trồng rau sạch
+            trên mảnh vườn của họ, cải thiện được môi trường đất và nước từ năm 2018, bắt đầu từ vùng đất Đơn Dương thuộc tỉnh Lâm Đồng
           </div>
           <div className="row mt-5">
             <div className="col-xl-3">
@@ -28,10 +26,7 @@ export default class Introduce extends Component {
                   alt="logo"
                   width="150"
                 ></img>
-                <div>
-                  Rau được trồng theo phương pháp “ canh tác thuận tự nhiên”
-                  không sử dụng bất cứ một loại phân thuốc hóa học
-                </div>
+                <div>Rau được trồng theo phương pháp “ canh tác thuận tự nhiên” không sử dụng bất cứ một loại phân thuốc hóa học</div>
               </div>
               <div className="item-introduce mt-5">
                 <img
@@ -40,8 +35,7 @@ export default class Introduce extends Component {
                   width="150"
                 ></img>
                 <div>
-                  Rau củ quả trồng trong môi trường tự nhiên vừa là thức ăn, vừa
-                  là những vị thuốc giúp bảo vệ sức khỏe và phòng ngừa bệnh tật
+                  Rau củ quả trồng trong môi trường tự nhiên vừa là thức ăn, vừa là những vị thuốc giúp bảo vệ sức khỏe và phòng ngừa bệnh tật
                 </div>
               </div>
             </div>
@@ -59,21 +53,11 @@ export default class Introduce extends Component {
                   alt="logo"
                   width="150"
                 ></img>
-                <div>
-                  Cây trồng hút chất dinh dưỡng từ mẹ thiên nhiên và hấp thụ
-                  những dưỡng chất cần thiết như hàm lượng vitamin
-                </div>
+                <div>Cây trồng hút chất dinh dưỡng từ mẹ thiên nhiên và hấp thụ những dưỡng chất cần thiết như hàm lượng vitamin</div>
               </div>
               <div className="item-introduce mt-5">
-                <img
-                  src="https://freshrestaurants.com/wp-content/uploads/2016/02/FreshVegetables.png"
-                  alt="logo"
-                  width="150"
-                ></img>
-                <div>
-                  Canh tác nông nghiệp thuận tự nhiên không những mang lại rất
-                  nhiều lợi ích sức khỏe con nười và môi trường sinh thái
-                </div>
+                <img src="https://freshrestaurants.com/wp-content/uploads/2016/02/FreshVegetables.png" alt="logo" width="150"></img>
+                <div>Canh tác nông nghiệp thuận tự nhiên không những mang lại rất nhiều lợi ích sức khỏe con nười và môi trường sinh thái</div>
               </div>
             </div>
           </div>

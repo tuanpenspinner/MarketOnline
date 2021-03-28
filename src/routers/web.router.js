@@ -6,6 +6,7 @@ import Product from "../components/web/product/Product";
 import Category from "../components/web/category/Category";
 import Cart from "../components/web/cart/Cart";
 import Blog from "../components/web/blog/Blog";
+import DetailBlog from "../components/web/detail-blog/DetailBlog";
 
 const routes = [
   {
@@ -55,6 +56,12 @@ const routes = [
     path: "/blog",
     exact: true,
     component: Blog,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/detail-blog",
+    exact: true,
+    component: DetailBlog,
   },
 ];
 export default routes;

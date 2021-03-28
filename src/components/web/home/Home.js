@@ -144,13 +144,13 @@ export default class Home extends Component {
         <div id="carouselExampleControls" className="carousel slide banner-home" data-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="d-block w-100" src="https://images6.alphacoders.com/383/thumb-1920-383146.jpg" alt="First slide" />
+              <img className="d-block img-carousel" src="https://images6.alphacoders.com/383/thumb-1920-383146.jpg" alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src="https://images8.alphacoders.com/837/thumb-1920-837364.jpg" alt="Second slide" />
+              <img className="d-block img-carousel" src="https://images8.alphacoders.com/837/thumb-1920-837364.jpg" alt="Second slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block w-100" src="https://images6.alphacoders.com/919/thumb-1920-919655.jpg" alt="Third slide" />
+              <img className="d-block img-carousel" src="https://images6.alphacoders.com/919/thumb-1920-919655.jpg" alt="Third slide" />
             </div>
           </div>
           <div className="blur-banner"></div>
@@ -278,7 +278,9 @@ export default class Home extends Component {
             </div>
 
             <div className="text-center pb-3">
-              <button className="btn btn-custom">Xem thêm</button>
+              <button className="btn btn-custom">
+                <Link to="category"> Xem thêm</Link>
+              </button>
             </div>
           </div>
           <div className="banner-discount">
@@ -299,7 +301,7 @@ export default class Home extends Component {
                 {listBlog.map((item, key) => {
                   return (
                     <div className="col-lg-4 col-md-6 mb-4" key={key}>
-                      <Link to="/blog">
+                      <Link to="/detail-blog">
                         <div className="card">
                           <div className="view overlay">
                             <img src={item.img} className="card-img-top" alt="" />
@@ -318,6 +320,11 @@ export default class Home extends Component {
                   );
                 })}
               </div>
+            </div>
+            <div className="text-center pb-3">
+              <button className="btn btn-custom">
+                <Link to="blog"> Xem thêm</Link>
+              </button>
             </div>
           </div>
         </div>
