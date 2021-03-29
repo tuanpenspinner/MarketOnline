@@ -64,13 +64,7 @@ export default class Category extends Component {
                   <h5 className="font-weight-bold ">Lọc theo giá</h5>
                   <div className="p-2">
                     <form className="range-field mt-3">
-                      <input
-                        className="no-border w-100"
-                        type="range"
-                        defaultValue={0}
-                        min={0}
-                        max={300}
-                      />
+                      <input className="no-border w-100" type="range" defaultValue={0} min={0} max={300} />
                     </form>
                     <div className="row justify-content-center">
                       <div className="col-md-6 text-left">
@@ -171,7 +165,7 @@ export default class Category extends Component {
             <div className="row wow fadeIn px-3">
               {listProduct.map((item, key) => {
                 return (
-                  <div className="col-lg-4 col-md-6 mb-4" key={key}>
+                  <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
                     <div className="card">
                       <Link to="/product">
                         <div className="view overlay">

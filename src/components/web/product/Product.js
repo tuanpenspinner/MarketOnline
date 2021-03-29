@@ -158,7 +158,7 @@ export default class Product extends Component {
           <div className="row wow fadeIn px-3">
             {listProduct.map((item, key) => {
               return (
-                <div className="col-lg-3 col-md-6 mb-4" key={key}>
+                <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
                   <div className="card">
                     <Link to="/product">
                       <div className="view overlay">

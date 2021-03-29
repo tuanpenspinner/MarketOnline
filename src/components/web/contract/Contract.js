@@ -12,7 +12,11 @@ export default class Introduce extends Component {
     return (
       <div className="box-contract bg-white">
         <div className="banner-contract">
-          Liên hệ <i className="fas fa-id-card"></i>
+          <img src="assets/image/contract-banner.jpg" alt="" className="img-contract"></img>
+          <div className="blur-banner-contract"></div>
+          <div className="title-contract">
+            Liên hệ <i className="fas fa-address-card"></i>
+          </div>
         </div>
         <div className="row max-width-1300 m-auto">
           <div className="col-lg-6 mt-5">

@@ -21,7 +21,7 @@ export default class Card extends Component {
     return (
       <div className="container box-cart bg-white">
         <div className="banner-cart">
-          <img src="https://images6.alphacoders.com/399/thumb-1920-399097.jpg" alt="" className="img-cart"></img>
+          <img src="assets/image/cart-banner.jpg" alt="" className="img-cart"></img>
           <div className="blur-banner-cart"></div>
           <div className="title-cart">
             Giỏ hàng <i className="fas fa-shopping-cart"></i>

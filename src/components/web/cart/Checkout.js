@@ -32,7 +32,7 @@ class Cart extends Component {
       <div className="container box-cart bg-white wow fadeIn position-relative">
         <div className="banner-check-out">
           <i className="fas fa-arrow-left icon-back" onClick={() => onCheckout()}></i>
-          <img src="https://images.alphacoders.com/920/thumb-1920-920580.jpg" alt="" className="img-banner-check-out"></img>
+          <img src="assets/image/checkout-banner.jpg" alt="" className="img-banner-check-out"></img>
           <div className="blur-check-out"></div>
           <h2 className="title-cart">
             Đặt hàng <i className="fas fa-money-check-alt"></i>

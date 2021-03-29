@@ -59,6 +59,10 @@ a:hover {
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    .menu-button {
+      display: flex;
+      justify-content: center;
+    }
     .nav-item {
       .nav-link {
         .form-control {
@@ -80,6 +84,45 @@ a:hover {
         }
         .icon-cart-menu:hover {
           color: #7bb135;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 982px) {
+  .navbar {
+    padding: 0;
+    .navbar-collapse {
+      background-color: #fff;
+      .navbar-nav {
+        .menu-button {
+          flex-direction: column;
+          width: 100%;
+          .nav-item {
+            width: 100%;
+            .nav-link {
+              button {
+                width: 100%;
+                text-align: left;
+              }
+            }
+            .dropdown {
+              width: 100%;
+            }
+            .dropdown-content {
+              width: 50%;
+              right: 0;
+            }
+          }
+        }
+        .nav-item {
+          .nav-link {
+            a {
+              img {
+                display: none;
+              }
+            }
+          }
         }
       }
     }

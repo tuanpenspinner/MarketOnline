@@ -144,13 +144,13 @@ export default class Home extends Component {
         <div id="carouselExampleControls" className="carousel slide banner-home" data-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img className="d-block img-carousel" src="https://images6.alphacoders.com/383/thumb-1920-383146.jpg" alt="First slide" />
+              <img className="d-block img-carousel" src="assets/image/slide-home-1.jpg" alt="First slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block img-carousel" src="https://images8.alphacoders.com/837/thumb-1920-837364.jpg" alt="Second slide" />
+              <img className="d-block img-carousel" src="assets/image/slide-home-2.jpg" alt="Second slide" />
             </div>
             <div className="carousel-item">
-              <img className="d-block img-carousel" src="https://images6.alphacoders.com/919/thumb-1920-919655.jpg" alt="Third slide" />
+              <img className="d-block img-carousel" src="assets/image/slide-home-3.jpg" alt="Third slide" />
             </div>
           </div>
           <div className="blur-banner"></div>
@@ -194,12 +194,11 @@ export default class Home extends Component {
                       <div className="row wow fadeIn px-3">
                         {listProductNew.map((item, key) => {
                           return (
-                            <div className="col-lg-3 col-md-6 mb-4" key={key}>
+                            <div className="col-lg-3 col-md-4 col-6 mb-4" key={key}>
                               <div className="card">
                                 <Link to="/product">
                                   <div className="view overlay">
                                     <img src={item.img} className="card-img-top" alt="" />
-
                                     <div className="mask rgba-white-slight" />
                                   </div>
                                 </Link>
@@ -222,7 +221,7 @@ export default class Home extends Component {
                       <div className="row wow fadeIn px-3">
                         {listProductReduce.map((item, key) => {
                           return (
-                            <div className="col-lg-3 col-md-6 mb-4" key={key}>
+                            <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
                               <div className="card">
                                 <Link to="/product">
                                   <div className="view overlay">
@@ -284,7 +283,7 @@ export default class Home extends Component {
             </div>
           </div>
           <div className="banner-discount">
-            <img src="https://images7.alphacoders.com/328/thumb-1920-328672.jpg" alt="" className="img-banner-discount"></img>
+            <img src="assets/image/discount.jpg" alt="" className="img-banner-discount"></img>
             <h2 className="text-white font-weight-bold">Khuyến mại trong tuần</h2>
             <div className="blur-banner-discount"> </div>
             <div className="time-discount">
@@ -300,12 +299,11 @@ export default class Home extends Component {
               <div className="row wow fadeIn px-3">
                 {listBlog.map((item, key) => {
                   return (
-                    <div className="col-lg-4 col-md-6 mb-4" key={key}>
+                    <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
                       <Link to="/detail-blog">
                         <div className="card">
                           <div className="view overlay">
                             <img src={item.img} className="card-img-top" alt="" />
-
                             <div className="mask rgba-white-slight" />
                           </div>
 

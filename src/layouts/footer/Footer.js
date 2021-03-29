@@ -6,12 +6,12 @@ export default class Footer extends Component {
     return (
       <footer id="footer" className="footer-1 mt-5">
         <div className="footer-form">
-          <img src="https://images7.alphacoders.com/328/thumb-1920-328672.jpg" className="bg-form-footer" alt=""></img>
+          <img src="assets/image/footer.jpg" className="bg-form-footer" alt=""></img>
           <div className="blur-img">dfds</div>
           <div className="form">
             <h5>Đăng kí để nhận cập nhật</h5>
             <div className="mt-1">
-              <img src="http://wpbingosite.com/wordpress/kola/wp-content/themes/kola/images/bottom3.png" height="20" alt="logo"></img>
+              <img src="assets/image/icon-footer.png" height="20" alt="logo"></img>
             </div>
 
             <div>Để lại email để không bỏ lỡ bất kì ưu đãi nào</div>
@@ -30,10 +30,7 @@ export default class Footer extends Component {
                     KADON COLLECTIVE
                     <span />
                   </h5>
-                  <p>
-                    Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn có thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành cùng vườn
-                    canh tác theo mô hình thuận tự nhiên.
-                  </p>
+                  <p>Chúng tôi luôn chào đón Khách hàng tại vườn Kadon</p>
                   <img src="assets/image/logo.png" width="150" alt="logo"></img>
                 </div>
               </div>
@@ -146,7 +143,7 @@ export default class Footer extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <p>Copyright Company Name © 2016. Thuộc bản quyền của Kadon</p>
+                <p>Copyright Company Name © 2021. Thuộc bản quyền của Kadon</p>
               </div>
             </div>
           </div>

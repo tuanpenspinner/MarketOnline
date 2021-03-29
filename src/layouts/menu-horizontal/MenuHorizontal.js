@@ -17,7 +17,7 @@ export default class MenuHorizontal extends Component {
     return (
       <div>
         <nav className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar header">
-          <div className="container">
+          <div className="max-width-1300">
             <button
               className="navbar-toggler"
               type="button"
@@ -39,7 +39,7 @@ export default class MenuHorizontal extends Component {
                     </Link>
                   </div>
                 </li>
-                <div className="d-flex justify-content-center">
+                <div className="menu-button">
                   <li className="nav-item">
                     <div className="nav-link ">
                       <button className={`btn btn-transparent route-menu ${nowPath === "/" ? "menu-active" : ""}`}>
@@ -58,7 +58,7 @@ export default class MenuHorizontal extends Component {
                     <div className="nav-link dropdown">
                       <button className="btn btn-transparent route-menu  ">
                         <Link to="/category">
-                          Cửa hàng <i class="fas fa-chevron-down"></i>
+                          Đi chợ <i class="fas fa-chevron-down"></i>
                         </Link>
                       </button>
                       <div className="dropdown-content">
@@ -83,15 +83,12 @@ export default class MenuHorizontal extends Component {
                     </div>
                   </li>
                 </div>
-
-                <li className="nav-item">
-                  <div className="nav-link position-relative ">
-                    <input type="text" className="form-control" placeholder="Tìm kiếm" />
-                    <i className="fas fa-search icon-search-menu"></i>
-                  </div>
-                </li>
-                <li className="nav-item">
-                  <div className="nav-link position-relative  ">
+                <li className="nav-item ">
+                  <div className="nav-link position-relative d-flex align-items-center  ">
+                    <div className="nav-link position-relative ">
+                      <input type="text" className="form-control" placeholder="Tìm kiếm" />
+                      <i className="fas fa-search icon-search-menu"></i>
+                    </div>
                     <Link to="/cart">
                       <i className="fas fa-cart-plus icon-cart-menu">Giỏ hàng</i>
                     </Link>

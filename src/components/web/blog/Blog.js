@@ -87,7 +87,7 @@ export default class Category extends Component {
             <div className="row wow fadeIn px-3">
               {listProduct.map((item, key) => {
                 return (
-                  <div className="col-lg-4 col-md-6 mb-4" key={key}>
+                  <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
                     <Link to="/detail-blog">
                       <div className="card">
                         <div className="view overlay">
