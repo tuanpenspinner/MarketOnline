@@ -2,7 +2,7 @@
   "name": "marketonline",
   "version": "0.1.0",
   "private": true,
-  
+  "homepage": "https://tuanpenspinnner.github.io/MarketOnline",
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^27.0.0",
     "jodit-react": "^1.0.74",
