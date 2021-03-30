@@ -8,6 +8,14 @@
     border: none !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
+    .card-body {
+      .content-blog {
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
     .overlay {
       overflow: hidden;
       img {
@@ -19,7 +27,6 @@
     }
     &:hover {
       box-shadow: rgba(34, 102, 74, 0.25) 0px 13px 27px -5px, rgba(23, 43, 31, 0.3) 0px 8px 16px -8px;
-
       .overlay {
         overflow: hidden;
         img {

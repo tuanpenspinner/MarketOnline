@@ -50,6 +50,7 @@ const Home = () => {
       })
       .then((response) => {
         let data = response.data.items;
+
         setListBlog(data.splice(0, 3));
       });
   }, []);
@@ -225,7 +226,7 @@ const Home = () => {
                         <div className="card-body text-left">
                           <h5 className="title-blog">{item.title}</h5>
                           <div className="time-blog">10/10/2021</div>
-                          <div className="content-blog">Ra đời làm ắn bươn trải,có làm ....</div>
+                          <div className="content-blog">{item.content}</div>
                         </div>
                       </div>
                     </Link>
