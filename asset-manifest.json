@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.2b57f3f9.chunk.css",
-    "main.js": "/static/js/main.0e50c174.chunk.js",
-    "main.js.map": "/static/js/main.0e50c174.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c29dc3d6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c29dc3d6.js.map",
-    "static/js/2.237f8658.chunk.js": "/static/js/2.237f8658.chunk.js",
-    "static/js/2.237f8658.chunk.js.map": "/static/js/2.237f8658.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.2b57f3f9.chunk.css.map": "/static/css/main.2b57f3f9.chunk.css.map",
-    "static/js/2.237f8658.chunk.js.LICENSE.txt": "/static/js/2.237f8658.chunk.js.LICENSE.txt"
+    "main.css": "/tuanpenspinnner/MarketOnline/static/css/main.de74a9de.chunk.css",
+    "main.js": "/tuanpenspinnner/MarketOnline/static/js/main.97d95a47.chunk.js",
+    "main.js.map": "/tuanpenspinnner/MarketOnline/static/js/main.97d95a47.chunk.js.map",
+    "runtime-main.js": "/tuanpenspinnner/MarketOnline/static/js/runtime-main.e27308ff.js",
+    "runtime-main.js.map": "/tuanpenspinnner/MarketOnline/static/js/runtime-main.e27308ff.js.map",
+    "static/js/2.c1a0aba0.chunk.js": "/tuanpenspinnner/MarketOnline/static/js/2.c1a0aba0.chunk.js",
+    "static/js/2.c1a0aba0.chunk.js.map": "/tuanpenspinnner/MarketOnline/static/js/2.c1a0aba0.chunk.js.map",
+    "index.html": "/tuanpenspinnner/MarketOnline/index.html",
+    "static/css/main.de74a9de.chunk.css.map": "/tuanpenspinnner/MarketOnline/static/css/main.de74a9de.chunk.css.map",
+    "static/js/2.c1a0aba0.chunk.js.LICENSE.txt": "/tuanpenspinnner/MarketOnline/static/js/2.c1a0aba0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c29dc3d6.js",
-    "static/js/2.237f8658.chunk.js",
-    "static/css/main.2b57f3f9.chunk.css",
-    "static/js/main.0e50c174.chunk.js"
+    "static/js/runtime-main.e27308ff.js",
+    "static/js/2.c1a0aba0.chunk.js",
+    "static/css/main.de74a9de.chunk.css",
+    "static/js/main.97d95a47.chunk.js"
   ]
 }
