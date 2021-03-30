@@ -1,8 +1,6 @@
-import { takeLatest } from "redux-saga/effects";
-import * as types from "../actions";
+import { fork } from "redux-saga/effects";
+import watcherSaga from "./watchers";
 
-import { getProductSaga } from "./productSaga";
-
-export default function* watchUserAuthentication() {
-  yield takeLatest(types.PRODUCT.REQUEST, getProductSaga);
+export default function* startForman() {
+  yield fork(watcherSaga);
 }

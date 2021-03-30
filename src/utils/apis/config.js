@@ -7,24 +7,19 @@ function api() {
 
   const instance = axios.create({
     baseURL: "https://kadonfarm.herokuapp.com",
-    // prettier-ignore
-    headers: {
-      // 'Authorization': `Bearer ${token}`,
-      'Cache-Control': 'no-cache',
-    },
   });
 
   instance.interceptors.request.use((reqConfig) => {
-    let configOverride = reqConfig;
-
-    return configOverride;
+    return reqConfig;
   });
 
   instance.interceptors.response.use(
     (response) => {
-      let responseOverride = response;
-
-      return responseOverride;
+      return {
+        ...response,
+        data: response.data,
+        httpCode: response.status,
+      };
     },
     (error) => {
       return Promise.reject(error);

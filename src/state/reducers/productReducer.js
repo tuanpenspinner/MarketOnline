@@ -13,17 +13,23 @@ const initState = {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initState, { type, payload }) {
   switch (type) {
-    case types.CATEGORIES.REQUEST:
+    case types.GET_PRODUCT.REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case types.CATEGORIES.SUCCESS:
+    case types.GET_PRODUCT.SUCCESS:
       return {
         ...state,
         loading: false,
+        httpCode: payload.httpCode,
+        data: {
+          ...state.data,
+          list: payload.data.items,
+          total: payload.data.total,
+        },
       };
-    case types.CATEGORIES.FAILURE:
+    case types.GET_PRODUCT.FAILURE:
       return {
         ...state,
         loading: false,

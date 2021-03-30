@@ -1,31 +1,46 @@
-import React, { Component } from "react";
-import ProductSearch from "./ProductSearch";
-import ProductDataTable from "./ProductDatatable";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ProductForm from "./ProductForm";
+import ProductSearch from "./ProductSearch";
+import ProductTable from "./ProductTable";
+import { getProductAction } from "../../../state/actions/productActions";
 
-export default class Product extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpenForm: false,
-      typeForm: 1,
-    };
-  }
-  toggleForm = (typeForm) => {
-    const { isOpenForm } = this.state;
-    this.setState({
-      isOpenForm: !isOpenForm,
-      typeForm,
-    });
+function Product(props) {
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.product);
+  const [payload, setPayload] = useState({
+    payload: {
+      filter: {},
+      paging: {
+        offset: 0,
+        limit: 10,
+      },
+    },
+  });
+
+  console.log(product);
+
+  const handleOpenForm = () => {
+    setIsOpenForm(true);
   };
-  render() {
-    const { isOpenForm, typeForm } = this.state;
-    if (isOpenForm) return <ProductForm toggleForm={this.toggleForm} typeForm={typeForm}></ProductForm>;
-    return (
-      <div>
-        <ProductSearch></ProductSearch>
-        <ProductDataTable toggleForm={this.toggleForm}></ProductDataTable>
-      </div>
-    );
-  }
+
+  useEffect(() => {
+    dispatch(getProductAction(payload));
+  }, [dispatch, payload]);
+
+  return (
+    <div>
+      {isOpenForm ? (
+        <ProductForm />
+      ) : (
+        <>
+          <ProductSearch />
+          <ProductTable product={product} onOpenForm={handleOpenForm} />
+        </>
+      )}
+    </div>
+  );
 }
+
+export default Product;
