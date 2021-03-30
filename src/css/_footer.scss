@@ -58,6 +58,13 @@ footer {
       width: 100%;
     }
   }
+  @media (max-width: 962px) {
+    .main-footer {
+      .box-footer {
+        padding: 0 10px;
+      }
+    }
+  }
 }
 footer ul {
   padding-left: 0;

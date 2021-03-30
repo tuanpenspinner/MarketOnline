@@ -7,6 +7,8 @@ import Category from "../components/web/category/Category";
 import Cart from "../components/web/cart/Cart";
 import Blog from "../components/web/blog/Blog";
 import DetailBlog from "../components/web/detail-blog/DetailBlog";
+import Policy from "../components/web/policy/Policy";
+import Community from "../components/web/community/Community";
 
 const routes = [
   {
@@ -62,6 +64,18 @@ const routes = [
     path: "/detail-blog",
     exact: true,
     component: DetailBlog,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/policy",
+    exact: true,
+    component: Policy,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/community",
+    exact: true,
+    component: Community,
   },
 ];
 export default routes;

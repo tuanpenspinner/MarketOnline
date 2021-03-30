@@ -17,7 +17,7 @@ export default class MenuHorizontal extends Component {
     return (
       <div>
         <nav className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar header">
-          <div className="max-width-1300">
+          <div className="w-100">
             <button
               className="navbar-toggler"
               type="button"
@@ -72,6 +72,21 @@ export default class MenuHorizontal extends Component {
                     <div className="nav-link ">
                       <button className="btn btn-transparent route-menu ">
                         <Link to="/blog">Bếp Kadon</Link>
+                      </button>
+                    </div>
+                  </li>
+
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn btn-transparent route-menu ">
+                        <Link to="/community">Cộng đồng</Link>
+                      </button>
+                    </div>
+                  </li>
+                  <li className="nav-item">
+                    <div className="nav-link ">
+                      <button className="btn btn-transparent route-menu ">
+                        <Link to="/policy">Chính sách</Link>
                       </button>
                     </div>
                   </li>
