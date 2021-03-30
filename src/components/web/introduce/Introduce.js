@@ -40,7 +40,7 @@ export default class Introduce extends Component {
                 <div>Cây trồng hút chất dinh dưỡng từ mẹ thiên nhiên và hấp thụ những dưỡng chất cần thiết như hàm lượng vitamin</div>
               </div>
               <div className="item-introduce mt-5">
-                <img src="assets/image/introduce-4.jpg" alt="logo" width="150"></img>
+                <img src="assets/image/introduce-4.png" alt="logo" width="150"></img>
                 <div>Canh tác nông nghiệp thuận tự nhiên không những mang lại rất nhiều lợi ích sức khỏe con nười và môi trường sinh thái</div>
               </div>
             </div>
