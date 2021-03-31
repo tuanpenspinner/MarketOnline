@@ -4,6 +4,7 @@ import ProductForm from "./ProductForm";
 import ProductSearch from "./ProductSearch";
 import ProductTable from "./ProductTable";
 import { getProductAction } from "../../../state/actions/productActions";
+import { getCategoryAction } from "../../../state/actions/categoryActions";
 
 function Product(props) {
   const [isOpenForm, setIsOpenForm] = useState(false);
@@ -19,8 +20,6 @@ function Product(props) {
     },
   });
 
-  console.log(product);
-
   const handleOpenForm = () => {
     setIsOpenForm(true);
   };
@@ -28,6 +27,19 @@ function Product(props) {
   useEffect(() => {
     dispatch(getProductAction(payload));
   }, [dispatch, payload]);
+
+  useEffect(() => {
+    dispatch(
+      getCategoryAction({
+        ...payload,
+        paging: {
+          ...payload.paging,
+          limit: 100,
+        },
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>

@@ -36,8 +36,8 @@ const Home = () => {
         },
       })
       .then((response) => {
-        let data = response.data;
-        setListCategory(data.splice(0, 4));
+        // let data = response.data;
+        // setListCategory(data?.splice(0, 4));
       });
     axios
       .get("https://kadonfarm.herokuapp.com/api/blog", {
@@ -57,16 +57,32 @@ const Home = () => {
 
   return (
     <div className="bg-white">
-      <div id="carouselExampleControls" className="carousel slide banner-home" data-ride="carousel">
+      <div
+        id="carouselExampleControls"
+        className="carousel slide banner-home"
+        data-ride="carousel"
+      >
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="d-block img-carousel" src="assets/image/slide-home-1.jpg" alt="First slide" />
+            <img
+              className="d-block img-carousel"
+              src="assets/image/slide-home-1.jpg"
+              alt="First slide"
+            />
           </div>
           <div className="carousel-item">
-            <img className="d-block img-carousel" src="assets/image/slide-home-2.jpg" alt="Second slide" />
+            <img
+              className="d-block img-carousel"
+              src="assets/image/slide-home-2.jpg"
+              alt="Second slide"
+            />
           </div>
           <div className="carousel-item">
-            <img className="d-block img-carousel" src="assets/image/slide-home-3.jpg" alt="Third slide" />
+            <img
+              className="d-block img-carousel"
+              src="assets/image/slide-home-3.jpg"
+              alt="Third slide"
+            />
           </div>
         </div>
         <div className="blur-banner"></div>
@@ -78,11 +94,21 @@ const Home = () => {
             </button>
           </Link>
         </div>
-        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a
+          className="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
           <i className="fas fa-arrow-circle-left fa-2x icon-sideshow"></i>
           <span className="sr-only">Previous</span>
         </a>
-        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a
+          className="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
           <i className="fas fa-arrow-circle-right fa-2x icon-sideshow"></i>
           <span className="sr-only">Next</span>
         </a>
@@ -104,26 +130,41 @@ const Home = () => {
           <div className="title-best-seller">Sản phẩm nổi bật</div>
           <div className="tab-best-seller">
             <Tab.Container id="left-tabs-example" defaultActiveKey="home">
-              <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
+              <Tabs
+                defaultActiveKey="home"
+                transition={false}
+                id="noanim-tab-example"
+              >
                 <Tab eventKey="home" title="Mới nhất">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
                       {listProductNew.map((item, key) => {
                         return (
-                          <div className="col-lg-3 col-md-4 col-6 mb-4" key={key}>
+                          <div
+                            className="col-lg-3 col-md-4 col-6 mb-4"
+                            key={key}
+                          >
                             <div className="card">
                               <Link to="/product">
                                 <div className="view overlay">
-                                  <img src={item.image} className="card-img-top" alt="" />
+                                  <img
+                                    src={item.image}
+                                    className="card-img-top"
+                                    alt=""
+                                  />
                                   <div className="mask rgba-white-slight" />
                                 </div>
                               </Link>
                               <div className="card-body text-center">
                                 <Link to="/product">
                                   <h5 className="text-success">{item.name}</h5>
-                                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
+                                  <h5 className="mt-3">
+                                    {formatNumber(item.price)}
+                                  </h5>
                                 </Link>
-                                <button className="btn btn-custom">Thêm vào giỏ</button>
+                                <button className="btn btn-custom">
+                                  Thêm vào giỏ
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -137,11 +178,18 @@ const Home = () => {
                     <div className="row wow fadeIn px-3">
                       {listProductReduce.map((item, key) => {
                         return (
-                          <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
+                          <div
+                            className="col-lg-3 col-md-4 col-6 mb-4 mb-4"
+                            key={key}
+                          >
                             <div className="card">
                               <Link to="/product">
                                 <div className="view overlay">
-                                  <img src={item.image} className="card-img-top" alt="" />
+                                  <img
+                                    src={item.image}
+                                    className="card-img-top"
+                                    alt=""
+                                  />
 
                                   <div className="mask rgba-white-slight" />
                                 </div>
@@ -149,9 +197,13 @@ const Home = () => {
                               <div className="card-body text-center">
                                 <Link to="/product">
                                   <h5 className="text-success">{item.name}</h5>
-                                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
+                                  <h5 className="mt-3">
+                                    {formatNumber(item.price)}
+                                  </h5>
                                 </Link>
-                                <button className="btn btn-custom">Thêm vào giỏ</button>
+                                <button className="btn btn-custom">
+                                  Thêm vào giỏ
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -169,7 +221,11 @@ const Home = () => {
                             <div className="card">
                               <Link to="/product">
                                 <div className="view overlay">
-                                  <img src={item.image} className="card-img-top" alt="" />
+                                  <img
+                                    src={item.image}
+                                    className="card-img-top"
+                                    alt=""
+                                  />
 
                                   <div className="mask rgba-white-slight" />
                                 </div>
@@ -177,9 +233,13 @@ const Home = () => {
                               <div className="card-body text-center">
                                 <Link to="/product">
                                   <h5 className="text-success">{item.name}</h5>
-                                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
+                                  <h5 className="mt-3">
+                                    {formatNumber(item.price)}
+                                  </h5>
                                 </Link>
-                                <button className="btn btn-custom">Thêm vào giỏ</button>
+                                <button className="btn btn-custom">
+                                  Thêm vào giỏ
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -199,7 +259,11 @@ const Home = () => {
           </div>
         </div>
         <div className="banner-discount">
-          <img src="assets/image/discount.jpg" alt="" className="img-banner-discount"></img>
+          <img
+            src="assets/image/discount.jpg"
+            alt=""
+            className="img-banner-discount"
+          ></img>
           <h2 className="text-white font-weight-bold">Khuyến mại trong tuần</h2>
           <div className="blur-banner-discount"> </div>
           <div className="time-discount">
@@ -219,7 +283,11 @@ const Home = () => {
                     <Link to="/detail-blog">
                       <div className="card">
                         <div className="view overlay">
-                          <img src={item.image} className="card-img-top" alt="" />
+                          <img
+                            src={item.image}
+                            className="card-img-top"
+                            alt=""
+                          />
                           <div className="mask rgba-white-slight" />
                         </div>
 
