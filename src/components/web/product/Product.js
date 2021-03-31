@@ -149,7 +149,7 @@ const Product = () => {
               return (
                 <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
                   <div className="card">
-                    <Link to={`/product:${item._id}`}>
+                    <Link to={`/product/${item._id}`}>
                       <div className="view overlay">
                         <img src={item.image} className="card-img-top" alt="" />
 
@@ -157,7 +157,7 @@ const Product = () => {
                       </div>
                     </Link>
                     <div className="card-body text-center">
-                      <Link to={`/product/:${item._id}`}>
+                      <Link to={`/product/${item._id}`}>
                         <h5 className="text-success name-product">{item.name}</h5>
                         <h5 className="mt-3">1{formatNumber(item.price)}đ</h5>
                       </Link>
