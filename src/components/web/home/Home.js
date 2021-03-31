@@ -11,48 +11,14 @@ const Home = () => {
   const [listCategory, setListCategory] = useState([]);
   const [listBlog, setListBlog] = useState([]);
   useEffect(() => {
-    axios
-      .post("https://kadonfarm.herokuapp.com/api/product", {
-        payload: {
-          paging: {
-            limit: 100,
-            offset: 0,
-          },
-        },
-      })
-      .then((response) => {
-        let data = response.data.items.filter((item) => item.image);
-        setListProductNew(data.splice(0, 8));
-        setListBestSell(data.splice(0, 8));
-        setListProductReduce(data.splice(0, 8));
-      });
-    axios
-      .post("https://kadonfarm.herokuapp.com/api/category", {
-        payload: {
-          paging: {
-            limit: 10,
-            offset: 0,
-          },
-        },
-      })
-      .then((response) => {
-        // let data = response.data;
-        // setListCategory(data?.splice(0, 4));
-      });
-    axios
-      .get("https://kadonfarm.herokuapp.com/api/blog", {
-        payload: {
-          paging: {
-            limit: 10,
-            offset: 0,
-          },
-        },
-      })
-      .then((response) => {
-        let data = response.data.items;
-
-        setListBlog(data.splice(0, 3));
-      });
+    axios.get("https://kadonfarm.herokuapp.com/user").then((response) => {
+      let data = response.data.responseData;
+      setListCategory(data.categories);
+      setListProductNew(data.newProducts.splice(0, 8));
+      setListBestSell(data.productsHighLight.splice(0, 8));
+      setListProductReduce(data.newProducts.splice(0, 8));
+      setListBlog(data.blogs.splice(0, 3));
+    });
   }, []);
 
   return (
@@ -115,7 +81,7 @@ const Home = () => {
         <div className="category-carousel">
           {listCategory.map((item, key) => {
             return (
-              <Link to="/category">
+              <Link to={`/category/${item._id}`}>
                 <div className="item-category" key={key}>
                   <img width="120" height="120" src={item.image} alt=""></img>
                   {item.name}
@@ -130,12 +96,8 @@ const Home = () => {
           <div className="title-best-seller">Sản phẩm nổi bật</div>
           <div className="tab-best-seller">
             <Tab.Container id="left-tabs-example" defaultActiveKey="home">
-              <Tabs
-                defaultActiveKey="home"
-                transition={false}
-                id="noanim-tab-example"
-              >
-                <Tab eventKey="home" title="Mới nhất">
+              <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
+                <Tab eventKey="home" title="Phổ biến">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
                       {listProductNew.map((item, key) => {
@@ -145,7 +107,7 @@ const Home = () => {
                             key={key}
                           >
                             <div className="card">
-                              <Link to="/product">
+                              <Link to={`/product/${item._id}`}>
                                 <div className="view overlay">
                                   <img
                                     src={item.image}
@@ -156,11 +118,9 @@ const Home = () => {
                                 </div>
                               </Link>
                               <div className="card-body text-center">
-                                <Link to="/product">
-                                  <h5 className="text-success">{item.name}</h5>
-                                  <h5 className="mt-3">
-                                    {formatNumber(item.price)}
-                                  </h5>
+                                <Link to={`/product/${item._id}`}>
+                                  <h5 className="text-success name-product">{item.name}</h5>
+                                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
                                 </Link>
                                 <button className="btn btn-custom">
                                   Thêm vào giỏ
@@ -183,7 +143,7 @@ const Home = () => {
                             key={key}
                           >
                             <div className="card">
-                              <Link to="/product">
+                              <Link to={`/product/${item._id}`}>
                                 <div className="view overlay">
                                   <img
                                     src={item.image}
@@ -195,11 +155,9 @@ const Home = () => {
                                 </div>
                               </Link>
                               <div className="card-body text-center">
-                                <Link to="/product">
-                                  <h5 className="text-success">{item.name}</h5>
-                                  <h5 className="mt-3">
-                                    {formatNumber(item.price)}
-                                  </h5>
+                                <Link to={`/product/:${item._id}`}>
+                                  <h5 className="text-success name-product">{item.name}</h5>
+                                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
                                 </Link>
                                 <button className="btn btn-custom">
                                   Thêm vào giỏ
@@ -219,7 +177,7 @@ const Home = () => {
                         return (
                           <div className="col-lg-3 col-md-6 mb-4" key={key}>
                             <div className="card">
-                              <Link to="/product">
+                              <Link to={`/product/${item._id}`}>
                                 <div className="view overlay">
                                   <img
                                     src={item.image}
@@ -231,11 +189,9 @@ const Home = () => {
                                 </div>
                               </Link>
                               <div className="card-body text-center">
-                                <Link to="/product">
-                                  <h5 className="text-success">{item.name}</h5>
-                                  <h5 className="mt-3">
-                                    {formatNumber(item.price)}
-                                  </h5>
+                                <Link to={`/product/${item._id}`}>
+                                  <h5 className="text-success name-product">{item.name}</h5>
+                                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
                                 </Link>
                                 <button className="btn btn-custom">
                                   Thêm vào giỏ

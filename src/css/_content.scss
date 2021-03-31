@@ -249,6 +249,15 @@
     margin: auto;
     padding-bottom: 10px;
     padding-top: 50px;
+    .image-product {
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: #ccc 0px 1px 2px 0px, #ccc 0px 1px 3px 1px;
+      object-fit: cover;
+    }
+
     .tab-product {
       .nav-tabs {
         display: flex;
