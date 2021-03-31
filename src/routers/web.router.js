@@ -37,7 +37,7 @@ const routes = [
   },
   {
     layout: MenuHorizontal,
-    path: "/product",
+    path: "/product/:id",
     exact: true,
     component: Product,
   },
@@ -46,6 +46,12 @@ const routes = [
     path: "/cart",
     exact: true,
     component: Cart,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/category/:id",
+    exact: true,
+    component: Category,
   },
   {
     layout: MenuHorizontal,
