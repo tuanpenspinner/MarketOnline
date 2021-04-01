@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Form, Col } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import Rating from "react-rating";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { formatNumber } from "../../../helper/formatNumber";
 
 const Product = () => {
   const [listProductRelate, setListProductRelate] = useState([]);
   const [detailProduct, setDetailProduct] = useState([]);
+  const [comment, setComment] = useState({ content: "", email: "", name: "", phone: "", rating: 5 });
+  const [validated, setValidated] = useState(false);
   const { id } = useParams();
   useEffect(() => {
+    getInfoProduct(id);
+  }, [id]);
+  const getInfoProduct = (id) => {
     axios({
       method: "post",
       url: "https://kadonfarm.herokuapp.com/user/product",
@@ -29,7 +36,51 @@ const Product = () => {
       setListProductRelate(data.relativeProducts);
       setDetailProduct(data.items[0]);
     });
-  }, [id]);
+  };
+  const sendComment = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity()) {
+      axios({
+        method: "post",
+        url: "https://kadonfarm.herokuapp.com/api/comment/create",
+        data: {
+          payload: {
+            ...comment,
+            productId: id,
+          },
+        },
+      }).then((response) => {
+        if (response.data.code === 200) {
+          getInfoProduct(id);
+          resetForm();
+          Swal.fire({
+            icon: "success",
+            title: "Thêm đánh giá thành công",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Thất bại",
+            text: response.data.message,
+          });
+        }
+      });
+    }
+    setValidated(true);
+  };
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setComment({ ...comment, [name]: value });
+  };
+
+  const onChangeRating = (value) => {
+    setComment({ ...comment, rating: value });
+  };
+  const resetForm = () => {
+    setComment({ content: "", email: "", name: "", phone: "", rating: 5 });
+    setValidated(false);
+  };
 
   const renderComment = () => {
     if (detailProduct.comments && detailProduct.comments.length > 0) {
@@ -40,7 +91,7 @@ const Product = () => {
           <div key={index}>
             <div>{item.name}</div>
             <div>{item.content}</div>
-            <Rating stop={item.rating} emptySymbol={[`fa fa-star ${color[item.rating - 1]}`]} readonly />
+            <Rating start={0} stop={item.rating} initialRating={item.rating} fullSymbol={[`fa fa-star ${color[item.rating - 1]}`]} readonly />
             <hr />
           </div>
         );
@@ -90,46 +141,43 @@ const Product = () => {
                 <div className="form-rating">
                   <h5>Đánh giá của bạn</h5>
                   <Rating
-                    stop={6}
-                    emptySymbol={["far fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star "]}
+                    stop={5}
+                    initialRating={comment.rating}
+                    emptySymbol={["far fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]}
                     fullSymbol={[
                       "fa fa-star text-danger",
                       "fa fa-star text-danger",
                       "fa fa-star text-warning",
                       "fa fa-star text-info",
-                      "fa fa-star text-info",
                       "fa fa-star text-success",
                     ]}
+                    onChange={onChangeRating}
                   />
-                  <form className="mt-5">
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="md-form">
-                          <textarea type="text" id="contact-message" className="md-textarea form-control" rows={3} placeholder="Lời nhắn" />
-                          <label htmlFor="contact-message"></label>
-                        </div>
+                  <Form noValidate validated={validated} onSubmit={sendComment} className="mt-3">
+                    <Form.Row>
+                      <Form.Group as={Col} md="4">
+                        <Form.Control required type="text" name="name" placeholder="Họ tên" onChange={onChange} value={comment.name} />
+                        <Form.Control.Feedback type="invalid">Vui lòng nhập tên</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group as={Col} md="4">
+                        <Form.Control required type="text" name="phone" placeholder="Số điện thoại" onChange={onChange} value={comment.phone} />
+                        <Form.Control.Feedback type="invalid">Vui lòng nhập số điện thoại</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group as={Col} md="4">
+                        <Form.Control required type="email" name="email" placeholder="Email" onChange={onChange} value={comment.email} />
+                        <Form.Control.Feedback type="invalid">Vui lòng nhập email</Form.Control.Feedback>
+                      </Form.Group>
+                      <Form.Group as={Col} md="12">
+                        <Form.Control required type="text" name="content" placeholder="Lời nhắn" onChange={onChange} value={comment.content} />
+                        <Form.Control.Feedback type="invalid">Vui lòng nhập nội dung</Form.Control.Feedback>
+                      </Form.Group>
+                      <div className="text-center w-100">
+                        <button className="btn btn-custom " type="submit">
+                          Đánh giá
+                        </button>
                       </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="md-form">
-                          <input type="text" id="contact-name" className="form-control" placeholder="Họ tên" />
-                          <label htmlFor="contact-name" className></label>
-                        </div>
-                      </div>
-
-                      <div className="col-md-6">
-                        <div className="md-form">
-                          <input type="text" id="contact-email" className="form-control" placeholder="Email" />
-                          <label htmlFor="contact-email" className></label>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="text-center">
-                      <button className="btn btn-custom ">Đánh giá</button>
-                    </div>
-                  </form>
+                    </Form.Row>
+                  </Form>
                 </div>
               </div>
             </Tab>
