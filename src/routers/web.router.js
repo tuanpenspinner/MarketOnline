@@ -67,7 +67,7 @@ const routes = [
   },
   {
     layout: MenuHorizontal,
-    path: "/detail-blog",
+    path: "/detail-blog/:id",
     exact: true,
     component: DetailBlog,
   },

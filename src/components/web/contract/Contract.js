@@ -10,7 +10,7 @@ export default class Introduce extends Component {
   };
   render() {
     return (
-      <div className="box-contract bg-white">
+      <div className="box-contract">
         <div className="banner-contract">
           <img src="assets/image/contract-banner.jpg" alt="" className="img-contract"></img>
           <div className="blur-banner-contract"></div>
@@ -32,10 +32,19 @@ export default class Introduce extends Component {
           </div>
           <div className="col-lg-6 contract-form mt-5">
             <div className="d-flex flex-colum">
-              <img src="assets/image/logo.png" width="150" alt="logo"></img>
+              {/* <img src="assets/image/logo.png" width="150px" height="150px" alt="logo" ></img> */}
               <div>
                 <div>
-                  <i className="fas fa-map-marked mr-3"></i> 152 Hoa Đào, Phường 1, Quận Phú Nhuận, Thành Phố Hồ Chí Minh
+                  <div className="text-info font-weight-bold">&emsp;&emsp;&nbsp;Vườn Kadon</div>
+                  <div>
+                    <i className="fas fa-map-marked mr-3"></i>Thôn Krango 2 – Ka Đơn – Đơn Dương – Lâm Đồng (cạnh nhà thờ Ka Đơn)
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <div className="text-info font-weight-bold">&emsp;&emsp;&nbsp;Của hàng kinh doanh</div>
+                  <div>
+                    <i className="fas fa-map-marked mr-3"></i>152 Hoa Đào, Phường 1, Quận Phú Nhuận, Thành Phố Hồ Chí Minh
+                  </div>
                 </div>
                 <div className="mt-3">
                   <i className="fas fa-phone mr-3"></i> 0888651198

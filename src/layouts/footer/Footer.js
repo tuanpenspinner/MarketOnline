@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default class Footer extends Component {
   render() {
     return (
-      <footer id="footer" className="footer-1 mt-5">
+      <footer id="footer" className="footer-1">
         <div className="footer-form">
           <img src="assets/image/footer.jpg" className="bg-form-footer" alt=""></img>
           <div className="blur-img">dfds</div>
@@ -16,7 +16,7 @@ export default class Footer extends Component {
 
             <div>Để lại email để không bỏ lỡ bất kì ưu đãi nào</div>
             <div className="input-group mb-3">
-              <input type="text" className="form-control" />
+              <input type="text" className="form-control" placeholder="Nhập email của bạn" />
               <button className="btn btn-custom">Đăng kí</button>
             </div>
           </div>
