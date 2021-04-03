@@ -46,6 +46,8 @@ function UploadImage({ onChange, value }, ref) {
     </div>
   );
 
+  console.log(value);
+
   return (
     <Upload
       className="upload-container"
@@ -58,11 +60,7 @@ function UploadImage({ onChange, value }, ref) {
       onChange={handleChange}
       ref={ref}
     >
-      {value ? (
-        <img src={value} alt="avatar" style={{ width: "100%" }} />
-      ) : (
-        uploadButton
-      )}
+      {value ? <img src={value} alt="avatar" style={{ width: "100%" }} /> : uploadButton}
     </Upload>
   );
 }

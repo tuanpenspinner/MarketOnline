@@ -12,6 +12,9 @@ function Product(props) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const created = useSelector((state) => state.product.created);
+
+  console.log("created", created);
+
   const [payload, setPayload] = useState({
     payload: {
       filter: {},
