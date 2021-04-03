@@ -15,6 +15,22 @@ html {
   padding-left: 250px;
 }
 
+.admin-sidebar {
+  .logo-title {
+    max-height: 70px;
+    width: 100%;
+    height: 100%;
+    background: #1dd1a1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > img {
+      display: inline-block;
+      width: 35%;
+    }
+  }
+}
+
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
@@ -23,7 +39,7 @@ html {
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #8cc63f;
+  background: #10ac84;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -37,7 +53,6 @@ html {
     list-style: none;
     li {
       text-indent: 20px;
-      line-height: 40px;
       a {
         display: block;
         text-decoration: none;
@@ -117,13 +132,16 @@ html {
 }
 
 .sidebar-nav > .sidebar-brand {
-  height: 65px;
   font-size: 18px;
-  line-height: 60px;
 }
 
 .sidebar-nav > .sidebar-brand a {
+  padding: 10px 0;
   color: #999999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  &.active {
+    background-color: #2ecc71;
+  }
 }
 
 .sidebar-nav > .sidebar-brand a:hover {

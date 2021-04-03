@@ -4,3 +4,13 @@
 @import "./common.scss";
 @import "./login.scss";
 @import "./footer";
+
+.card-body {
+  padding: 0.7rem;
+}
+
+p,
+span {
+  margin: 0;
+  padding: 0;
+}

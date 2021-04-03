@@ -22,7 +22,7 @@ export default class routers extends Component {
                   route={routeItem}
                   {...rest}
                   {...this.props}
-                ></RouterCustom>
+                />
               </routeItem.layout>
             );
           })}
