@@ -62,7 +62,7 @@ export default class Community extends Component {
             <div className="input-group mb-3">
               <input type="text" className="form-control" placeholder="Tìm kiếm" />
               <div className="input-group-append">
-                <button className="btn btn-success" type="submit">
+                <button className="btn btn-custom" type="submit">
                   <i className="fas fa-search"></i>
                 </button>
               </div>

@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
 import axios from "axios";
+import { formatNumber } from "../../helper/formatNumber";
 const MenuHorizontal = (props) => {
   const [listCategory, setListCategory] = useState([]);
+  const [lengthProductCart, setLengthProductCart] = useState(0);
+  const [listProductCart, setListProductCart] = useState([]);
+  const [totalMoney, setTotalMoney] = useState(0);
   let nowPath = props.path;
   useEffect(() => {
     const list = document.getElementsByClassName("route-menu");
     for (let i = 0; i < list.length; i++) {
       if (list[i].children[0].getAttribute("href") === "#" + nowPath) list[i].classList.add("menu-active");
     }
-
     axios({
       method: "post",
       url: "https://kadonfarm.herokuapp.com/user/category",
@@ -20,6 +23,19 @@ const MenuHorizontal = (props) => {
       setListCategory(data);
     });
   }, [nowPath]);
+
+  useEffect(() => {
+    const listProductCart = JSON.parse(localStorage.getItem("listProductCart"));
+    let length = 0;
+    let price = 0;
+    listProductCart.forEach((item) => {
+      length += item.count;
+      price += item.price * item.count;
+    });
+    setLengthProductCart(length);
+    setListProductCart(listProductCart);
+    setTotalMoney(price);
+  }, []);
 
   return (
     <div>
@@ -36,9 +52,9 @@ const MenuHorizontal = (props) => {
           >
             <span className="navbar-toggler-icon" />
           </button>
-
+          <div></div>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <div className="nav-link ">
                   <Link to="/home">
@@ -46,6 +62,7 @@ const MenuHorizontal = (props) => {
                   </Link>
                 </div>
               </li>
+
               <div className="menu-button">
                 <li className="nav-item">
                   <div className="nav-link ">
@@ -82,7 +99,6 @@ const MenuHorizontal = (props) => {
                     </button>
                   </div>
                 </li>
-
                 <li className="nav-item">
                   <div className="nav-link ">
                     <button className="btn btn-transparent route-menu ">
@@ -104,18 +120,46 @@ const MenuHorizontal = (props) => {
                     </button>
                   </div>
                 </li>
-              </div>
-              <li className="nav-item ">
-                <div className="nav-link position-relative d-flex align-items-center  ">
-                  <div className="nav-link position-relative ">
+                <li className="nav-item ">
+                  <div className="nav-link position-relative d-flex align-items-center mt-2">
+                    {/* <div className="nav-link position-relative ">
                     <input type="text" className="form-control" placeholder="Tìm kiếm" />
                     <i className="fas fa-search icon-search-menu"></i>
+                  </div> */}
+                    <div className="icon-cart-menu">
+                      <Link to="/cart">
+                        <div className="detail-cart-menu">
+                          <i className="fas fa-cart-plus icon-cart"></i>
+                          <div className="number-product-cart-menu">{lengthProductCart}</div>
+
+                          <div className="box-detail-product-cart">
+                            <div className="w-100 text-center mb-2">Giỏ hàng</div>
+                            {listProductCart.map((item, key) => {
+                              return (
+                                <div className="detail-product-cart" key={key}>
+                                  <img src={item.image} alt=""></img>
+                                  <div>
+                                    <div className="item-name-product">{item.name}</div>
+                                    <div className="item-price-product">
+                                      {item.count} x {formatNumber(item.price)} đ
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            <div className="total-money">Tổng tiền {formatNumber(totalMoney)} đ</div>
+                            <div className="group-btn-cart-menu">
+                              <Link to="/cart" className="btn btn-info review-cart">
+                                Xem giỏ hàng
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
-                  <Link to="/cart">
-                    <i className="fas fa-cart-plus icon-cart-menu">Giỏ hàng</i>
-                  </Link>
-                </div>
-              </li>
+                </li>
+              </div>
             </ul>
           </div>
         </div>

@@ -20,35 +20,41 @@ const Home = () => {
       setListBlog(data.blogs.splice(0, 3));
     });
   }, []);
+  const addCart = (item) => {
+    const product = {
+      productId: item._id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      count: 1,
+    };
+    let listProductCart = localStorage.getItem("listProductCart");
+    if (listProductCart) listProductCart = JSON.parse(listProductCart);
+    else {
+      listProductCart = [];
+    }
+    const findIndex = listProductCart.findIndex((item) => item.productId === product.productId);
+    if (findIndex !== -1) {
+      listProductCart[findIndex].count = listProductCart[findIndex].count + 1;
+    } else {
+      listProductCart.push(product);
+    }
+
+    localStorage.setItem("listProductCart", JSON.stringify(listProductCart));
+  };
 
   return (
-    <div className="bg-white">
-      <div
-        id="carouselExampleControls"
-        className="carousel slide banner-home"
-        data-ride="carousel"
-      >
+    <div>
+      <div id="carouselExampleControls" className="carousel slide banner-home" data-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img
-              className="d-block img-carousel"
-              src="assets/image/slide-home-1.jpg"
-              alt="First slide"
-            />
+            <img className="d-block img-carousel" src="assets/image/slide-home-1.jpg" alt="First slide" />
           </div>
           <div className="carousel-item">
-            <img
-              className="d-block img-carousel"
-              src="assets/image/slide-home-2.jpg"
-              alt="Second slide"
-            />
+            <img className="d-block img-carousel" src="assets/image/slide-home-2.jpg" alt="Second slide" />
           </div>
           <div className="carousel-item">
-            <img
-              className="d-block img-carousel"
-              src="assets/image/slide-home-3.jpg"
-              alt="Third slide"
-            />
+            <img className="d-block img-carousel" src="assets/image/slide-home-3.jpg" alt="Third slide" />
           </div>
         </div>
         <div className="blur-banner"></div>
@@ -60,21 +66,11 @@ const Home = () => {
             </button>
           </Link>
         </div>
-        <a
-          className="carousel-control-prev"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="prev"
-        >
+        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
           <i className="fas fa-arrow-circle-left fa-2x icon-sideshow"></i>
           <span className="sr-only">Previous</span>
         </a>
-        <a
-          className="carousel-control-next"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="next"
-        >
+        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
           <i className="fas fa-arrow-circle-right fa-2x icon-sideshow"></i>
           <span className="sr-only">Next</span>
         </a>
@@ -83,7 +79,7 @@ const Home = () => {
             return (
               <Link to={`/category/${item._id}`}>
                 <div className="item-category" key={key}>
-                  <img width="120" height="120" src={item.image} alt=""></img>
+                  <img width="100" height="100" src={item.image} alt=""></img>
                   {item.name}
                 </div>
               </Link>
@@ -102,18 +98,11 @@ const Home = () => {
                     <div className="row wow fadeIn px-3">
                       {listProductNew.map((item, key) => {
                         return (
-                          <div
-                            className="col-lg-3 col-md-4 col-6 mb-4"
-                            key={key}
-                          >
+                          <div className="col-lg-3 col-md-4 col-6 mb-4" key={key}>
                             <div className="card">
                               <Link to={`/product/${item._id}`}>
                                 <div className="view overlay">
-                                  <img
-                                    src={item.image}
-                                    className="card-img-top"
-                                    alt=""
-                                  />
+                                  <img src={item.image} className="card-img-top" alt="" />
                                   <div className="mask rgba-white-slight" />
                                 </div>
                               </Link>
@@ -122,7 +111,7 @@ const Home = () => {
                                   <h5 className="text-success name-product">{item.name}</h5>
                                   <h5 className="mt-3">{formatNumber(item.price)}</h5>
                                 </Link>
-                                <button className="btn btn-custom">
+                                <button className="btn btn-custom" onClick={() => addCart(item)}>
                                   Thêm vào giỏ
                                 </button>
                               </div>
@@ -138,18 +127,11 @@ const Home = () => {
                     <div className="row wow fadeIn px-3">
                       {listProductReduce.map((item, key) => {
                         return (
-                          <div
-                            className="col-lg-3 col-md-4 col-6 mb-4 mb-4"
-                            key={key}
-                          >
+                          <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
                             <div className="card">
                               <Link to={`/product/${item._id}`}>
                                 <div className="view overlay">
-                                  <img
-                                    src={item.image}
-                                    className="card-img-top"
-                                    alt=""
-                                  />
+                                  <img src={item.image} className="card-img-top" alt="" />
 
                                   <div className="mask rgba-white-slight" />
                                 </div>
@@ -159,7 +141,7 @@ const Home = () => {
                                   <h5 className="text-success name-product">{item.name}</h5>
                                   <h5 className="mt-3">{formatNumber(item.price)}</h5>
                                 </Link>
-                                <button className="btn btn-custom">
+                                <button className="btn btn-custom" onClick={() => addCart(item)}>
                                   Thêm vào giỏ
                                 </button>
                               </div>
@@ -179,11 +161,7 @@ const Home = () => {
                             <div className="card">
                               <Link to={`/product/${item._id}`}>
                                 <div className="view overlay">
-                                  <img
-                                    src={item.image}
-                                    className="card-img-top"
-                                    alt=""
-                                  />
+                                  <img src={item.image} className="card-img-top" alt="" />
 
                                   <div className="mask rgba-white-slight" />
                                 </div>
@@ -193,7 +171,7 @@ const Home = () => {
                                   <h5 className="text-success name-product">{item.name}</h5>
                                   <h5 className="mt-3">{formatNumber(item.price)}</h5>
                                 </Link>
-                                <button className="btn btn-custom">
+                                <button className="btn btn-custom" onClick={() => addCart(item)}>
                                   Thêm vào giỏ
                                 </button>
                               </div>
@@ -215,11 +193,7 @@ const Home = () => {
           </div>
         </div>
         <div className="banner-discount">
-          <img
-            src="assets/image/discount.jpg"
-            alt=""
-            className="img-banner-discount"
-          ></img>
+          <img src="assets/image/discount.jpg" alt="" className="img-banner-discount"></img>
           <h2 className="text-white font-weight-bold">Khuyến mại trong tuần</h2>
           <div className="blur-banner-discount"> </div>
           <div className="time-discount">
@@ -236,14 +210,10 @@ const Home = () => {
               {listBlog.map((item, key) => {
                 return (
                   <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
-                    <Link to="/detail-blog">
+                    <Link to={`/detail-blog/${item._id}`}>
                       <div className="card">
                         <div className="view overlay">
-                          <img
-                            src={item.image}
-                            className="card-img-top"
-                            alt=""
-                          />
+                          <img src={item.image} className="card-img-top" alt="" />
                           <div className="mask rgba-white-slight" />
                         </div>
 

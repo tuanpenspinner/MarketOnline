@@ -12,14 +12,22 @@
   padding: 0;
   display: flex;
 }
-
+.name-product {
+  font-weight: 700 !important;
+  height: 35px;
+  font-size: 18px;
+}
 .title-blog {
   font-weight: 700 !important;
-  font-size: 23px;
+  font-size: 18px;
+  height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .time-blog {
-  font-size: 15px;
+  font-size: 14px;
   color: #9d9797;
 }
 .content-blog {
@@ -34,7 +42,7 @@
     transition-duration: 1.5s;
     height: 250px;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 @media (max-width: "500px") {

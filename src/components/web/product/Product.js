@@ -86,12 +86,34 @@ const Product = () => {
     if (detailProduct.comments && detailProduct.comments.length > 0) {
       const comments = detailProduct.comments;
       return comments.map((item, index) => {
-        const color = ["text-danger", "text-danger", "text-warning", "text-info", "text-success"];
         return (
           <div key={index}>
-            <div>{item.name}</div>
-            <div>{item.content}</div>
-            <Rating start={0} stop={item.rating} initialRating={item.rating} fullSymbol={[`fa fa-star ${color[item.rating - 1]}`]} readonly />
+            <div className="font-weight-bold">{item.name}</div>
+            <div className="d-flex">
+              <Rating
+                start={0}
+                stop={5}
+                initialRating={item.rating}
+                fullSymbol={[
+                  "fa fa-star text-warning",
+                  "fa fa-star text-warning",
+                  "fa fa-star text-warning",
+                  "fa fa-star text-warning",
+                  "fa fa-star text-warning",
+                  "fa fa-star text-warning",
+                ]}
+                emptySymbol={[
+                  "fa fa-star text-muted",
+                  "fa fa-star text-muted",
+                  "fa fa-star text-muted",
+                  "fa fa-star text-muted",
+                  "fa fa-star text-muted",
+                  "fa fa-star text-muted",
+                ]}
+                readonly
+              />
+              <div className="ml-3">{item.content}</div>
+            </div>
             <hr />
           </div>
         );
@@ -110,7 +132,9 @@ const Product = () => {
         <div className="col-md-6 mb-4">
           <div className="p-4">
             <div className="mb-3">
-              <span className="badge purple mr-1 bg-success text-white">{detailProduct.name}</span>
+              <Link to={`/category/${detailProduct.categoryId ? detailProduct.categoryId._id : ""}`}>
+                <span className="badge purple mr-1 bg-success text-white">{detailProduct.categoryId ? detailProduct.categoryId.name : ""}</span>
+              </Link>
             </div>
             <p className="lead">
               <span>{formatNumber(detailProduct.price)}</span>
@@ -132,43 +156,78 @@ const Product = () => {
         <Tab.Container id="left-tabs-example" defaultActiveKey="home">
           <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
             <Tab eventKey="home" title="Mô tả">
-              {detailProduct.description}
+              <div dangerouslySetInnerHTML={{ __html: detailProduct.description }}></div>
             </Tab>
             <Tab eventKey="profile" title={`Đánh giá(${detailProduct.comments ? detailProduct.comments.length : "0"})`}>
               <div>
-                <h3>Đánh giá</h3>
-                {renderComment()}
                 <div className="form-rating">
                   <h5>Đánh giá của bạn</h5>
                   <Rating
                     stop={5}
                     initialRating={comment.rating}
-                    emptySymbol={["far fa-star", "far fa-star", "far fa-star", "far fa-star", "far fa-star"]}
+                    emptySymbol={[
+                      "fa fa-star text-muted",
+                      "fa fa-star text-muted",
+                      "fa fa-star text-muted",
+                      "fa fa-star text-muted",
+                      "fa fa-star text-muted",
+                    ]}
                     fullSymbol={[
-                      "fa fa-star text-danger",
-                      "fa fa-star text-danger",
                       "fa fa-star text-warning",
-                      "fa fa-star text-info",
-                      "fa fa-star text-success",
+                      "fa fa-star text-warning",
+                      "fa fa-star text-warning",
+                      "fa fa-star text-warning",
+                      "fa fa-star text-warning",
                     ]}
                     onChange={onChangeRating}
                   />
                   <Form noValidate validated={validated} onSubmit={sendComment} className="mt-3">
                     <Form.Row>
                       <Form.Group as={Col} md="4">
-                        <Form.Control required type="text" name="name" placeholder="Họ tên" onChange={onChange} value={comment.name} />
+                        <Form.Control
+                          required
+                          type="text"
+                          name="name"
+                          pattern="^(?!\s*$).+"
+                          placeholder="Họ tên"
+                          onChange={onChange}
+                          value={comment.name}
+                        />
                         <Form.Control.Feedback type="invalid">Vui lòng nhập tên</Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group as={Col} md="4">
-                        <Form.Control required type="text" name="phone" placeholder="Số điện thoại" onChange={onChange} value={comment.phone} />
-                        <Form.Control.Feedback type="invalid">Vui lòng nhập số điện thoại</Form.Control.Feedback>
+                        <Form.Control
+                          required
+                          type="text"
+                          name="phone"
+                          pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b"
+                          placeholder="Số điện thoại"
+                          onChange={onChange}
+                          value={comment.phone}
+                        />
+                        <Form.Control.Feedback type="invalid">Số điện thoại không đúng định dạng</Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group as={Col} md="4">
-                        <Form.Control required type="email" name="email" placeholder="Email" onChange={onChange} value={comment.email} />
-                        <Form.Control.Feedback type="invalid">Vui lòng nhập email</Form.Control.Feedback>
+                        <Form.Control
+                          required
+                          name="email"
+                          pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,3}|[.][\w-]{2,3}[.][a-zA-Z]{2,3}|[.][\w-]{2,3}[.][a-zA-Z]{2,3}[.][a-zA-Z]{2,3})$"
+                          placeholder="Email"
+                          onChange={onChange}
+                          value={comment.email}
+                        />
+                        <Form.Control.Feedback type="invalid">Email không đúng định dạng</Form.Control.Feedback>
                       </Form.Group>
                       <Form.Group as={Col} md="12">
-                        <Form.Control required type="text" name="content" placeholder="Lời nhắn" onChange={onChange} value={comment.content} />
+                        <Form.Control
+                          required
+                          type="text"
+                          name="content"
+                          pattern="^(?!\s*$).+"
+                          placeholder="Lời nhắn"
+                          onChange={onChange}
+                          value={comment.content}
+                        />
                         <Form.Control.Feedback type="invalid">Vui lòng nhập nội dung</Form.Control.Feedback>
                       </Form.Group>
                       <div className="text-center w-100">
@@ -179,6 +238,8 @@ const Product = () => {
                     </Form.Row>
                   </Form>
                 </div>
+                <h4 className="mt-3">Đánh giá</h4>
+                {renderComment()}
               </div>
             </Tab>
           </Tabs>
@@ -187,35 +248,33 @@ const Product = () => {
 
       <div className="row d-flex justify-content-center wow fadeIn">
         <div className="col-md-6 text-center">
-          <h4 className="my-4 h4">Sản phẩm tương tự</h4>
+          <h4 className="my-4 font-weight-bold">Sản phẩm tương tự</h4>
         </div>
       </div>
       <div className="row wow fadeIn">
-        <div className="row wow fadeIn px-3">
-          {listProductRelate &&
-            listProductRelate.map((item, key) => {
-              return (
-                <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
-                  <div className="card">
-                    <Link to={`/product/${item._id}`}>
-                      <div className="view overlay">
-                        <img src={item.image} className="card-img-top" alt="" />
+        {listProductRelate &&
+          listProductRelate.map((item, key) => {
+            return (
+              <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
+                <div className="card">
+                  <Link to={`/product/${item._id}`}>
+                    <div className="view overlay">
+                      <img src={item.image} className="card-img-top" alt="" />
 
-                        <div className="mask rgba-white-slight" />
-                      </div>
-                    </Link>
-                    <div className="card-body text-center">
-                      <Link to={`/product/${item._id}`}>
-                        <h5 className="text-success name-product">{item.name}</h5>
-                        <h5 className="mt-3">1{formatNumber(item.price)}đ</h5>
-                      </Link>
-                      <button className="btn btn-custom">Thêm vào giỏ</button>
+                      <div className="mask rgba-white-slight" />
                     </div>
+                  </Link>
+                  <div className="card-body text-center">
+                    <Link to={`/product/${item._id}`}>
+                      <h5 className="text-success name-product">{item.name}</h5>
+                      <h5 className="mt-3">1{formatNumber(item.price)}đ</h5>
+                    </Link>
+                    <button className="btn btn-custom">Thêm vào giỏ</button>
                   </div>
                 </div>
-              );
-            })}
-        </div>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

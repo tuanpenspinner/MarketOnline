@@ -29,7 +29,7 @@ class Cart extends Component {
   render() {
     const { onCheckout } = this.props;
     return (
-      <div className="container box-cart bg-white wow fadeIn position-relative">
+      <div className="container box-cart wow fadeIn position-relative">
         <div className="banner-check-out">
           <i className="fas fa-arrow-left icon-back" onClick={() => onCheckout()}></i>
           <img src="assets/image/checkout-banner.jpg" alt="" className="img-banner-check-out"></img>
