@@ -10,9 +10,10 @@ const {
   // deleteProduct,
 } = productServices;
 
-export function* getProductSaga({ params }) {
+export function* getProductSaga({ payload }) {
+  console.log("saga", payload);
   try {
-    const results = yield call(getProducts, params);
+    const results = yield call(getProducts, payload.params);
 
     yield put({
       type: types.GET_PRODUCT.SUCCESS,
@@ -29,10 +30,9 @@ export function* getProductSaga({ params }) {
   }
 }
 
-export function* createProductSaga({ params }) {
-  console.log("params", params);
+export function* createProductSaga({ payload }) {
   try {
-    const results = yield call(createProduct, params);
+    const results = yield call(createProduct, payload.params);
     console.log(results);
 
     yield put({

@@ -1,54 +1,71 @@
-import React, { useMemo } from "react";
-import DataTable from "react-data-table-component";
+import { Table, Tooltip } from "antd";
+import React from "react";
 
 function ProductTable({ onOpenForm, product }) {
-  const cols = useMemo(
-    () => [
-      {
-        name: "Tên hàng hoá",
-        selector: "name",
+  const columns = [
+    {
+      title: "Tên hàng hoá",
+      dataIndex: "name",
+      key: "name",
+      width: 200,
+    },
+    {
+      title: "Giá",
+      dataIndex: "price",
+      key: "price",
+      render: (text) => (
+        <p className="m-0">
+          {new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          }).format(text)}
+        </p>
+      ),
+    },
+    {
+      title: "Hình ảnh",
+      dataIndex: "image",
+      key: "image",
+      render: (text) => <img className="img-thumbnail" src={text} alt="" />,
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "description",
+      key: "description",
+      ellipsis: {
+        showTitle: true,
       },
-      {
-        name: "Giá",
-        selector: "price",
-      },
-      {
-        name: "Hình ảnh",
-        selector: "image",
-        cell: (data) => <img src={data.img} alt="img product" />,
-      },
-      {
-        name: "Mô tả",
-        selector: "description",
-      },
-    ],
-    []
-  );
+      render: (description) => (
+        <Tooltip placement="topRight" title={description}>
+          {description}
+        </Tooltip>
+      ),
+    },
+  ];
 
   return (
     <div className="card mt-5">
       <div className="card-body">
-        <div>
-          <div className="header-data-table">
-            <h5>Danh sách sản phẩm</h5>
-            <button className="btn btn-custom" onClick={onOpenForm}>
-              Thêm sản phẩm
-            </button>
-          </div>
-          <DataTable
-            data={product?.data?.list || []}
-            columns={cols}
-            noHeader
-            noDataComponent="Chưa có dữ liệu"
-            paginationComponentOptions={{
-              rowsPerPageText: "Số dòng trên trang:",
-              rangeSeparatorText: "của",
-              noRowsPerPage: false,
-              selectAllRowsItem: false,
-              selectAllRowsItemText: "All",
-            }}
-          />
+        <div className="d-flex align-items-center justify-content-between py-3">
+          <h5>Danh sách sản phẩm</h5>
+          <button className="btn btn-custom" onClick={onOpenForm}>
+            Thêm sản phẩm
+          </button>
         </div>
+        <Table
+          bordered
+          loading={product?.loading}
+          dataSource={
+            product?.data?.list.map((item) => ({ ...item, key: item._id })) ||
+            []
+          }
+          size="small"
+          columns={columns}
+          tableLayout="fixed"
+          scroll={{
+            x: 900,
+          }}
+        />
       </div>
     </div>
   );

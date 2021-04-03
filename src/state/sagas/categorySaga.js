@@ -4,10 +4,9 @@ import * as types from "../actions";
 
 const { getCategories } = categoryServices;
 
-export function* getCategorySaga({ params }) {
+export function* getCategorySaga({ payload }) {
   try {
-    const results = yield call(getCategories, params);
-
+    const results = yield call(getCategories, payload.params);
     yield put({
       type: types.GET_CATEGORY.SUCCESS,
       payload: {
