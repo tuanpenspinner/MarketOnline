@@ -17,9 +17,47 @@
   font-weight: 700 !important;
   font-size: 23px;
 }
+
 .time-blog {
   font-size: 15px;
   color: #9d9797;
+}
+.content-blog {
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.overlay {
+  overflow: hidden;
+  img {
+    transition-duration: 1.5s;
+    height: 250px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+@media (max-width: "500px") {
+  .title-blog {
+    font-weight: 700 !important;
+    font-size: 16px;
+  }
+  .time-blog {
+    font-size: 12px;
+    color: #9d9797;
+  }
+  .content-blog {
+    height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .overlay {
+    img {
+      height: 100px;
+    }
+  }
 }
 
 .menu-active {

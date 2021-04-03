@@ -34,8 +34,6 @@ const Category = () => {
       setListCategory(data);
     });
   }, [id]);
-  console.log(listCategory);
-
   return (
     <div className="category ">
       <div className="row pt-4">
