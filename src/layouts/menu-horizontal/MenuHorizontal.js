@@ -6,16 +6,15 @@ import { getListCategory } from "../../state/actions/webActions";
 import { formatNumber } from "../../helper/formatNumber";
 const MenuHorizontal = (props) => {
   const listCategory = useSelector((state) => state.web.listCategory);
+  const listProductCartReducer = useSelector((state) => state.web.listProductCart);
   const [lengthProductCart, setLengthProductCart] = useState(0);
   const [listProductCart, setListProductCart] = useState([]);
   const [totalMoney, setTotalMoney] = useState(0);
-  const nowPath = props.path;
+  const nowPath = props.path.split("/:id")[0];
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getListCategory({}));
   }, [dispatch]);
-
   useEffect(() => {
     const list = document.getElementsByClassName("route-menu");
     for (let i = 0; i < list.length; i++) {
@@ -25,7 +24,7 @@ const MenuHorizontal = (props) => {
 
   useEffect(() => {
     changeProductCart();
-  }, []);
+  }, [listProductCartReducer]);
 
   const changeProductCart = () => {
     const listProductCart = JSON.parse(localStorage.getItem("listProductCart"));

@@ -43,6 +43,7 @@
     height: 250px;
     width: 100%;
     object-fit: cover;
+    border-radius: 10px 10px 0 0 !important;
   }
 }
 @media (max-width: "500px") {

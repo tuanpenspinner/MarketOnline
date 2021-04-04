@@ -9,6 +9,7 @@ import Blog from "../components/web/blog/Blog";
 import DetailBlog from "../components/web/detail-blog/DetailBlog";
 import Policy from "../components/web/policy/Policy";
 import Community from "../components/web/community/Community";
+import DetailCommunity from "../components/web/detail-community/DetailCommunity";
 
 const routes = [
   {
@@ -82,6 +83,12 @@ const routes = [
     path: "/community",
     exact: true,
     component: Community,
+  },
+  {
+    layout: MenuHorizontal,
+    path: "/detail-community/:id",
+    exact: true,
+    component: DetailCommunity,
   },
 ];
 export default routes;

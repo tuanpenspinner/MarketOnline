@@ -1,118 +1,153 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-
-class Cart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isCard: "none",
-      isCheckOut: "",
-    };
-  }
-  onChange = (e) => {
-    const value = e.target.value;
-    if (value === "1")
-      this.setState({
-        isCard: true,
-      });
-    else
-      this.setState({
-        isCard: "none",
-      });
+import { formatNumber } from "../../../helper/formatNumber";
+import { Form, Col } from "react-bootstrap";
+import Swal from "sweetalert2";
+const Cart = ({ listProductCart, onCheckout, totalMoney, ...props }) => {
+  const [formInfo, setFormInfo] = useState({ name: "", phone: "", email: "", address: "" });
+  const [validated, setValidated] = useState(false);
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setFormInfo({ ...formInfo, [name]: value });
   };
-  checkOut = () => {
-    alert("Đặt hàng thành công!");
-    this.props.history.push({
-      pathname: "/",
+  const checkOut = (e) => {
+    console.log("dsfsd");
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity()) {
+      Swal.fire({
+        icon: "success",
+        title: "Đặt hàng thành công",
+      });
+      localStorage.removeItem("listProductCart");
+      props.history.push({
+        pathname: "/",
+      });
+    }
+    setValidated(true);
+  };
+  const renderListProduct = () => {
+    return listProductCart?.map((item, key) => {
+      return (
+        <li className="list-group-item d-flex justify-content-between lh-condensed" key={key}>
+          <div>
+            <div className="my-0">Tên: {item.name}</div>
+            <small className="text-muted">
+              Số tiền:{formatNumber(item.count)} x {formatNumber(item.price)} ={formatNumber(item.count * item.price)} đ
+            </small>
+          </div>
+        </li>
+      );
     });
   };
-  render() {
-    const { onCheckout } = this.props;
-    return (
-      <div className="container box-cart wow fadeIn position-relative">
-        <div className="banner-check-out">
-          <i className="fas fa-arrow-left icon-back" onClick={() => onCheckout()}></i>
-          <img src="assets/image/checkout-banner.jpg" alt="" className="img-banner-check-out"></img>
-          <div className="blur-check-out"></div>
-          <h2 className="title-cart">
-            Đặt hàng <i className="fas fa-money-check-alt"></i>
-          </h2>
-        </div>
 
-        <div className="row mt-3">
-          <div className="col-md-8 mb-4">
-            <div className="card">
-              <form className="card-body">
-                <h4 className="text-center w-100 mb-3 ">Thông tin cá nhân</h4>
-                <div className="row">
-                  <div className="col-md-6 mb-3">
-                    <div className="md-form ">
-                      <input type="text" id="firstName" className="form-control" placeholder="Họ tên" />
-                    </div>
+  return (
+    <div className="container box-cart wow fadeIn position-relative">
+      <div className="banner-check-out">
+        <i className="fas fa-arrow-left icon-back" onClick={onCheckout}></i>
+        <img src="assets/image/checkout-banner.jpg" alt="" className="img-banner-check-out"></img>
+        <div className="blur-check-out"></div>
+        <h2 className="title-cart">
+          Đặt hàng <i className="fas fa-money-check-alt"></i>
+        </h2>
+      </div>
+
+      <div className="row mt-3">
+        <div className="col-md-8 mb-4">
+          <div className="card">
+            <div className="card-body">
+              <h4 className="text-center w-100 mb-3 ">Thông tin cá nhân</h4>
+              <Form noValidate validated={validated} onSubmit={checkOut} className="mt-3">
+                <Form.Row>
+                  <Form.Group as={Col} md="4">
+                    <Form.Control
+                      required
+                      type="text"
+                      name="name"
+                      pattern="^(?!\s*$).+"
+                      placeholder="Họ tên"
+                      onChange={onChange}
+                      value={formInfo.name}
+                    />
+                    <Form.Control.Feedback type="invalid">Vui lòng nhập tên</Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group as={Col} md="4">
+                    <Form.Control
+                      required
+                      type="text"
+                      name="phone"
+                      pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b"
+                      placeholder="Số điện thoại"
+                      onChange={onChange}
+                      value={formInfo.phone}
+                    />
+                    <Form.Control.Feedback type="invalid">Số điện thoại không đúng định dạng</Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group as={Col} md="4">
+                    <Form.Control
+                      required
+                      name="email"
+                      pattern="^[\w]{1,}[\w.+-]{0,}@[\w-]{2,}([.][a-zA-Z]{2,3}|[.][\w-]{2,3}[.][a-zA-Z]{2,3}|[.][\w-]{2,3}[.][a-zA-Z]{2,3}[.][a-zA-Z]{2,3})$"
+                      placeholder="Email"
+                      onChange={onChange}
+                      value={formInfo.email}
+                    />
+                    <Form.Control.Feedback type="invalid">Email không đúng định dạng</Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group as={Col} md="12">
+                    <Form.Control
+                      required
+                      type="text"
+                      name="address"
+                      pattern="^(?!\s*$).+"
+                      placeholder="Lời nhắn"
+                      onChange={onChange}
+                      value={formInfo.address}
+                    />
+                    <Form.Control.Feedback type="invalid">Vui lòng nhập địa chỉ</Form.Control.Feedback>
+                  </Form.Group>
+                  <div className="text-center w-100">
+                    <button className="btn btn-custom " type="submit">
+                      <i className="fas fa-money-check-alt"></i>
+                      &nbsp; Đặt hàng
+                    </button>
                   </div>
-                  <div className="col-md-6 mb-3">
-                    {/*lastName*/}
-                    <div className="md-form">
-                      <input type="text" id="lastName" className="form-control" placeholder="Số điện thoại" />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="md-form mb-3">
-                  <input type="text" id="email" className="form-control" placeholder="Email" />
-                </div>
-                {/*address*/}
-                <div className="md-form mb-3">
-                  <input type="text" id="address" className="form-control" placeholder="Địa chỉ" />
-                </div>
-
-                <hr className="mb-4" />
-                <div className="d-flex justify-content-center">
-                  <button className="btn btn-primary  btn-block" onClick={this.checkOut}>
-                    <i className="fas fa-money-check-alt"></i>
-                    &nbsp; Đặt hàng
-                  </button>
-                </div>
-              </form>
+                </Form.Row>
+              </Form>
             </div>
           </div>
+        </div>
 
-          <div className="card  col-md-4 mb-4">
-            <h4 className="text-center w-100 my-3">Giỏ của bạn</h4>
-            <ul className="list-group mb-3 z-depth-1">
-              <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                  <h6 className="my-0">Name: Dâu tây</h6>
-                  <small className="text-muted">Số lượng:2</small>
-                </div>
-                <span className="text-muted">200,000 VNĐ</span>
-              </li>
-              <li className="list-group-item d-flex justify-content-between bg-light">
-                <div className="text-success">
-                  <h6 className="my-0">Mã giảm giá</h6>
-                  <small>Code100</small>
-                </div>
-                <span className="text-success">-100,000 đ</span>
-              </li>
+        <div className="card  col-md-4 mb-4">
+          <h4 className="text-center w-100 my-3">Giỏ của bạn</h4>
+          <ul className="list-group mb-3 z-depth-1">
+            {renderListProduct()}
 
-              <li className="list-group-item d-flex justify-content-between">
-                <span>Tổng tiền: </span>
-                <strong>100,000 (VNĐ)</strong>
-              </li>
-
-              <div className="input-group mt-3">
-                <input type="text" className="form-control border-right-0" placeholder="Mã giảm giá" />
-                <div className="input-group-append">
-                  <button className="btn btn-secondary btn-md waves-effect m-0" type="button">
-                    Áp dụng
-                  </button>
-                </div>
+            <li className="list-group-item d-flex justify-content-between bg-light">
+              <div className="text-success">
+                <div className="my-0">Mã giảm giá</div>
+                <small>Chưa áp dụng</small>
               </div>
-            </ul>
-          </div>
+              <span className="text-success">0 đ</span>
+            </li>
+
+            <li className="list-group-item d-flex justify-content-between">
+              <span>Tổng tiền: </span>
+              <strong>{formatNumber(totalMoney)} đ</strong>
+            </li>
+
+            <div className="input-group mt-3">
+              <input type="text" className="form-control border-right-0" placeholder="Mã giảm giá" />
+              <div className="input-group-append">
+                <button className="btn btn-custom" type="button">
+                  Áp dụng
+                </button>
+              </div>
+            </div>
+          </ul>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 export default withRouter(Cart);

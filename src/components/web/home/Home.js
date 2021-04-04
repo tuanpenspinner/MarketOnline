@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getListProductPage } from "../../../state/actions/webActions";
+import { getListProductPage, setProductCart } from "../../../state/actions/webActions";
 import { Tabs, Tab } from "react-bootstrap";
 import { formatNumber } from "../../../helper/formatNumber";
 
-const Home = (props) => {
+const Home = () => {
   const dispatch = useDispatch();
   const dataHomepage = useSelector((state) => state.web.listProductPage);
 
@@ -33,7 +33,7 @@ const Home = (props) => {
       listProductCart.push(product);
     }
     localStorage.setItem("listProductCart", JSON.stringify(listProductCart));
-    console.log(props);
+    dispatch(setProductCart(listProductCart));
   };
 
   return (
@@ -115,10 +115,10 @@ const Home = (props) => {
                     </div>
                   </div>
                 </Tab>
-                <Tab eventKey="profile" title="Giảm giá">
+                <Tab eventKey="profile" title="Bán chạy">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
-                      {dataHomepage?.promotions?.map((item, key) => {
+                      {dataHomepage?.productsHighLight?.map((item, key) => {
                         return (
                           <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
                             <div className="card">
@@ -145,10 +145,10 @@ const Home = (props) => {
                     </div>
                   </div>
                 </Tab>
-                <Tab eventKey="contact" title="Bán chạy">
+                <Tab eventKey="contact" title="Mới nhất">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
-                      {dataHomepage?.productsHighLight?.map((item, key) => {
+                      {dataHomepage?.promotions?.map((item, key) => {
                         return (
                           <div className="col-lg-3 col-md-6 mb-4" key={key}>
                             <div className="card">

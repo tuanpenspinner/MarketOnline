@@ -29,3 +29,6 @@ export const GET_DETAIL_PRODUCT = actionCreator("GET_DETAIL_PRODUCT");
 export const SEND_PRODUCT_COMMENT = actionCreator("SEND_PRODUCT_COMMENT");
 export const GET_LIST_BLOG = actionCreator("GET_LIST_BLOG");
 export const GET_DETAIL_BLOG = actionCreator("GET_DETAIL_BLOG");
+export const GET_LIST_COMMUNITY = actionCreator("GET_LIST_COMMUNITY");
+export const GET_DETAIL_COMMUNITY = actionCreator("GET_DETAIL_COMMUNITY");
+export const SET_PRODUCT_CART = actionCreator("SET_PRODUCT_CART");

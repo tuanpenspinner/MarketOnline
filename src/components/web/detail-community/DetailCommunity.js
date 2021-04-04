@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailBlog, getListBlog } from "../../../state/actions/webActions";
+import { getDetailCommunity, getListCommunity } from "../../../state/actions/webActions";
 import { Link, useParams } from "react-router-dom";
 import moment from "moment";
 
 const DetailBlog = () => {
-  const detailBlogReducer = useSelector((state) => state.web.detailBlog);
-  const listNewBlog = useSelector((state) => state.web.listBlog);
-  const detailBlog = detailBlogReducer?.length > 0 ? detailBlogReducer[0] : "";
+  const detailCommunityReducer = useSelector((state) => state.web.detailCommunity);
+  const listNewCommunity = useSelector((state) => state.web.listCommunity);
+  const detailCommunity = detailCommunityReducer?.length > 0 ? detailCommunityReducer[0] : "";
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
     dispatch(
-      getListBlog({
+      getListCommunity({
         filter: {},
         paging: {
           offset: 0,
@@ -35,7 +35,7 @@ const DetailBlog = () => {
         limit: 10,
       },
     };
-    dispatch(getDetailBlog(payload));
+    dispatch(getDetailCommunity(payload));
   };
 
   return (
@@ -52,9 +52,9 @@ const DetailBlog = () => {
           </div>
           <div className="list-blog ">
             <h5 className="font-weight-bold">Bài viết mới</h5>
-            {listNewBlog.map((item, key) => {
+            {listNewCommunity.map((item, key) => {
               return (
-                <Link to={`/detail-blog/${item._id}`} key={key}>
+                <Link to={`/detail-community/${item._id}`} key={key}>
                   <div className="blog-item">
                     <img src={item.image} alt="" width="40" height="40" className="mr-3 " />
                     <div className="content-blog">{item.title}</div>
@@ -66,10 +66,10 @@ const DetailBlog = () => {
         </div>
 
         <div className="col-lg-9 mt-3 detail-blog ">
-          <div className="title-detail-blog">{detailBlog?.title}</div>
-          <div className="time-blog">{moment(detailBlog?.createdAt).format("DD/MM/YYYY")}</div>
+          <div className="title-detail-blog">{detailCommunity?.title}</div>
+          <div className="time-blog">{moment(detailCommunity?.createdAt).format("DD/MM/YYYY")}</div>
           <hr />
-          <div dangerouslySetInnerHTML={{ __html: detailBlog?.content }} className="ck-content ck-editor__editable"></div>
+          <div dangerouslySetInnerHTML={{ __html: detailCommunity?.content }} className="ck-content ck-editor__editable"></div>
         </div>
       </div>
     </div>

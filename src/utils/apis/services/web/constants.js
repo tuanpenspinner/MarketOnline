@@ -7,4 +7,6 @@ export default {
   SEND_PRODUCT_COMMENT: `/api/comment/create`,
   GET_LIST_BLOG: `/user/blog`,
   GET_DETAIL_BLOG: `/user/blog`,
+  GET_LIST_COMMUNITY: `/user/charity`,
+  GET_DETAIL_COMMUNITY: `/user/charity`,
 };

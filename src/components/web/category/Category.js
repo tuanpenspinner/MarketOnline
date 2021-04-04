@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getListProduct, setProductCart } from "../../../state/actions/webActions";
 import { formatNumber } from "../../../helper/formatNumber";
 const Category = () => {
-  const [listProduct, setListProduct] = useState([]);
-  const [listCategory, setListCategory] = useState([]);
+  const listCategory = useSelector((state) => state.web.listCategory);
+  const listProduct = useSelector((state) => state.web.listProduct);
+  const dispatch = useDispatch();
   const [nameCategory, setNameCategory] = useState();
   const [keyword, setKeyWord] = useState("");
   const [fromPrice, setFromPrice] = useState(0);
@@ -12,13 +15,10 @@ const Category = () => {
   const [sortProductType, setSortProductType] = useState("POPULATE");
   const [rating, setRating] = useState(0);
   const { id } = useParams();
-  useEffect(() => {
-    getListCategory();
-  }, []);
 
   useEffect(() => {
-    getListProduct();
     getNameCategory();
+    loadListProduct();
   }, [sortProductType, id]);
 
   const onChange = (e) => {
@@ -31,9 +31,9 @@ const Category = () => {
   };
 
   const onSearchProduct = () => {
-    getListProduct();
+    loadListProduct();
   };
-  const getListProduct = () => {
+  const loadListProduct = () => {
     let filter = {};
     if (id) filter.categoryId = id;
     if (keyword) filter.keyword = keyword;
@@ -41,46 +41,45 @@ const Category = () => {
     if (toPrice) filter.categoryId = toPrice;
     if (rating) filter.rating = rating;
     if (sortProductType) filter.sortProductType = sortProductType;
-
-    axios({
-      method: "post",
-      url: "https://kadonfarm.herokuapp.com/user/product",
-      data: {
-        payload: {
-          filter,
-          paging: {
-            offset: 0,
-            limit: 100,
-          },
-        },
+    const payload = {
+      filter,
+      paging: {
+        offset: 0,
+        limit: 100,
       },
-    }).then((response) => {
-      let data = response.data.items;
-      setListProduct(data);
-    });
+    };
+    dispatch(getListProduct(payload));
   };
-  const getListCategory = () => {
-    axios({
-      method: "post",
-      url: "https://kadonfarm.herokuapp.com/user/category",
-      data: {},
-    }).then((response) => {
-      let data = response.data;
-      const find = data.find((item) => item._id === id);
-      if (find) {
-        setNameCategory(find.name);
-      } else {
-        setNameCategory("Tất cả");
-      }
-      setListCategory(data);
-    });
-  };
+
   const getNameCategory = () => {
     const find = listCategory.find((item) => item._id === id);
     if (find) {
       setNameCategory(find.name);
     }
   };
+  const addCart = (item) => {
+    const product = {
+      productId: item._id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      count: 1,
+    };
+    let listProductCart = localStorage.getItem("listProductCart");
+    if (listProductCart) listProductCart = JSON.parse(listProductCart);
+    else {
+      listProductCart = [];
+    }
+    const findIndex = listProductCart.findIndex((item) => item.productId === product.productId);
+    if (findIndex !== -1) {
+      listProductCart[findIndex].count = listProductCart[findIndex].count + 1;
+    } else {
+      listProductCart.push(product);
+    }
+    localStorage.setItem("listProductCart", JSON.stringify(listProductCart));
+    dispatch(setProductCart(listProductCart));
+  };
+
   return (
     <div className="category ">
       <div className="row pt-4">
@@ -203,7 +202,7 @@ const Category = () => {
         <div className="col-lg-9">
           <div className="row d-flex justify-content-between mr-3">
             <div className="d-flex align-items-center">
-              <h5 className="ml-4 pl-1 pb-1 font-weight-bold">Sản phẩm: {nameCategory}</h5>
+              <h5 className="ml-4 pl-1 pb-1 font-weight-bold">Sản phẩm: {nameCategory ? nameCategory : "Tất cả"}</h5>
             </div>
             <div className="form-group d-flex flex-row col-md-6 p-0 justify-content-center">
               <p className="col-md-4 mt-2">Sắp xếp theo</p>
@@ -233,7 +232,9 @@ const Category = () => {
                           <h5 className="text-success name-product">{item.name}</h5>
                           <h5 className="mt-3">{formatNumber(item.price)}</h5>
                         </Link>
-                        <button className="btn btn-custom">Thêm vào giỏ</button>
+                        <button className="btn btn-custom" onClick={() => addCart(item)}>
+                          Thêm vào giỏ
+                        </button>
                       </div>
                     </div>
                   </div>

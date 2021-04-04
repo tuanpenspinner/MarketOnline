@@ -12,15 +12,10 @@ class Login extends Component {
         <div className="container-login">
           <div className="col-left">
             <div className="login-text">
-              <img
-                src="/assets/image/logo-login.png"
-                width="150"
-                alt="logo"
-              ></img>
+              <img src="assets/image/logo-login.png" width="150" alt="logo"></img>
               <p>
-                Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn có
-                thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành cùng vườn
-                canh tác theo mô hình thuận tự nhiên.
+                Chúng tôi luôn chào đón Khách hàng tại vườn Kadon, nơi bạn có thể đến tham quan trực tiếp hoặc trãi nghiệm đồng hành cùng vườn canh
+                tác theo mô hình thuận tự nhiên.
               </p>
             </div>
           </div>
@@ -35,12 +30,7 @@ class Login extends Component {
                   <input type="password" placeholder="Mật khẩu" required />
                 </p>
                 <p>
-                  <input
-                    className="btn"
-                    type="button"
-                    defaultValue="Đăng nhập"
-                    onClick={this.onSubmit}
-                  />
+                  <input className="btn" type="button" defaultValue="Đăng nhập" onClick={this.onSubmit} />
                 </p>
               </form>
             </div>

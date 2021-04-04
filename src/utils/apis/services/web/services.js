@@ -31,4 +31,12 @@ export default {
     const result = await makeRequest(ACC_URL.GET_DETAIL_BLOG, HTTP_METHOD.POST, data);
     return result;
   },
+  getListCommunity: async (data) => {
+    const result = await makeRequest(ACC_URL.GET_LIST_COMMUNITY, HTTP_METHOD.POST, data);
+    return result;
+  },
+  getDetailCommunity: async (data) => {
+    const result = await makeRequest(ACC_URL.GET_DETAIL_COMMUNITY, HTTP_METHOD.POST, data);
+    return result;
+  },
 };

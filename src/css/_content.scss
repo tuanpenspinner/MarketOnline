@@ -3,26 +3,26 @@
   margin-top: 100px;
   min-height: calc(100vh - 100px);
   height: 100%;
-  background-color: #f5faed;
+  background-image: url(./background.jpg);
   padding-bottom: 40px;
   .card {
     border: none !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     &:hover {
       box-shadow: rgba(34, 102, 74, 0.25) 0px 13px 27px -5px, rgba(23, 43, 31, 0.3) 0px 8px 16px -8px;
       .overlay {
         overflow: hidden;
         img {
-          transform: scale(1.3);
-          -webkit-transform: scale(1.3);
-          -moz-transform: scale(1.3);
+          transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+          -moz-transform: scale(1.2);
           z-index: 0;
+          border-radius: 10px 10px 0 0 !important;
         }
       }
     }
   }
-
   .banner-home {
     height: 70vh;
     background-position: center;
@@ -237,23 +237,37 @@
     }
   }
 
-  .detail-product {
-    background-color: #fff;
+  .box-detail-product {
     width: 100%;
     max-width: 1200px;
     margin: auto;
     padding-bottom: 10px;
     padding-top: 50px;
-    .image-product {
-      max-width: 500px;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      box-shadow: #ccc 0px 1px 2px 0px, #ccc 0px 1px 3px 1px;
-      object-fit: cover;
-    }
 
+    .detail-product {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 10px 0 10px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      margin: 0;
+      .image-product {
+        max-width: 500px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: #ccc 0px 1px 2px 0px, #ccc 0px 1px 3px 1px;
+        object-fit: cover;
+      }
+      .name-category {
+        font-size: 16px !important;
+      }
+    }
     .tab-product {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      padding: 20px;
       .nav-tabs {
         display: flex;
         margin-bottom: 25px;
@@ -279,6 +293,13 @@
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         padding: 20px;
       }
+    }
+    .relation-product {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      padding: 20px;
     }
   }
   .category {
@@ -311,6 +332,12 @@
     width: 100%;
     max-width: 1200px;
     margin: auto;
+    .detail-blog {
+      background: #fff;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      border-radius: 10px;
+      padding: 20px;
+    }
     .list-blog {
       border-radius: 10px 10px 0 0;
       box-shadow: #ccc 0px 8px 24px;
@@ -334,7 +361,7 @@
       }
     }
     .title-detail-blog {
-      font-size: 20px;
+      font-size: 25px;
       font-weight: 700;
     }
   }
@@ -450,8 +477,14 @@
       width: 100%;
       max-width: 200px;
     }
+    .table-cart {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
     .table {
-      tr {
+      s tr {
         td {
           height: 70px;
           div {

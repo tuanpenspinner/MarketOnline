@@ -44,7 +44,7 @@ const Cart = () => {
     });
   };
 
-  if (isCheckOut) return <Checkout onCheckout={onCheckout}></Checkout>;
+  if (isCheckOut) return <Checkout onCheckout={onCheckout} listProductCart={listProductCart} totalMoney={totalMoney}></Checkout>;
   return (
     <div className="container box-cart">
       <div className="banner-cart">
@@ -55,7 +55,7 @@ const Cart = () => {
         </div>
       </div>
 
-      <div className="table-responsive mt-5">
+      <div className="table-responsive table-cart mt-5">
         <table className="table table-striped">
           <thead>
             <tr>

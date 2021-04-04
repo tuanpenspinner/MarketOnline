@@ -7,6 +7,10 @@ const initState = {
   listCategory: [],
   listBlog: [],
   detailBlog: [],
+  listProductCart: [],
+  listCommunity: [],
+  detailCommunity: [],
+  httpCodeSendComment: "",
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -44,9 +48,9 @@ export default function (state = initState, { type, payload }) {
     case types.SEND_PRODUCT_COMMENT.REQUEST:
       return { ...state };
     case types.SEND_PRODUCT_COMMENT.SUCCESS:
-      return { ...state };
+      return { ...state, httpCodeSendComment: payload.httpCode };
     case types.SEND_PRODUCT_COMMENT.FAILURE:
-      return { ...state };
+      return { ...state, httpCodeSendComment: payload.httpCode };
     //Danh sách blog
     case types.GET_LIST_BLOG.REQUEST:
       return { ...state };
@@ -59,8 +63,24 @@ export default function (state = initState, { type, payload }) {
       return { ...state };
     case types.GET_DETAIL_BLOG.SUCCESS:
       return { ...state, detailBlog: payload.data };
-    case types.GET_DETAIL_BLOG.FAILURE:
+    //Danh sách cộng đồng
+    case types.GET_LIST_COMMUNITY.REQUEST:
       return { ...state };
+    case types.GET_LIST_COMMUNITY.SUCCESS:
+      return { ...state, listCommunity: payload.data };
+    case types.GET_LIST_COMMUNITY.FAILURE:
+      return { ...state };
+    //Chi tiết cộng đồng
+    case types.GET_DETAIL_COMMUNITY.REQUEST:
+      return { ...state };
+    case types.GET_DETAIL_COMMUNITY.SUCCESS:
+      return { ...state, detailCommunity: payload.data };
+    case types.GET_DETAIL_COMMUNITY.FAILURE:
+      return { ...state };
+    //Thêm giỏ hàng
+    case types.SET_PRODUCT_CART.SUCCESS:
+      return { ...state, listProductCart: payload.data };
+
     default:
       return state;
   }
