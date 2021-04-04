@@ -11,18 +11,8 @@ export default class routers extends Component {
           {routes.map((routeItem, key) => {
             const { component, ...rest } = routeItem;
             return (
-              <routeItem.layout
-                key={key}
-                {...rest}
-                {...this.props}
-                component={component}
-              >
-                <RouterCustom
-                  component={component}
-                  route={routeItem}
-                  {...rest}
-                  {...this.props}
-                />
+              <routeItem.layout key={key} {...rest} {...this.props} component={component}>
+                <RouterCustom component={component} route={routeItem} />
               </routeItem.layout>
             );
           })}

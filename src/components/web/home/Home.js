@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getListProductPage } from "../../../state/actions/webActions";
 import { Tabs, Tab } from "react-bootstrap";
-import axios from "axios";
 import { formatNumber } from "../../../helper/formatNumber";
 
-const Home = () => {
-  const [listBestSell, setListBestSell] = useState([]);
-  const [listProductNew, setListProductNew] = useState([]);
-  const [listProductReduce, setListProductReduce] = useState([]);
-  const [listCategory, setListCategory] = useState([]);
-  const [listBlog, setListBlog] = useState([]);
+const Home = (props) => {
+  const dispatch = useDispatch();
+  const dataHomepage = useSelector((state) => state.web.listProductPage);
+
   useEffect(() => {
-    axios.get("https://kadonfarm.herokuapp.com/user").then((response) => {
-      let data = response.data.responseData;
-      setListCategory(data.categories);
-      setListProductNew(data.newProducts.splice(0, 8));
-      setListBestSell(data.productsHighLight.splice(0, 8));
-      setListProductReduce(data.newProducts.splice(0, 8));
-      setListBlog(data.blogs.splice(0, 3));
-    });
-  }, []);
+    dispatch(getListProductPage({}));
+  }, [dispatch]);
+
   const addCart = (item) => {
     const product = {
       productId: item._id,
@@ -39,8 +32,8 @@ const Home = () => {
     } else {
       listProductCart.push(product);
     }
-
     localStorage.setItem("listProductCart", JSON.stringify(listProductCart));
+    console.log(props);
   };
 
   return (
@@ -75,10 +68,10 @@ const Home = () => {
           <span className="sr-only">Next</span>
         </a>
         <div className="category-carousel">
-          {listCategory.map((item, key) => {
+          {dataHomepage?.categories?.map((item, key) => {
             return (
-              <Link to={`/category/${item._id}`}>
-                <div className="item-category" key={key}>
+              <Link to={`/category/${item._id}`} key={key}>
+                <div className="item-category">
                   <img width="100" height="100" src={item.image} alt=""></img>
                   {item.name}
                 </div>
@@ -96,7 +89,7 @@ const Home = () => {
                 <Tab eventKey="home" title="Phổ biến">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
-                      {listProductNew.map((item, key) => {
+                      {dataHomepage?.newProducts?.map((item, key) => {
                         return (
                           <div className="col-lg-3 col-md-4 col-6 mb-4" key={key}>
                             <div className="card">
@@ -125,7 +118,7 @@ const Home = () => {
                 <Tab eventKey="profile" title="Giảm giá">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
-                      {listProductReduce.map((item, key) => {
+                      {dataHomepage?.promotions?.map((item, key) => {
                         return (
                           <div className="col-lg-3 col-md-4 col-6 mb-4 mb-4" key={key}>
                             <div className="card">
@@ -155,7 +148,7 @@ const Home = () => {
                 <Tab eventKey="contact" title="Bán chạy">
                   <div className="text-center">
                     <div className="row wow fadeIn px-3">
-                      {listBestSell.map((item, key) => {
+                      {dataHomepage?.productsHighLight?.map((item, key) => {
                         return (
                           <div className="col-lg-3 col-md-6 mb-4" key={key}>
                             <div className="card">
@@ -207,7 +200,7 @@ const Home = () => {
           <div className="title-best-seller">Bếp Kadon</div>
           <div className="text-center">
             <div className="row wow fadeIn px-3">
-              {listBlog.map((item, key) => {
+              {dataHomepage?.blogs?.map((item, key) => {
                 return (
                   <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
                     <Link to={`/detail-blog/${item._id}`}>

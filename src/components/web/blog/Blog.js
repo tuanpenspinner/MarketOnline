@@ -25,7 +25,7 @@ const Blog = () => {
       setListNewBlog([...data].splice(0, 5));
     });
   }, []);
-  console.log(listBlog);
+
   return (
     <div className="blog">
       <div className="row pt-4">
@@ -42,8 +42,8 @@ const Blog = () => {
             <h5 className="font-weight-bold">Bài viết mới</h5>
             {listNewBlog.map((item, key) => {
               return (
-                <Link to={`/detail-blog/${item._id}`}>
-                  <div className="blog-item" key={key}>
+                <Link to={`/detail-blog/${item._id}`} key={key}>
+                  <div className="blog-item">
                     <img src={item.image} alt="" width="40" height="40" className="mr-3 " />
                     <div className="content-blog">{item.title}</div>
                   </div>

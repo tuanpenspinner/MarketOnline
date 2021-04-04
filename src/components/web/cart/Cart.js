@@ -21,7 +21,7 @@ const Cart = () => {
   const renderProduct = () => {
     return listProductCart.map((item, key) => {
       return (
-        <tr>
+        <tr key={key}>
           <td>
             <img alt="fdsf" src={item.image} width="50" height="50" />
           </td>

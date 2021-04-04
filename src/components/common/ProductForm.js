@@ -128,13 +128,7 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
               </Form.Group>
               <Form.Group as={Col} xl="6" className="px-3">
                 <Form.Label>Danh mục</Form.Label>
-                <Form.Control
-                  name="categoryId"
-                  onChange={handleIpChange}
-                  as="select"
-                  value={formValue.categoryId}
-                  autoComplete="off"
-                >
+                <Form.Control name="categoryId" onChange={handleIpChange} as="select" value={formValue.categoryId} autoComplete="off">
                   {category?.data?.list?.map((item) => (
                     <option value={item._id} key={item._id}>
                       {item.name}
@@ -167,19 +161,7 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
                     },
                     imageResize: {},
                   }}
-                  formats={[
-                    "header",
-                    "bold",
-                    "italic",
-                    "underline",
-                    "strike",
-                    "blockquote",
-                    "list",
-                    "bullet",
-                    "indent",
-                    "link",
-                    "image",
-                  ]}
+                  formats={["header", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "indent", "link", "image"]}
                 />
               </Form.Group>
             </Form.Row>
