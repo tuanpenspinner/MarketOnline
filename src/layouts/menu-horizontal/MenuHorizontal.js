@@ -31,7 +31,7 @@ const MenuHorizontal = (props) => {
     const listProductCart = JSON.parse(localStorage.getItem("listProductCart"));
     let length = 0;
     let price = 0;
-    listProductCart.forEach((item) => {
+    listProductCart?.forEach((item) => {
       length += item.count;
       price += item.price * item.count;
     });
@@ -93,7 +93,7 @@ const MenuHorizontal = (props) => {
                       </Link>
                     </button>
                     <div className="dropdown-content">
-                      {listCategory.map((item, key) => {
+                      {listCategory?.map((item, key) => {
                         return (
                           <Link to={`/category/${item._id}`} key={key}>
                             {item.name}
