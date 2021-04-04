@@ -12,16 +12,16 @@ const Cart = () => {
   useEffect(() => {
     const listProductCart = JSON.parse(localStorage.getItem("listProductCart"));
     let price = 0;
-    listProductCart.forEach((item) => {
+    listProductCart?.forEach((item) => {
       price += item.price * item.count;
     });
     setListProductCart(listProductCart);
     setTotalMoney(price);
   }, []);
   const renderProduct = () => {
-    return listProductCart.map((item, key) => {
+    return listProductCart?.map((item, key) => {
       return (
-        <tr>
+        <tr key={key}>
           <td>
             <img alt="fdsf" src={item.image} width="50" height="50" />
           </td>

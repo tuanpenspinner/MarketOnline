@@ -16,7 +16,7 @@ export default function (state = initState, { type, payload }) {
     case types.GET_PRODUCT_PAGE.REQUEST:
       return { ...state };
     case types.GET_PRODUCT_PAGE.SUCCESS:
-      return { ...state, listProductPage: payload.data };
+      return { ...state, listProductPage: payload.data.responseData };
     case types.GET_PRODUCT.FAILURE:
       return { ...state };
     //Lấy danh sách category

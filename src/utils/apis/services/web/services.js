@@ -4,7 +4,7 @@ import ACC_URL from "./constants";
 
 export default {
   getProductPage: async (data) => {
-    const result = await makeRequest(ACC_URL.GET_PRODUCT_PAGE, HTTP_METHOD.POST, data);
+    const result = await makeRequest(ACC_URL.GET_PRODUCT_PAGE, HTTP_METHOD.GET, data);
     return result;
   },
   getListCategory: async (data) => {

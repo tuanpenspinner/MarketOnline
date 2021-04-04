@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../footer/Footer";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getListCategory } from "../../state/actions/webActions";
 import { formatNumber } from "../../helper/formatNumber";
 const MenuHorizontal = (props) => {
-  const [listCategory, setListCategory] = useState([]);
+  const listCategory = useSelector((state) => state.web.listCategory);
   const [lengthProductCart, setLengthProductCart] = useState(0);
   const [listProductCart, setListProductCart] = useState([]);
   const [totalMoney, setTotalMoney] = useState(0);
-  let nowPath = props.path;
+  const nowPath = props.path;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getListCategory({}));
+  }, [dispatch]);
+
   useEffect(() => {
     const list = document.getElementsByClassName("route-menu");
     for (let i = 0; i < list.length; i++) {
       if (list[i].children[0].getAttribute("href") === "#" + nowPath) list[i].classList.add("menu-active");
     }
-    axios({
-      method: "post",
-      url: "https://kadonfarm.herokuapp.com/user/category",
-      data: {},
-    }).then((response) => {
-      let data = response.data;
-      setListCategory(data);
-    });
   }, [nowPath]);
 
   useEffect(() => {
+    changeProductCart();
+  }, []);
+
+  const changeProductCart = () => {
     const listProductCart = JSON.parse(localStorage.getItem("listProductCart"));
     let length = 0;
     let price = 0;
@@ -35,7 +38,7 @@ const MenuHorizontal = (props) => {
     setLengthProductCart(length);
     setListProductCart(listProductCart);
     setTotalMoney(price);
-  }, []);
+  };
 
   return (
     <div>
@@ -82,12 +85,16 @@ const MenuHorizontal = (props) => {
                   <div className="nav-link dropdown">
                     <button className="btn btn-transparent route-menu  ">
                       <Link to="/category">
-                        Đi chợ <i class="fas fa-chevron-down"></i>
+                        Đi chợ <i className="fas fa-chevron-down"></i>
                       </Link>
                     </button>
                     <div className="dropdown-content">
-                      {listCategory.map((item, key) => {
-                        return <Link to={`/category/${item._id}`}>{item.name}</Link>;
+                      {listCategory?.map((item, key) => {
+                        return (
+                          <Link to={`/category/${item._id}`} key={key}>
+                            {item.name}
+                          </Link>
+                        );
                       })}
                     </div>
                   </div>

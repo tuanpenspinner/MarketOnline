@@ -8,6 +8,7 @@ import {
   updateProductHighLightSaga,
 } from "./productSaga";
 import { getCategorySaga } from "./categorySaga";
+import { getProductPageSaga, getListCategorySage } from "./webSaga";
 
 import * as types from "../actions";
 
@@ -21,4 +22,8 @@ export default function* watchUserAuthentication() {
 
   // category
   yield takeLatest(types.GET_CATEGORY.REQUEST, getCategorySaga);
+
+  //web
+  yield takeLatest(types.GET_PRODUCT_PAGE.REQUEST, getProductPageSaga);
+  yield takeLatest(types.GET_LIST_CATEGORY.REQUEST, getListCategorySage);
 }

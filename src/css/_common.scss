@@ -129,7 +129,9 @@
 
   &:hover {
     background-color: #8cc63f !important;
-    color: #fff !important;
+    a {
+      color: #fff !important;
+    }
   }
 }
 .form-control {
@@ -253,4 +255,11 @@
   .btn {
     border-radius: 0 10px 10px 0;
   }
+}
+a {
+  color: unset !important;
+}
+a:hover {
+  color: unset !important;
+  text-decoration: none !important;
 }

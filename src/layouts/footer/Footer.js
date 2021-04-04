@@ -93,7 +93,7 @@ export default class Footer extends Component {
                     </a>
                   </p>
                   <ul className="social-footer2">
-                    <li className>
+                    <li>
                       <Link title="youtube" to="https://www.youtube.com/">
                         <img
                           alt="youtube"
@@ -103,7 +103,7 @@ export default class Footer extends Component {
                         />
                       </Link>
                     </li>
-                    <li className>
+                    <li>
                       <Link to="https://www.facebook.com/kadonfarm" title="Facebook">
                         <img
                           alt="Facebook"
@@ -113,7 +113,7 @@ export default class Footer extends Component {
                         />
                       </Link>
                     </li>
-                    <li className>
+                    <li>
                       <Link to="https://twitter.com" title="Twitter">
                         <img
                           alt="Twitter"
@@ -123,7 +123,7 @@ export default class Footer extends Component {
                         />
                       </Link>
                     </li>
-                    <li className>
+                    <li>
                       <Link title="instagram" to="https://www.instagram.com/">
                         <img
                           alt="instagram"
