@@ -167,6 +167,7 @@ function RichEditor({ data, onEditorChange, ...rest }) {
       editor={Editor}
       config={editorConfiguration}
       data={data}
+      className="editor-custom"
       onReady={(editor) => {
         console.log("Editor is ready to use!", editor);
       }}

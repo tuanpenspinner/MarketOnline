@@ -4,13 +4,27 @@
 @import "./common.scss";
 @import "./login.scss";
 @import "./footer";
+@import "./custom_table_antd";
+@import "./cusom_ckeditor";
 
 .card-body {
   padding: 0.7rem;
 }
 
 p,
-span {
+span,
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 0;
   padding: 0;
+}
+
+.ant-modal {
+  .ant-modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+  }
 }

@@ -28,6 +28,13 @@ export const updateActiveProductAction = (params) => {
   };
 };
 
+export const updateHighLightProductAction = (params) => {
+  return {
+    type: types.UPDATE_HIGHLIGHT_PRODUCT.REQUEST,
+    payload: { params },
+  };
+};
+
 export const deleteProductAction = (params) => {
   return {
     type: types.DELETE_PRODUCT.REQUEST,

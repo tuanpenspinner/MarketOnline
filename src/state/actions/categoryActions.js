@@ -8,7 +8,6 @@ export const getCategoryAction = (params) => {
 };
 
 export const createCategoryAction = (params) => {
-  console.log("params created", params);
   return {
     type: types.CREATE_CATEGORY.REQUEST,
     payload: { params },

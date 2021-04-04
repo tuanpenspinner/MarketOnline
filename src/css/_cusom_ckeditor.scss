@@ -1,0 +1,15 @@
+.ck-editor {
+  background: #000000;
+  &__main {
+    .ck-editor__editable {
+      min-height: 200px;
+      height: 100%;
+      border-radius: 0 0 8px 8px !important;
+    }
+  }
+  &__top {
+    .ck-toolbar {
+      border-radius: 8px 8px 0 0 !important;
+    }
+  }
+}

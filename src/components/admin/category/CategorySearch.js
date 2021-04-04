@@ -1,11 +1,11 @@
 import React from "react";
 import { Card, Col, Form } from "react-bootstrap";
 
-function ProductSearch({ value, onSearch, onSearchSubmit, ...rest }) {
+function SearchForm({ value, onSearch, onSearchSubmit, ...rest }) {
   return (
     <Card className="mb-3">
       <Card.Body>
-        <h5 className="d-inline-block border-bottom mb-2 pb-2 pr-3">Tìm kiếm sản phẩm</h5>
+        <h5 className="d-inline-block border-bottom mb-2 pb-2 pr-3">Tìm kiếm danh mục</h5>
         <Form onSubmit={onSearchSubmit} className="py-2">
           <Form.Row className="align-items-end">
             <Form.Group className="mb-0" as={Col} sm="3" controlId="keySearch">
@@ -21,4 +21,4 @@ function ProductSearch({ value, onSearch, onSearchSubmit, ...rest }) {
   );
 }
 
-export default ProductSearch;
+export default SearchForm;
