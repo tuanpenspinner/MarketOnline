@@ -1,7 +1,8 @@
-import { Table, Tooltip } from "antd";
+import { Space, Table, Tooltip } from "antd";
 import React from "react";
+import { ExclamationCircleOutlined, FormOutlined, DeleteOutlined } from "@ant-design/icons";
 
-function ProductTable({ onOpenForm, product }) {
+function ProductTable({ onOpenForm, onShowProductDetail, product, ...rest }) {
   const columns = [
     {
       title: "Tên hàng hoá",
@@ -26,25 +27,34 @@ function ProductTable({ onOpenForm, product }) {
       title: "Hình ảnh",
       dataIndex: "image",
       key: "image",
-      render: (text) => <img className="img-thumbnail" src={text} alt="" />,
+      render: (text) => <img className="img-thumbnail w-50" src={text} alt="" />,
     },
     {
-      title: "Mô tả",
-      dataIndex: "description",
-      key: "description",
-      ellipsis: {
-        showTitle: true,
-      },
-      render: (description) => (
-        <Tooltip placement="topRight" title={description}>
-          {description}
-        </Tooltip>
+      title: "Thao tác",
+      key: "action",
+      align: "center",
+      width: 200,
+      render: (row) => (
+        <Space size="large">
+          <Tooltip title="Chi tiết">
+            <ExclamationCircleOutlined
+              style={{ color: "#ffd32a", fontSize: 22, cursor: "pointer" }}
+              onClick={() => onShowProductDetail(row)}
+            />
+          </Tooltip>
+          <Tooltip title="Chỉnh sửa">
+            <FormOutlined style={{ color: "#00d8d6", fontSize: 22, cursor: "pointer" }} />
+          </Tooltip>
+          <Tooltip title="Xoá">
+            <DeleteOutlined style={{ color: "#ff3f34", fontSize: 22, cursor: "pointer" }} />
+          </Tooltip>
+        </Space>
       ),
     },
   ];
 
   return (
-    <div className="card mt-5">
+    <div className="card">
       <div className="card-body">
         <div className="d-flex align-items-center justify-content-between py-3">
           <h5>Danh sách sản phẩm</h5>
@@ -53,12 +63,8 @@ function ProductTable({ onOpenForm, product }) {
           </button>
         </div>
         <Table
-          bordered
           loading={product?.loading}
-          dataSource={
-            product?.data?.list.map((item) => ({ ...item, key: item._id })) ||
-            []
-          }
+          dataSource={product?.data?.list.map((item) => ({ ...item, key: item._id })) || []}
           size="small"
           columns={columns}
           tableLayout="fixed"

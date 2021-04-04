@@ -72,26 +72,18 @@ html {
 }
 
 #page-content-wrapper {
-  width: 100%;
-  position: absolute;
-  padding: 15px;
   min-height: 100vh;
+  height: 100%;
   background: #e9ecef;
+  padding: 15px;
   .card {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
-    background-color: #fff !important;
-    border: none;
-    border-radius: 10px !important;
+    border-radius: 15px;
     .card-body {
       .header-data-table {
         display: flex;
         justify-content: space-between;
       }
-      h5 {
-        display: contents;
-        font-weight: 600;
-        color: #495057;
-      }
+
       i {
         cursor: pointer;
         font-size: 18px;
@@ -102,30 +94,11 @@ html {
       .name-produce {
         height: 60px;
       }
-      .sc-hHftDr {
-        .rdt_TableHead {
-          .rdt_TableCol_Sortable {
-            div {
-              font-size: 14px !important;
-              font-weight: bold !important;
-            }
-          }
-        }
-      }
     }
   }
-  .min-height-100vh {
-    min-height: 100vh;
-  }
-}
-
-#wrapper.toggled #page-content-wrapper {
-  position: absolute;
-  margin-right: -250px;
 }
 
 /* Sidebar Styles */
-
 .sidebar-nav li a .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
@@ -164,11 +137,6 @@ html {
 
   #wrapper.toggled #sidebar-wrapper {
     width: 0;
-  }
-
-  #page-content-wrapper {
-    padding: 20px;
-    position: relative;
   }
 
   #wrapper.toggled #page-content-wrapper {

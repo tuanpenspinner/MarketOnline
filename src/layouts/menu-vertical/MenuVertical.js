@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 export default class MenuVertical extends Component {
+  componentDidMount() {
+    console.log("workkkk");
+  }
   render() {
     return (
       <div className="admin-sidebar">

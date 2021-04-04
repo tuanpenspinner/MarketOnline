@@ -8,7 +8,9 @@ import { getCategoryAction } from "../../../state/actions/categoryActions";
 import { notification } from "antd";
 
 function Product(props) {
-  const [isOpenForm, setIsOpenForm] = useState(true);
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [dataProduct, setDataProduct] = useState({});
+  const [isVisibleDetail, setIsVisibleDetail] = useState(false);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   const created = useSelector((state) => state.product.created);
@@ -45,9 +47,15 @@ function Product(props) {
   const handleOpenForm = () => {
     setIsOpenForm(true);
   };
+
   const handleCloseForm = () => {
     setIsOpenForm(false);
     dispatch(getProductAction(payload));
+  };
+
+  const handleShowProductDetail = (data) => {
+    setDataProduct(data);
+    setIsVisibleDetail(true);
   };
 
   useEffect(() => {
@@ -74,12 +82,11 @@ function Product(props) {
         notification.success({
           placement: "topRight",
           message: "Tạo sản phẩm thành công",
-          duration: 2000,
         });
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [created.httpCode, dispatch, payload]);
+  }, [created.httpCode]);
 
   return (
     <div>
@@ -88,7 +95,7 @@ function Product(props) {
       ) : (
         <>
           <ProductSearch onSearch={handleSearch} />
-          <ProductTable product={product} onOpenForm={handleOpenForm} />
+          <ProductTable product={product} onOpenForm={handleOpenForm} onShowProductDetail={handleShowProductDetail} />
         </>
       )}
     </div>
