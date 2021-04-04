@@ -8,7 +8,6 @@
   "main": "./build/ckeditor.js",
   "devDependencies": {
     "@ckeditor/ckeditor5-adapter-ckfinder": "^27.0.0",
-    "@ckeditor/ckeditor5-alignment": "^27.0.0",
     "@ckeditor/ckeditor5-autoformat": "^27.0.0",
     "@ckeditor/ckeditor5-basic-styles": "^27.0.0",
     "@ckeditor/ckeditor5-block-quote": "^27.0.0",
@@ -24,13 +23,14 @@
     "@ckeditor/ckeditor5-horizontal-line": "^27.0.0",
     "@ckeditor/ckeditor5-image": "^27.0.0",
     "@ckeditor/ckeditor5-indent": "^27.0.0",
+    "@ckeditor/ckeditor5-language": "^27.0.0",
     "@ckeditor/ckeditor5-link": "^27.0.0",
     "@ckeditor/ckeditor5-list": "^27.0.0",
     "@ckeditor/ckeditor5-media-embed": "^27.0.0",
+    "@ckeditor/ckeditor5-mention": "^27.0.0",
+    "@ckeditor/ckeditor5-page-break": "^27.0.0",
     "@ckeditor/ckeditor5-paragraph": "^27.0.0",
     "@ckeditor/ckeditor5-paste-from-office": "^27.0.0",
-    "@ckeditor/ckeditor5-remove-format": "^27.0.0",
-    "@ckeditor/ckeditor5-restricted-editing": "^27.0.0",
     "@ckeditor/ckeditor5-special-characters": "^27.0.0",
     "@ckeditor/ckeditor5-table": "^27.0.0",
     "@ckeditor/ckeditor5-theme-lark": "^27.0.0",
@@ -42,7 +42,7 @@
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.46.0",
-    "webpack-cli": "^4.5.0"
+    "webpack-cli": "^4.6.0"
   },
   "scripts": {
     "build": "webpack --mode production"

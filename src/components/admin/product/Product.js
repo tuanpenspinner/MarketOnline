@@ -5,11 +5,16 @@ import ProductSearch from "./ProductSearch";
 import ProductTable from "./ProductTable";
 import { getProductAction } from "../../../state/actions/productActions";
 import { getCategoryAction } from "../../../state/actions/categoryActions";
+import { notification } from "antd";
 
 function Product(props) {
-  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(true);
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
+  const created = useSelector((state) => state.product.created);
+
+  console.log("created", created);
+
   const [payload, setPayload] = useState({
     payload: {
       filter: {},
@@ -20,8 +25,29 @@ function Product(props) {
     },
   });
 
+  const handleSearch = (e) => {
+    setPayload({
+      ...payload,
+      payload: {
+        ...payload.payload,
+        filter: {
+          ...payload.payload.filter,
+          keyword: e.target.value,
+        },
+        paging: {
+          ...payload.payload.paging,
+          offset: 0,
+        },
+      },
+    });
+  };
+
   const handleOpenForm = () => {
     setIsOpenForm(true);
+  };
+  const handleCloseForm = () => {
+    setIsOpenForm(false);
+    dispatch(getProductAction(payload));
   };
 
   useEffect(() => {
@@ -41,13 +67,27 @@ function Product(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (created.httpCode) {
+      if (created.httpCode === 200) {
+        handleCloseForm();
+        notification.success({
+          placement: "topRight",
+          message: "Tạo sản phẩm thành công",
+          duration: 2000,
+        });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [created.httpCode, dispatch, payload]);
+
   return (
     <div>
       {isOpenForm ? (
-        <ProductForm />
+        <ProductForm onCloseForm={handleCloseForm} />
       ) : (
         <>
-          <ProductSearch />
+          <ProductSearch onSearch={handleSearch} />
           <ProductTable product={product} onOpenForm={handleOpenForm} />
         </>
       )}

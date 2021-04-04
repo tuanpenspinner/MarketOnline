@@ -1,7 +1,6 @@
-import UploadPreview from "components/common/UploadPreview";
 import CloseIcon from "layouts/assets/icons/CloseIcon";
 import React, { useState } from "react";
-import { Button, Card, Col, Form } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 
 function CreateAndEditForm({ onToggleForm, ...rest }) {
   const [values, setValues] = useState({
@@ -29,9 +28,9 @@ function CreateAndEditForm({ onToggleForm, ...rest }) {
             <Form.Control autoComplete="off" />
           </Form.Group>
 
-          <Form.Group controlId="imgUpload">
+          {/* <Form.Group controlId="imgUpload">
             <UploadPreview />
-          </Form.Group>
+          </Form.Group> */}
 
           <div className="btn-group d-flex align-items-center justify-content-end">
             <Button variant="primary text-right" type="submit">
