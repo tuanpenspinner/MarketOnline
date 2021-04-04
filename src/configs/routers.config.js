@@ -12,7 +12,7 @@ export default class routers extends Component {
             const { component, ...rest } = routeItem;
             return (
               <routeItem.layout key={key} {...rest} {...this.props} component={component}>
-                <RouterCustom component={component} route={routeItem} />
+                <RouterCustom component={component} route={routeItem} {...rest} {...this.props} />
               </routeItem.layout>
             );
           })}

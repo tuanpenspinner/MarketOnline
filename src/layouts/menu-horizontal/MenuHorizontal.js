@@ -40,10 +40,6 @@ const MenuHorizontal = (props) => {
     setTotalMoney(price);
   };
 
-  const Children = () => {
-    return props.children.props.component;
-  };
-
   return (
     <div>
       <nav className="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar header">
@@ -145,7 +141,7 @@ const MenuHorizontal = (props) => {
 
                           <div className="box-detail-product-cart">
                             <div className="w-100 text-center mb-2">Giỏ hàng</div>
-                            {listProductCart.map((item, key) => {
+                            {listProductCart?.map((item, key) => {
                               return (
                                 <div className="detail-product-cart" key={key}>
                                   <img src={item.image} alt=""></img>
@@ -175,9 +171,7 @@ const MenuHorizontal = (props) => {
           </div>
         </div>
       </nav>
-      <div className="content">
-        <Children changeProductCart={changeProductCart}></Children>
-      </div>
+      <div className="content">{props.children}</div>
       <Footer></Footer>
     </div>
   );
