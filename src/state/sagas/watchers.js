@@ -20,7 +20,15 @@ import {
   updateProductActiveSaga,
   updateProductHighLightSaga,
 } from "./productSaga";
-import { getCategorySaga, createCategorySaga, deleteCategorySaga, updateCategoryActiveSaga, updateCategorySaga } from "./categorySaga";
+import {
+  getCategorySaga,
+  createCategorySaga,
+  deleteCategorySaga,
+  updateCategoryActiveSaga,
+  updateCategorySaga,
+} from "./categorySaga";
+
+import { createBlogSaga, deleteBlogSaga, getBlogSaga, updateBlogActiveSaga, updateBlogSaga } from "./blogSaga";
 
 import * as types from "../actions";
 
@@ -38,6 +46,13 @@ export default function* watchUserAuthentication() {
   yield takeLatest(types.UPDATE_CATEGORY.REQUEST, updateCategorySaga);
   yield takeLatest(types.UPDATE_ACTIVE_CATEGORY.REQUEST, updateCategoryActiveSaga);
   yield takeLatest(types.DELETE_CATEGORY.REQUEST, deleteCategorySaga);
+
+  // blog
+  yield takeLatest(types.GET_BLOG.REQUEST, getBlogSaga);
+  yield takeLatest(types.CREATE_BLOG.REQUEST, createBlogSaga);
+  yield takeLatest(types.UPDATE_BLOG.REQUEST, updateBlogSaga);
+  yield takeLatest(types.UPDATE_ACTIVE_BLOG.REQUEST, updateBlogActiveSaga);
+  yield takeLatest(types.DELETE_BLOG.REQUEST, deleteBlogSaga);
 
   //web
   yield takeLatest(types.GET_PRODUCT_PAGE.REQUEST, getProductPageSaga);

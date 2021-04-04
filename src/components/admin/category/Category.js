@@ -97,7 +97,6 @@ const Category = () => {
 
   useEffect(() => {
     const { created, updated, deleted, active } = category;
-    console.log({ created, updated, deleted });
     if (created.httpCode || updated.httpCode || deleted.httpCode || active.httpCode) {
       if (created.httpCode === 200 || updated.httpCode === 200 || deleted.httpCode === 200 || active.httpCode === 200) {
         handleCloseForm();

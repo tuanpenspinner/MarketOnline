@@ -22,6 +22,13 @@ export const UPDATE_CATEGORY = actionCreator("UPDATE_CATEGORY");
 export const UPDATE_ACTIVE_CATEGORY = actionCreator("UPDATE_ACTIVE_CATEGORY");
 export const DELETE_CATEGORY = actionCreator("DELETE_CATEGORY");
 
+// blog action
+export const GET_BLOG = actionCreator("GET_BLOG");
+export const CREATE_BLOG = actionCreator("CREATE_BLOG");
+export const UPDATE_BLOG = actionCreator("UPDATE_BLOG");
+export const UPDATE_ACTIVE_BLOG = actionCreator("UPDATE_ACTIVE_BLOG");
+export const DELETE_BLOG = actionCreator("DELETE_BLOG");
+
 //Web action
 export const GET_PRODUCT_PAGE = actionCreator("GET_PRODUCT_PAGE");
 export const GET_LIST_CATEGORY = actionCreator("GET_LIST_CATEGORY");
