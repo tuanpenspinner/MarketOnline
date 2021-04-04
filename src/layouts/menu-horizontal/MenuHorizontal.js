@@ -14,6 +14,7 @@ const MenuHorizontal = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getListCategory({}));
+    window.scrollTo(0, 0);
   }, [dispatch]);
   useEffect(() => {
     const list = document.getElementsByClassName("route-menu");
