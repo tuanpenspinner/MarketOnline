@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/MarketOnline/static/css/main.d873e99c.chunk.css",
-    "main.js": "/MarketOnline/static/js/main.339bb4fe.chunk.js",
-    "main.js.map": "/MarketOnline/static/js/main.339bb4fe.chunk.js.map",
+    "main.js": "/MarketOnline/static/js/main.4e83113b.chunk.js",
+    "main.js.map": "/MarketOnline/static/js/main.4e83113b.chunk.js.map",
     "runtime-main.js": "/MarketOnline/static/js/runtime-main.367a2bb5.js",
     "runtime-main.js.map": "/MarketOnline/static/js/runtime-main.367a2bb5.js.map",
     "static/css/2.b966dfdf.chunk.css": "/MarketOnline/static/css/2.b966dfdf.chunk.css",
@@ -12,13 +12,13 @@
     "static/css/2.b966dfdf.chunk.css.map": "/MarketOnline/static/css/2.b966dfdf.chunk.css.map",
     "static/css/main.d873e99c.chunk.css.map": "/MarketOnline/static/css/main.d873e99c.chunk.css.map",
     "static/js/2.0809474b.chunk.js.LICENSE.txt": "/MarketOnline/static/js/2.0809474b.chunk.js.LICENSE.txt",
-    "static/js/main.339bb4fe.chunk.js.LICENSE.txt": "/MarketOnline/static/js/main.339bb4fe.chunk.js.LICENSE.txt"
+    "static/js/main.4e83113b.chunk.js.LICENSE.txt": "/MarketOnline/static/js/main.4e83113b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.367a2bb5.js",
     "static/css/2.b966dfdf.chunk.css",
     "static/js/2.0809474b.chunk.js",
     "static/css/main.d873e99c.chunk.css",
-    "static/js/main.339bb4fe.chunk.js"
+    "static/js/main.4e83113b.chunk.js"
   ]
 }
