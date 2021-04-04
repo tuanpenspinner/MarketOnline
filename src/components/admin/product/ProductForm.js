@@ -1,12 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "antd";
 import RichEditor from "components/common/RichEditor";
 import UploadImage from "components/common/UploadImage";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createProductAction } from "../../../state/actions/productActions";
+import { createProductAction, updateProductAction } from "../../../state/actions/productActions";
 
-const ProductForm = ({ onCloseForm, ...rest }) => {
+const ProductForm = ({ isUpdated, dataProduct, onCloseForm, ...rest }) => {
   const category = useSelector((state) => state?.category);
   const dispatch = useDispatch();
   const [formValue, setFormValue] = useState({
@@ -14,9 +15,18 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
     price: "",
     name: "",
     description: "",
-    categoryId: "",
+    categoryId: category?.data?.list[0]._id,
     image: "",
+    isHighLight: false,
   });
+  useMemo(() => {
+    if (isUpdated) {
+      setFormValue({
+        ...formValue,
+        ...dataProduct,
+      });
+    }
+  }, [isUpdated]);
 
   const handleChangeEditor = (data) => {
     setFormValue({ ...formValue, description: data });
@@ -24,8 +34,11 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
 
   const handleSubmitCreateProduct = (e) => {
     e.preventDefault();
-    console.log(formValue);
-    dispatch(createProductAction({ payload: { ...formValue } }));
+    if (isUpdated) {
+      dispatch(updateProductAction({ payload: { ...formValue }, id: dataProduct._id }));
+    } else {
+      dispatch(createProductAction({ payload: { ...formValue } }));
+    }
   };
 
   const handleIpChange = (e) => {
@@ -46,9 +59,9 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
   return (
     <div className="card">
       <div className="card-body">
-        <div>
-          <i className="fas fa-arrow-left mr-3" onClick={onCloseForm}></i>
-          <h5>Thêm sản phẩm</h5>
+        <div className="d-flex pt-2 align-items-center">
+          <i className="fas fa-arrow-left mr-4" onClick={onCloseForm}></i>
+          <h4 className="m-0">{`${isUpdated ? "Cập nhật" : "Thêm"}`} sản phẩm</h4>
         </div>
         <hr />
         <div className="mt-4">
@@ -85,7 +98,7 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
                 <Form.Label style={{ flex: "50%" }}>Ảnh sản phẩm</Form.Label>
                 <UploadImage onChange={handleUpload} value={formValue.image} />
               </Form.Group>
-              <Form.Group as={Col} xl="6" className="px-3">
+              <Form.Group as={Col} xl="4" className="px-3">
                 <Form.Label>Giá sản phẩm</Form.Label>
                 <Form.Control
                   name="price"
@@ -98,7 +111,7 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
                 />
                 <Form.Control.Feedback type="invalid">Yêu cầu nhập mã sản phẩm</Form.Control.Feedback>
               </Form.Group>
-              <Form.Group as={Col} xl="6" className="px-3">
+              <Form.Group as={Col} xl="4" className="px-3">
                 <Form.Label>Danh mục</Form.Label>
                 <Form.Control
                   name="categoryId"
@@ -112,6 +125,13 @@ const ProductForm = ({ onCloseForm, ...rest }) => {
                       {item.name}
                     </option>
                   ))}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group as={Col} xl="4" className="px-3">
+                <Form.Label>Sản phẩm nổi bật</Form.Label>
+                <Form.Control name="isHighLight" onChange={handleIpChange} as="select" value={formValue.isHighLight}>
+                  <option value={true}>Mở</option>
+                  <option value={false}>Đóng</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} xl="12" className="px-3">

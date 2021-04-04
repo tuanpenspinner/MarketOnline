@@ -28,7 +28,7 @@ const MenuHorizontal = (props) => {
     const listProductCart = JSON.parse(localStorage.getItem("listProductCart"));
     let length = 0;
     let price = 0;
-    listProductCart.forEach((item) => {
+    listProductCart?.forEach((item) => {
       length += item.count;
       price += item.price * item.count;
     });
@@ -134,7 +134,7 @@ const MenuHorizontal = (props) => {
 
                           <div className="box-detail-product-cart">
                             <div className="w-100 text-center mb-2">Giỏ hàng</div>
-                            {listProductCart.map((item, key) => {
+                            {listProductCart?.map((item, key) => {
                               return (
                                 <div className="detail-product-cart" key={key}>
                                   <img src={item.image} alt=""></img>
