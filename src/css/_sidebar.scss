@@ -110,8 +110,8 @@ html {
 
 .sidebar-nav > .sidebar-brand a {
   padding: 10px 0;
-  color: #999999;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white !important;
   &.active {
     background-color: #2ecc71;
   }

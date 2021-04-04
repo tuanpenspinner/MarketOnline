@@ -5,7 +5,6 @@ import * as types from "../actions";
 const { getProducts, createProduct, updateProduct, updateActiveProduct, deleteProduct, updateHighlightProduct } = productServices;
 
 export function* getProductSaga({ payload }) {
-  console.log("saga", payload);
   try {
     const results = yield call(getProducts, payload.params);
 
