@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Spin, Space } from "antd";
 import { getDetailCommunity, getListCommunity } from "../../../state/actions/webActions";
 import { Link, useParams } from "react-router-dom";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const DetailBlog = () => {
   const detailCommunityReducer = useSelector((state) => state.web.detailCommunity);
   const listNewCommunity = useSelector((state) => state.web.listCommunity);
   const detailCommunity = detailCommunityReducer?.length > 0 ? detailCommunityReducer[0] : "";
+  const isLoading = useSelector((state) => state.web.isLoading);
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
@@ -37,7 +39,14 @@ const DetailBlog = () => {
     };
     dispatch(getDetailCommunity(payload));
   };
-
+  if (isLoading)
+    return (
+      <div className="loadingData">
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    );
   return (
     <div className="blog">
       <div className="row pt-4">
@@ -67,7 +76,7 @@ const DetailBlog = () => {
 
         <div className="col-lg-9 mt-3 detail-blog ">
           <div className="title-detail-blog">{detailCommunity?.title}</div>
-          <div className="time-blog">{moment(detailCommunity?.createdAt).format("DD/MM/YYYY")}</div>
+          <div className="time-blog">{dayjs(detailCommunity?.createdAt).format("DD/MM/YYYY")}</div>
           <hr />
           <div dangerouslySetInnerHTML={{ __html: detailCommunity?.content }} className="ck-content ck-editor__editable"></div>
         </div>

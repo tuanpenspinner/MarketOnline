@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { Spin, Space } from "antd";
 import { getListProduct, setProductCart } from "../../../state/actions/webActions";
 import { formatNumber } from "../../../helper/formatNumber";
 const Category = () => {
   const listCategory = useSelector((state) => state.web.listCategory);
   const listProduct = useSelector((state) => state.web.listProduct);
+  const isLoading = useSelector((state) => state.web.isLoading);
   const dispatch = useDispatch();
   const [nameCategory, setNameCategory] = useState();
   const [keyword, setKeyWord] = useState("");
@@ -216,7 +217,13 @@ const Category = () => {
             </div>
           </div>
           <div className="row wow fadeIn px-3">
-            {listProduct.length > 0 ? (
+            {isLoading ? (
+              <div className="loadingData">
+                <Space size="middle">
+                  <Spin size="large" />
+                </Space>
+              </div>
+            ) : listProduct.length > 0 ? (
               listProduct.map((item, key) => {
                 return (
                   <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>

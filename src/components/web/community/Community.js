@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Spin, Space } from "antd";
 import { getListCommunity } from "../../../state/actions/webActions";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const Blog = () => {
   const listCommunity = useSelector((state) => state.web.listCommunity);
+  const isLoading = useSelector((state) => state.web.isLoading);
   const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,7 +30,14 @@ const Blog = () => {
     };
     dispatch(getListCommunity(payload));
   };
-
+  if (isLoading)
+    return (
+      <div className="loadingData">
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    );
   return (
     <div className="blog">
       <div className="row pt-4">
@@ -69,7 +78,7 @@ const Blog = () => {
                       </div>
                       <div className="card-body text-left">
                         <h5 className="title-blog">{item.title}</h5>
-                        <div className="time-blog">{moment(item.createdAt).format("DD/MM/YYYY")}</div>
+                        <div className="time-blog">{dayjs(item.createdAt).format("DD/MM/YYYY")}</div>
                         <div className="content-blog">{item.content}</div>
                       </div>
                     </div>

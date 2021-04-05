@@ -4,7 +4,7 @@
   min-height: calc(100vh - 100px);
   height: 100%;
   background-image: url(./background.jpg);
-  padding-bottom: 40px;
+  // padding-bottom: 40px;
   .card {
     border: none !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -484,9 +484,13 @@
       box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
     .table {
-      s tr {
+      tr {
         td {
-          height: 70px;
+          height: 50px;
+          padding: 10px;
+          .form-control {
+            margin-top: 5px;
+          }
           div {
             display: flex;
             align-items: center;

@@ -12,6 +12,7 @@ const {
   getDetailBlog,
   getListCommunity,
   getDetailCommunity,
+  orderProduct,
 } = webServices;
 
 export function* getProductPageSaga() {
@@ -106,7 +107,7 @@ export function* getListBlogSaga({ params }) {
     yield put({
       type: types.GET_LIST_BLOG.SUCCESS,
       payload: {
-        data: results.data.items,
+        data: results.data,
         httpCode: results.httpCode,
       },
     });
@@ -117,13 +118,13 @@ export function* getListBlogSaga({ params }) {
     });
   }
 }
-export function* getDetailBlogSaga({ params }) {
+export function* getDetailBlogSaga(params) {
   try {
-    const results = yield call(getDetailBlog, { payload: params });
+    const results = yield call(getDetailBlog, { payload: params.params });
     yield put({
       type: types.GET_DETAIL_BLOG.SUCCESS,
       payload: {
-        data: results.data.items,
+        data: results.data,
         httpCode: results.httpCode,
       },
     });
@@ -175,4 +176,24 @@ export function* setProductCartSaga({ params }) {
       data: params,
     },
   });
+}
+
+export function* orderProductSage(params) {
+  try {
+    const results = yield call(orderProduct, { payload: params.params });
+    yield put({
+      type: types.ORDER_PRODUCT.SUCCESS,
+      payload: {
+        data: results.data.items,
+        httpCode: results.httpCode,
+      },
+    });
+    params.callback(results.httpCode === 200 ? true : false);
+  } catch (error) {
+    params.callback(false);
+    console.log(error);
+    yield put({
+      type: types.ORDER_PRODUCT.FAILURE,
+    });
+  }
 }

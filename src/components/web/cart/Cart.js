@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Checkout from "./Checkout";
 import { formatNumber } from "../../../helper/formatNumber";
+import { setProductCart } from "state/actions/webActions";
+import { useDispatch } from "react-redux";
 const Cart = () => {
   const [isCheckOut, setIsCheckout] = useState(false);
   const [listProductCart, setListProductCart] = useState([]);
   const [totalMoney, setTotalMoney] = useState(0);
+  const dispatch = useDispatch();
   const onCheckout = () => {
     setIsCheckout(!isCheckOut);
   };
@@ -18,6 +21,32 @@ const Cart = () => {
     setListProductCart(listProductCart);
     setTotalMoney(price);
   }, []);
+  const onChange = (e, data) => {
+    const { value } = e.target;
+    const index = listProductCart.findIndex((item) => item.productId === data.productId);
+    let arr = [...listProductCart];
+    arr[index].count = parseInt(value, 10);
+    let price = 0;
+    arr?.forEach((item) => {
+      price += item.price * item.count;
+    });
+    setTotalMoney(price);
+    setListProductCart(arr);
+    localStorage.setItem("listProductCart", JSON.stringify(arr));
+    dispatch(setProductCart(listProductCart));
+  };
+  const removeProductCart = (index) => {
+    let arr = [...listProductCart];
+    arr.splice(index, 1);
+    let price = 0;
+    arr?.forEach((item) => {
+      price += item.price * item.count;
+    });
+    setTotalMoney(price);
+    setListProductCart(arr);
+    localStorage.setItem("listProductCart", JSON.stringify(arr));
+    dispatch(setProductCart(listProductCart));
+  };
   const renderProduct = () => {
     return listProductCart?.map((item, key) => {
       return (
@@ -29,13 +58,13 @@ const Cart = () => {
             <div>{item.name}</div>
           </td>
           <td>
-            <input className="form-control" type="number" name="number" defaultValue={item.count} />
+            <input className="form-control" onChange={(e) => onChange(e, item)} type="number" name="number" defaultValue={item.count} />
           </td>
           <td className="text-right">
             <div>{formatNumber(item.count * item.price)} đ</div>
           </td>
           <td className="text-right">
-            <div>
+            <div onClick={() => removeProductCart(key)}>
               <i className="fa fa-trash text-danger cursor-pointer" />
             </div>
           </td>
@@ -91,13 +120,13 @@ const Cart = () => {
         </table>
 
         <div className="group-btn">
-          <button className="btn  btn-success text-uppercase">
+          <button className="btn btn-custom">
             <Link to="/">
               <i className="fas fa-hand-point-left"></i>
               &nbsp; Tiếp tục mua sắm
             </Link>
           </button>
-          <button onClick={onCheckout} className="btn  btn-info text-uppercase m-0">
+          <button onClick={onCheckout} className="btn btn-custom m-0">
             <i className="fas fa-money-check-alt"></i>
             &nbsp;Đặt hàng
           </button>

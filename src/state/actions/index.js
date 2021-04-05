@@ -46,3 +46,4 @@ export const GET_DETAIL_BLOG = actionCreator("GET_DETAIL_BLOG");
 export const GET_LIST_COMMUNITY = actionCreator("GET_LIST_COMMUNITY");
 export const GET_DETAIL_COMMUNITY = actionCreator("GET_DETAIL_COMMUNITY");
 export const SET_PRODUCT_CART = actionCreator("SET_PRODUCT_CART");
+export const ORDER_PRODUCT = actionCreator("ORDER_PRODUCT");

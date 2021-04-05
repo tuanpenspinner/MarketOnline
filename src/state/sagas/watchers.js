@@ -11,6 +11,7 @@ import {
   getDetailBlogSaga,
   getListCommunitySaga,
   getDetailCommunitySaga,
+  orderProductSage,
 } from "./webSaga";
 import {
   createProductSaga,
@@ -20,13 +21,7 @@ import {
   updateProductActiveSaga,
   updateProductHighLightSaga,
 } from "./productSaga";
-import {
-  getCategorySaga,
-  createCategorySaga,
-  deleteCategorySaga,
-  updateCategoryActiveSaga,
-  updateCategorySaga,
-} from "./categorySaga";
+import { getCategorySaga, createCategorySaga, deleteCategorySaga, updateCategoryActiveSaga, updateCategorySaga } from "./categorySaga";
 
 import { createOrderSaga, deleteOrderSaga, getOrderSaga, updateOrderActiveSaga } from "./orderSaga";
 
@@ -73,4 +68,5 @@ export default function* watchUserAuthentication() {
   yield takeLatest(types.GET_DETAIL_BLOG.REQUEST, getDetailBlogSaga);
   yield takeLatest(types.GET_LIST_COMMUNITY.REQUEST, getListCommunitySaga);
   yield takeLatest(types.GET_DETAIL_COMMUNITY.REQUEST, getDetailCommunitySaga);
+  yield takeLatest(types.ORDER_PRODUCT.REQUEST, orderProductSage);
 }
