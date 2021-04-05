@@ -28,6 +28,8 @@ import {
   updateCategorySaga,
 } from "./categorySaga";
 
+import { createOrderSaga, deleteOrderSaga, getOrderSaga, updateOrderActiveSaga } from "./orderSaga";
+
 import { createBlogSaga, deleteBlogSaga, getBlogSaga, updateBlogActiveSaga, updateBlogSaga } from "./blogSaga";
 
 import * as types from "../actions";
@@ -53,6 +55,12 @@ export default function* watchUserAuthentication() {
   yield takeLatest(types.UPDATE_BLOG.REQUEST, updateBlogSaga);
   yield takeLatest(types.UPDATE_ACTIVE_BLOG.REQUEST, updateBlogActiveSaga);
   yield takeLatest(types.DELETE_BLOG.REQUEST, deleteBlogSaga);
+
+  // order
+  yield takeLatest(types.GET_ORDER.REQUEST, getOrderSaga);
+  yield takeLatest(types.CREATE_ORDER.REQUEST, createOrderSaga);
+  yield takeLatest(types.UPDATE_ACTIVE_ORDER.REQUEST, updateOrderActiveSaga);
+  yield takeLatest(types.DELETE_ORDER.REQUEST, deleteOrderSaga);
 
   //web
   yield takeLatest(types.GET_PRODUCT_PAGE.REQUEST, getProductPageSaga);

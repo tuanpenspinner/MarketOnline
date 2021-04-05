@@ -35,9 +35,12 @@ export function* createProductSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.CREATE_PRODUCT.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -58,9 +61,12 @@ export function* updateProductSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_PRODUCT.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -81,9 +87,12 @@ export function* deleteProductSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.DELETE_PRODUCT.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -104,9 +113,12 @@ export function* updateProductActiveSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_ACTIVE_PRODUCT.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -127,9 +139,12 @@ export function* updateProductHighLightSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_HIGHLIGHT_PRODUCT.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({

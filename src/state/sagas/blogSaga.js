@@ -15,9 +15,12 @@ export function* getBlogSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.GET_BLOG.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   }
 }
@@ -34,9 +37,12 @@ export function* createBlogSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.CREATE_BLOG.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -57,9 +63,12 @@ export function* updateBlogSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_BLOG.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -80,9 +89,12 @@ export function* deleteBlogSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.DELETE_BLOG.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -103,9 +115,12 @@ export function* updateBlogActiveSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_ACTIVE_BLOG.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({

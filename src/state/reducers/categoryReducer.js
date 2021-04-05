@@ -53,6 +53,8 @@ export default function (state = initState, { type, payload }) {
       return {
         ...state,
         loading: false,
+        error: payload.error,
+        httpCode: payload.httpCode,
       };
 
     case types.CREATE_CATEGORY.REQUEST:
@@ -78,6 +80,7 @@ export default function (state = initState, { type, payload }) {
         created: {
           ...state.created,
           loading: false,
+          error: payload.error,
           httpCode: payload.httpCode,
         },
       };
@@ -115,6 +118,7 @@ export default function (state = initState, { type, payload }) {
         updated: {
           ...state.updated,
           loading: false,
+          error: payload.error,
           httpCode: payload.httpCode,
         },
       };
@@ -152,6 +156,7 @@ export default function (state = initState, { type, payload }) {
         deleted: {
           ...state.deleted,
           loading: false,
+          error: payload.error,
           httpCode: payload.httpCode,
         },
       };
@@ -189,6 +194,7 @@ export default function (state = initState, { type, payload }) {
         active: {
           ...state.active,
           loading: false,
+          error: payload.error,
           httpCode: payload.httpCode,
         },
       };

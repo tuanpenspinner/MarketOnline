@@ -13,11 +13,6 @@ const initState = {
     error: false,
     httpCode: undefined,
   },
-  updated: {
-    loading: false,
-    error: false,
-    httpCode: undefined,
-  },
   active: {
     loading: false,
     error: false,
@@ -33,12 +28,12 @@ const initState = {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initState, { type, payload }) {
   switch (type) {
-    case types.GET_BLOG.REQUEST:
+    case types.GET_ORDER.REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case types.GET_BLOG.SUCCESS:
+    case types.GET_ORDER.SUCCESS:
       return {
         ...state,
         loading: false,
@@ -49,7 +44,7 @@ export default function (state = initState, { type, payload }) {
           total: payload.data.total,
         },
       };
-    case types.GET_BLOG.FAILURE:
+    case types.GET_ORDER.FAILURE:
       return {
         ...state,
         loading: false,
@@ -57,7 +52,7 @@ export default function (state = initState, { type, payload }) {
         httpCode: payload.httpCode,
       };
 
-    case types.CREATE_BLOG.REQUEST:
+    case types.CREATE_ORDER.REQUEST:
       return {
         ...state,
         created: {
@@ -65,7 +60,7 @@ export default function (state = initState, { type, payload }) {
           loading: true,
         },
       };
-    case types.CREATE_BLOG.SUCCESS:
+    case types.CREATE_ORDER.SUCCESS:
       return {
         ...state,
         created: {
@@ -74,7 +69,7 @@ export default function (state = initState, { type, payload }) {
           httpCode: payload.httpCode,
         },
       };
-    case types.CREATE_BLOG.FAILURE:
+    case types.CREATE_ORDER.FAILURE:
       return {
         ...state,
         created: {
@@ -84,7 +79,7 @@ export default function (state = initState, { type, payload }) {
           httpCode: payload.httpCode,
         },
       };
-    case types.CREATE_BLOG.REFRESH:
+    case types.CREATE_ORDER.REFRESH:
       return {
         ...state,
         created: {
@@ -95,45 +90,7 @@ export default function (state = initState, { type, payload }) {
         },
       };
 
-    case types.UPDATE_BLOG.REQUEST:
-      return {
-        ...state,
-        updated: {
-          ...state.updated,
-          loading: true,
-        },
-      };
-    case types.UPDATE_BLOG.SUCCESS:
-      return {
-        ...state,
-        updated: {
-          ...state.updated,
-          loading: false,
-          httpCode: payload.httpCode,
-        },
-      };
-    case types.UPDATE_BLOG.FAILURE:
-      return {
-        ...state,
-        updated: {
-          ...state.updated,
-          loading: false,
-          error: payload.error,
-          httpCode: payload.httpCode,
-        },
-      };
-    case types.UPDATE_BLOG.REFRESH:
-      return {
-        ...state,
-        updated: {
-          ...state.updated,
-          loading: false,
-          httpCode: undefined,
-          error: false,
-        },
-      };
-
-    case types.DELETE_BLOG.REQUEST:
+    case types.DELETE_ORDER.REQUEST:
       return {
         ...state,
         deleted: {
@@ -141,7 +98,7 @@ export default function (state = initState, { type, payload }) {
           loading: true,
         },
       };
-    case types.DELETE_BLOG.SUCCESS:
+    case types.DELETE_ORDER.SUCCESS:
       return {
         ...state,
         deleted: {
@@ -150,7 +107,7 @@ export default function (state = initState, { type, payload }) {
           httpCode: payload.httpCode,
         },
       };
-    case types.DELETE_BLOG.FAILURE:
+    case types.DELETE_ORDER.FAILURE:
       return {
         ...state,
         deleted: {
@@ -160,7 +117,7 @@ export default function (state = initState, { type, payload }) {
           httpCode: payload.httpCode,
         },
       };
-    case types.DELETE_BLOG.REFRESH:
+    case types.DELETE_ORDER.REFRESH:
       return {
         ...state,
         deleted: {
@@ -171,7 +128,7 @@ export default function (state = initState, { type, payload }) {
         },
       };
 
-    case types.UPDATE_ACTIVE_BLOG.REQUEST:
+    case types.UPDATE_ACTIVE_ORDER.REQUEST:
       return {
         ...state,
         active: {
@@ -179,7 +136,7 @@ export default function (state = initState, { type, payload }) {
           loading: true,
         },
       };
-    case types.UPDATE_ACTIVE_BLOG.SUCCESS:
+    case types.UPDATE_ACTIVE_ORDER.SUCCESS:
       return {
         ...state,
         active: {
@@ -188,7 +145,7 @@ export default function (state = initState, { type, payload }) {
           httpCode: payload.httpCode,
         },
       };
-    case types.UPDATE_ACTIVE_BLOG.FAILURE:
+    case types.UPDATE_ACTIVE_ORDER.FAILURE:
       return {
         ...state,
         active: {
@@ -198,7 +155,7 @@ export default function (state = initState, { type, payload }) {
           httpCode: payload.httpCode,
         },
       };
-    case types.UPDATE_ACTIVE_BLOG.REFRESH:
+    case types.UPDATE_ACTIVE_ORDER.REFRESH:
       return {
         ...state,
         active: {

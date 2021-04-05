@@ -71,6 +71,7 @@ const ProductForm = ({ isUpdated, dataProduct, onCloseForm, ...rest }) => {
                 <Form.Label>Mã sản phẩm</Form.Label>
                 <Form.Control
                   name="code"
+                  disabled={isUpdated}
                   value={formValue.code}
                   type="text"
                   onChange={handleIpChange}

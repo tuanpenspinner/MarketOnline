@@ -59,7 +59,7 @@ function CategoryForm({ isUpdated, dataCategory, onCloseForm, ...rest }) {
             <Form.Group as={Col} sm="9" className="pr-3">
               <Form.Group controlId="code">
                 <Form.Label>Mã danh mục</Form.Label>
-                <Form.Control disabled={isUpdated} name="code" value={values.code} onChange={handleChange} autoComplete="off" />
+                <Form.Control name="code" value={values.code} onChange={handleChange} autoComplete="off" />
               </Form.Group>
               <Form.Group controlId="name">
                 <Form.Label>Tên danh mục</Form.Label>

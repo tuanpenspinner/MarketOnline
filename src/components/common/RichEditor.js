@@ -162,6 +162,7 @@ const editorConfiguration = {
 };
 
 function RichEditor({ data, onEditorChange, ...rest }) {
+  console.log("data editor", data);
   return (
     <CKEditor
       editor={Editor}

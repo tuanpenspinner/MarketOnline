@@ -15,9 +15,12 @@ export function* getCategorySaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.GET_CATEGORY.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   }
 }
@@ -34,9 +37,12 @@ export function* createCategorySaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.CREATE_CATEGORY.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -57,9 +63,12 @@ export function* updateCategorySaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_CATEGORY.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -80,9 +89,12 @@ export function* deleteCategorySaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.DELETE_CATEGORY.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
@@ -103,9 +115,12 @@ export function* updateCategoryActiveSaga({ payload }) {
       },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: types.UPDATE_ACTIVE_CATEGORY.FAILURE,
+      payload: {
+        error: error.response.data,
+        httpCode: error.response.status,
+      },
     });
   } finally {
     yield put({
