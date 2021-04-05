@@ -2,11 +2,13 @@ import * as types from "../actions";
 
 const initState = {
   listProductPage: [],
+  isLoading: false,
   listProduct: [],
   detailProduct: [],
   listCategory: [],
   listBlog: [],
   detailBlog: [],
+  newestBlog: [],
   listProductCart: [],
   listCommunity: [],
   detailCommunity: [],
@@ -18,11 +20,11 @@ export default function (state = initState, { type, payload }) {
   switch (type) {
     //Trang home
     case types.GET_PRODUCT_PAGE.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_PRODUCT_PAGE.SUCCESS:
-      return { ...state, listProductPage: payload.data.responseData };
+      return { ...state, listProductPage: payload.data.responseData, isLoading: false };
     case types.GET_PRODUCT.FAILURE:
-      return { ...state };
+      return { ...state, isLoading: false };
     //Lấy danh sách category
     case types.GET_LIST_CATEGORY.REQUEST:
       return { ...state };
@@ -32,18 +34,18 @@ export default function (state = initState, { type, payload }) {
       return { ...state };
     //Lấy danh sách sản phẩm
     case types.GET_LIST_PRODUCT.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_LIST_PRODUCT.SUCCESS:
-      return { ...state, listProduct: payload.data };
+      return { ...state, listProduct: payload.data, isLoading: false };
     case types.GET_LIST_PRODUCT.FAILURE:
-      return { ...state };
+      return { ...state, isLoading: false };
     //Chi tiết sản phẩm
     case types.GET_DETAIL_PRODUCT.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_DETAIL_PRODUCT.SUCCESS:
-      return { ...state, detailProduct: payload.data };
+      return { ...state, detailProduct: payload.data, isLoading: false };
     case types.GET_DETAIL_PRODUCT.FAILURE:
-      return { ...state };
+      return { ...state, isLoading: false };
     //Send comment
     case types.SEND_PRODUCT_COMMENT.REQUEST:
       return { ...state };
@@ -53,33 +55,40 @@ export default function (state = initState, { type, payload }) {
       return { ...state, httpCodeSendComment: payload.httpCode };
     //Danh sách blog
     case types.GET_LIST_BLOG.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_LIST_BLOG.SUCCESS:
-      return { ...state, listBlog: payload.data };
+      return { ...state, listBlog: payload.data.items, newestBlog: payload.data.newestBlog, isLoading: false };
     case types.GET_LIST_BLOG.FAILURE:
-      return { ...state };
+      return { ...state, isLoading: false };
     //Chi tiết blog
     case types.GET_DETAIL_BLOG.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_DETAIL_BLOG.SUCCESS:
-      return { ...state, detailBlog: payload.data };
+      return { ...state, detailBlog: payload.data.items, newestBlog: payload.data.newestBlog, isLoading: false };
     //Danh sách cộng đồng
     case types.GET_LIST_COMMUNITY.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_LIST_COMMUNITY.SUCCESS:
-      return { ...state, listCommunity: payload.data };
+      return { ...state, listCommunity: payload.data, isLoading: false };
     case types.GET_LIST_COMMUNITY.FAILURE:
-      return { ...state };
+      return { ...state, isLoading: false };
     //Chi tiết cộng đồng
     case types.GET_DETAIL_COMMUNITY.REQUEST:
-      return { ...state };
+      return { ...state, isLoading: true };
     case types.GET_DETAIL_COMMUNITY.SUCCESS:
-      return { ...state, detailCommunity: payload.data };
+      return { ...state, detailCommunity: payload.data, isLoading: false };
     case types.GET_DETAIL_COMMUNITY.FAILURE:
-      return { ...state };
+      return { ...state, isLoading: false };
     //Thêm giỏ hàng
     case types.SET_PRODUCT_CART.SUCCESS:
       return { ...state, listProductCart: payload.data };
+    //Đặt hàng
+    case types.ORDER_PRODUCT.REQUEST:
+      return { ...state };
+    case types.ORDER_PRODUCT.SUCCESS:
+      return { ...state, detailCommunity: payload.data };
+    case types.ORDER_PRODUCT.FAILURE:
+      return { ...state };
 
     default:
       return state;

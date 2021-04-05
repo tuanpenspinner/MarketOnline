@@ -9,4 +9,5 @@ export default {
   GET_DETAIL_BLOG: `/user/blog`,
   GET_LIST_COMMUNITY: `/user/charity`,
   GET_DETAIL_COMMUNITY: `/user/charity`,
+  ORDER_PRODUCT: `/user/order`,
 };

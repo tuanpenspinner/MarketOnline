@@ -3,26 +3,49 @@ import { withRouter } from "react-router-dom";
 import { formatNumber } from "../../../helper/formatNumber";
 import { Form, Col } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { orderProduct } from "state/actions/webActions";
+import { useDispatch } from "react-redux";
 const Cart = ({ listProductCart, onCheckout, totalMoney, ...props }) => {
-  const [formInfo, setFormInfo] = useState({ name: "", phone: "", email: "", address: "" });
+  const [formInfo, setFormInfo] = useState({ name: "", phone: "", email: "", address: "", gender: "" });
   const [validated, setValidated] = useState(false);
+  const dispatch = useDispatch();
   const onChange = (e) => {
     const { name, value } = e.target;
     setFormInfo({ ...formInfo, [name]: value });
   };
   const checkOut = (e) => {
-    console.log("dsfsd");
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity()) {
-      Swal.fire({
-        icon: "success",
-        title: "Đặt hàng thành công",
-      });
-      localStorage.removeItem("listProductCart");
-      props.history.push({
-        pathname: "/",
-      });
+      const payload = {
+        ...formInfo,
+        orderDetail: listProductCart.map((item) => {
+          return {
+            productId: item.productId,
+            amount: item.count,
+            price: item.price,
+          };
+        }),
+      };
+      dispatch(
+        orderProduct(payload, (status) => {
+          if (status) {
+            Swal.fire({
+              icon: "success",
+              title: "Đặt hàng thành công",
+            });
+            localStorage.removeItem("listProductCart");
+            props.history.push({
+              pathname: "/",
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Đặt hàng thất bại",
+            });
+          }
+        })
+      );
     }
     setValidated(true);
   };
@@ -59,7 +82,7 @@ const Cart = ({ listProductCart, onCheckout, totalMoney, ...props }) => {
               <h4 className="text-center w-100 mb-3 ">Thông tin cá nhân</h4>
               <Form noValidate validated={validated} onSubmit={checkOut} className="mt-3">
                 <Form.Row>
-                  <Form.Group as={Col} md="4">
+                  <Form.Group as={Col} md="6">
                     <Form.Control
                       required
                       type="text"
@@ -71,7 +94,7 @@ const Cart = ({ listProductCart, onCheckout, totalMoney, ...props }) => {
                     />
                     <Form.Control.Feedback type="invalid">Vui lòng nhập tên</Form.Control.Feedback>
                   </Form.Group>
-                  <Form.Group as={Col} md="4">
+                  <Form.Group as={Col} md="6">
                     <Form.Control
                       required
                       type="text"
@@ -83,7 +106,7 @@ const Cart = ({ listProductCart, onCheckout, totalMoney, ...props }) => {
                     />
                     <Form.Control.Feedback type="invalid">Số điện thoại không đúng định dạng</Form.Control.Feedback>
                   </Form.Group>
-                  <Form.Group as={Col} md="4">
+                  <Form.Group as={Col} md="6">
                     <Form.Control
                       required
                       name="email"
@@ -94,13 +117,22 @@ const Cart = ({ listProductCart, onCheckout, totalMoney, ...props }) => {
                     />
                     <Form.Control.Feedback type="invalid">Email không đúng định dạng</Form.Control.Feedback>
                   </Form.Group>
+                  <Form.Group as={Col} cmd="6">
+                    <Form.Control as="select" value={formInfo.gender} name="gender" required onChange={onChange}>
+                      <option value="">Giới tính</option>
+                      <option value="MALE">Nam</option>
+                      <option value="FEMALE">Nữ</option>
+                      <option value="OTHER">Khác</option>
+                    </Form.Control>
+                    <Form.Control.Feedback type="invalid">Vui lòng chọn giới tính</Form.Control.Feedback>
+                  </Form.Group>
                   <Form.Group as={Col} md="12">
                     <Form.Control
                       required
                       type="text"
                       name="address"
                       pattern="^(?!\s*$).+"
-                      placeholder="Lời nhắn"
+                      placeholder="Địa chỉ"
                       onChange={onChange}
                       value={formInfo.address}
                     />

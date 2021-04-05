@@ -4,6 +4,7 @@ import { Form, Col } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
+import { Spin, Space } from "antd";
 import { getDetailProduct, setProductCart, sendProductComment } from "../../../state/actions/webActions";
 import Swal from "sweetalert2";
 import { formatNumber } from "../../../helper/formatNumber";
@@ -11,6 +12,7 @@ import { formatNumber } from "../../../helper/formatNumber";
 const Product = () => {
   const detailProductReducer = useSelector((state) => state.web.detailProduct);
   const detailProduct = detailProductReducer.items ? detailProductReducer.items[0] : [];
+  const isLoading = useSelector((state) => state.web.isLoading);
   const listProductRelate = detailProductReducer.relativeProducts ? detailProductReducer.relativeProducts.slice(0, 4) : [];
   const [comment, setComment] = useState({ content: "", email: "", name: "", phone: "", rating: 5 });
   const [validated, setValidated] = useState(false);
@@ -20,6 +22,7 @@ const Product = () => {
 
   useEffect(() => {
     getInfoProduct(id);
+    window.scrollTo(0, 0);
   }, [id]);
   const getInfoProduct = (id) => {
     const payload = {
@@ -141,7 +144,14 @@ const Product = () => {
     }
     return <p>Chưa có đánh giá</p>;
   };
-
+  if (isLoading)
+    return (
+      <div className="loadingData">
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    );
   return (
     <div className="box-detail-product">
       <div className=" detail-product">
@@ -151,17 +161,17 @@ const Product = () => {
           </div>
           <div className="col-md-6 mb-4">
             <div className="p-4">
-              <div className="mb-3">
+              <div className="mb-2">
                 <Link to={`/category/${detailProduct?.categoryId ? detailProduct?.categoryId?._id : ""}`}>
                   <h5 className="badge purple mr-1 name-category bg-success text-white">
                     {detailProduct.categoryId ? detailProduct.categoryId.name : ""}
                   </h5>
                 </Link>
               </div>
-              <p className="lead">
+              <div className="mb-2">
                 <span>{formatNumber(detailProduct?.price)}</span>
-              </p>
-              <p className="lead font-weight-bold">{detailProduct?.name}</p>
+              </div>
+              <div className="font-weight-bold mb-2">{detailProduct?.name}</div>
               {/* <p>{detailProduct.description}</p> */}
               <form className="d-flex justify-content-left">
                 <input type="number" value={countProduct} onChange={onChangeCount} className="form-control mr-2" style={{ width: "100px" }} />

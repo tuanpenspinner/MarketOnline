@@ -65,3 +65,11 @@ export const setProductCart = (params) => {
     params,
   };
 };
+
+export const orderProduct = (params, callback) => {
+  return {
+    type: types.ORDER_PRODUCT.REQUEST,
+    params,
+    callback,
+  };
+};

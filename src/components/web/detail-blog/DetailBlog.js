@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailBlog, getListBlog } from "../../../state/actions/webActions";
+import { Spin, Space } from "antd";
+import { getDetailBlog } from "../../../state/actions/webActions";
 import { Link, useParams } from "react-router-dom";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const DetailBlog = () => {
   const detailBlogReducer = useSelector((state) => state.web.detailBlog);
-  const listNewBlog = useSelector((state) => state.web.listBlog);
+  const newestBlog = useSelector((state) => state.web.newestBlog);
+  const isLoading = useSelector((state) => state.web.isLoading);
   const detailBlog = detailBlogReducer?.length > 0 ? detailBlogReducer[0] : "";
   const dispatch = useDispatch();
   const { id } = useParams();
-  useEffect(() => {
-    dispatch(
-      getListBlog({
-        filter: {},
-        paging: {
-          offset: 0,
-          limit: 4,
-        },
-      })
-    );
-  }, []);
+
   useEffect(() => {
     loadDetailBlog(id);
   }, [id]);
@@ -37,7 +29,14 @@ const DetailBlog = () => {
     };
     dispatch(getDetailBlog(payload));
   };
-
+  if (isLoading)
+    return (
+      <div className="loadingData">
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    );
   return (
     <div className="blog">
       <div className="row pt-4">
@@ -52,7 +51,7 @@ const DetailBlog = () => {
           </div>
           <div className="list-blog ">
             <h5 className="font-weight-bold">Bài viết mới</h5>
-            {listNewBlog.map((item, key) => {
+            {newestBlog.map((item, key) => {
               return (
                 <Link to={`/detail-blog/${item._id}`} key={key}>
                   <div className="blog-item">
@@ -67,7 +66,7 @@ const DetailBlog = () => {
 
         <div className="col-lg-9 mt-3 detail-blog ">
           <div className="title-detail-blog">{detailBlog?.title}</div>
-          <div className="time-blog">{moment(detailBlog?.createdAt).format("DD/MM/YYYY")}</div>
+          <div className="time-blog">{dayjs(detailBlog?.createdAt).format("DD/MM/YYYY")}</div>
           <hr />
           <div dangerouslySetInnerHTML={{ __html: detailBlog?.content }} className="ck-content ck-editor__editable"></div>
         </div>

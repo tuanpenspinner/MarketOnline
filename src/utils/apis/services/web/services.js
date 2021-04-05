@@ -39,4 +39,8 @@ export default {
     const result = await makeRequest(ACC_URL.GET_DETAIL_COMMUNITY, HTTP_METHOD.POST, data);
     return result;
   },
+  orderProduct: async (data) => {
+    const result = await makeRequest(ACC_URL.ORDER_PRODUCT, HTTP_METHOD.POST, data);
+    return result;
+  },
 };

@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListProductPage, setProductCart } from "../../../state/actions/webActions";
 import { Tabs, Tab } from "react-bootstrap";
 import { formatNumber } from "../../../helper/formatNumber";
+import { Spin, Space } from "antd";
 
 const Home = () => {
   const dispatch = useDispatch();
   const dataHomepage = useSelector((state) => state.web.listProductPage);
+  const isLoading = useSelector((state) => state.web.isLoading);
 
   useEffect(() => {
     dispatch(getListProductPage({}));
@@ -36,8 +38,17 @@ const Home = () => {
     dispatch(setProductCart(listProductCart));
   };
 
+  if (isLoading)
+    return (
+      <div className="loadingData">
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    );
   return (
     <div>
+      <div className="loadingData"></div>
       <div id="carouselExampleControls" className="carousel slide banner-home" data-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
