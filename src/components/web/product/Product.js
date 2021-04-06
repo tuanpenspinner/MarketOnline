@@ -5,6 +5,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 import { Spin, Space } from "antd";
+import dayjs from "dayjs";
 import { getDetailProduct, setProductCart, sendProductComment } from "../../../state/actions/webActions";
 import Swal from "sweetalert2";
 import { formatNumber } from "../../../helper/formatNumber";
@@ -23,6 +24,7 @@ const Product = () => {
   useEffect(() => {
     getInfoProduct(id);
     window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   const getInfoProduct = (id) => {
     const payload = {
@@ -57,7 +59,6 @@ const Product = () => {
             Swal.fire({
               icon: "error",
               title: "Thất bại",
-              text: "sdfsd",
             });
           }
         })
@@ -137,6 +138,7 @@ const Product = () => {
               />
               <div className="ml-3">{item.content}</div>
             </div>
+            <small className="text-muted"> {dayjs(item.createdAt).format("DD/MM/YYYY")}</small>
             <hr />
           </div>
         );

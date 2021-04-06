@@ -14,10 +14,11 @@ export const getListCategory = (params) => {
   };
 };
 
-export const getListProduct = (params) => {
+export const getListProduct = (params, callback) => {
   return {
     type: types.GET_LIST_PRODUCT.REQUEST,
     params,
+    callback,
   };
 };
 

@@ -4,7 +4,7 @@ export default {
   GET_LIST_CATEGORY: "/user/category",
   GET_LIST_PRODUCT: `/user/product`,
   GET_DETAIL_PRODUCT: `/user/product`,
-  SEND_PRODUCT_COMMENT: `/api/comment/create`,
+  SEND_PRODUCT_COMMENT: `/user/comment`,
   GET_LIST_BLOG: `/user/blog`,
   GET_DETAIL_BLOG: `/user/blog`,
   GET_LIST_COMMUNITY: `/user/charity`,

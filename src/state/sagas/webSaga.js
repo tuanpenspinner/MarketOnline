@@ -49,9 +49,9 @@ export function* getListCategorySaga() {
     });
   }
 }
-export function* getListProductSaga({ params }) {
+export function* getListProductSaga(params) {
   try {
-    const results = yield call(getListProduct, { payload: params });
+    const results = yield call(getListProduct, { payload: params.params });
     yield put({
       type: types.GET_LIST_PRODUCT.SUCCESS,
       payload: {
@@ -59,6 +59,7 @@ export function* getListProductSaga({ params }) {
         httpCode: results.httpCode,
       },
     });
+    params.callback(results.httpCode === 200 ? true : false, results?.data?.total);
   } catch (error) {
     console.log(error);
     yield put({

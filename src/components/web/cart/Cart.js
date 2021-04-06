@@ -85,39 +85,43 @@ const Cart = () => {
       </div>
 
       <div className="table-responsive table-cart mt-5">
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col"> Hình ảnh</th>
-              <th scope="col">Tên sản phẩm</th>
-              <th scope="col" className="text-center">
-                Số lượng
-              </th>
-              <th scope="col" className="text-right">
-                Giá
-              </th>
-              <th style={{ width: "20px" }}> </th>
-            </tr>
-          </thead>
-          <tbody>
-            {renderProduct()}
-            <tr>
-              <td />
-              <td />
-              <td className="text-right">
-                <div>
-                  <strong>Tổng:</strong>
-                </div>
-              </td>
-              <td className="text-right">
-                <div>
-                  <strong>{formatNumber(totalMoney)} đ</strong>
-                </div>
-              </td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+        {listProductCart?.length > 0 ? (
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"> Hình ảnh</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col" className="text-center">
+                  Số lượng
+                </th>
+                <th scope="col" className="text-right">
+                  Giá
+                </th>
+                <th style={{ width: "20px" }}> </th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderProduct()}
+              <tr>
+                <td />
+                <td />
+                <td className="text-right">
+                  <div>
+                    <strong>Tổng:</strong>
+                  </div>
+                </td>
+                <td className="text-right">
+                  <div>
+                    <strong>{formatNumber(totalMoney)} đ</strong>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        ) : (
+          <p className="text-center w-100 mt-2">Không có sản phẩm được chọn</p>
+        )}
 
         <div className="group-btn">
           <button className="btn btn-custom">
@@ -126,10 +130,12 @@ const Cart = () => {
               &nbsp; Tiếp tục mua sắm
             </Link>
           </button>
-          <button onClick={onCheckout} className="btn btn-custom m-0">
-            <i className="fas fa-money-check-alt"></i>
-            &nbsp;Đặt hàng
-          </button>
+          {listProductCart?.length > 0 && (
+            <button onClick={onCheckout} className="btn btn-custom m-0">
+              <i className="fas fa-money-check-alt"></i>
+              &nbsp;Đặt hàng
+            </button>
+          )}
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ const Blog = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     onSearch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onChange = (e) => {

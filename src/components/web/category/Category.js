@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Spin, Space } from "antd";
 import { getListProduct, setProductCart } from "../../../state/actions/webActions";
 import { formatNumber } from "../../../helper/formatNumber";
+import Rating from "react-rating";
 const Category = () => {
   const listCategory = useSelector((state) => state.web.listCategory);
   const listProduct = useSelector((state) => state.web.listProduct);
@@ -11,16 +12,21 @@ const Category = () => {
   const dispatch = useDispatch();
   const [nameCategory, setNameCategory] = useState();
   const [keyword, setKeyWord] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [fromPrice, setFromPrice] = useState(0);
+  // eslint-disable-next-line no-unused-vars
   const [toPrice, setToPrice] = useState(0);
   const [sortProductType, setSortProductType] = useState("POPULATE");
   const [rating, setRating] = useState(0);
+  const [paging, setPaging] = useState({ offset: 1, limit: 9 });
+  const [total, setTotal] = useState(0);
   const { id } = useParams();
 
   useEffect(() => {
     getNameCategory();
     loadListProduct();
-  }, [sortProductType, id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortProductType, id, paging, rating]);
 
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -29,10 +35,12 @@ const Category = () => {
     } else if (name === "keyword") {
       setKeyWord(value);
     }
+    setPaging({ offset: 1, limit: 9 });
   };
 
   const onSearchProduct = () => {
     loadListProduct();
+    setPaging({ offset: 1, limit: 9 });
   };
   const loadListProduct = () => {
     let filter = {};
@@ -46,10 +54,16 @@ const Category = () => {
       filter,
       paging: {
         offset: 0,
-        limit: 100,
+        limit: paging.limit,
       },
     };
-    dispatch(getListProduct(payload));
+    dispatch(
+      getListProduct(payload, (status, total) => {
+        if (status) {
+          setTotal(total);
+        }
+      })
+    );
   };
 
   const getNameCategory = () => {
@@ -80,7 +94,84 @@ const Category = () => {
     localStorage.setItem("listProductCart", JSON.stringify(listProductCart));
     dispatch(setProductCart(listProductCart));
   };
+  const onChangeRating = (rating) => {
+    setRating(rating);
+  };
 
+  const renderRating = () => {
+    const arr = [5, 4, 3, 2, 1];
+    return arr.map((item, key) => {
+      return (
+        <div className="row ml-2 mt-2 list-rating" onClick={() => onChangeRating(item)} key={key}>
+          <ul className="rating mb-2">
+            <Rating
+              start={0}
+              stop={5}
+              initialRating={item}
+              className="mt-2"
+              fullSymbol={[
+                "fa fa-star text-warning",
+                "fa fa-star text-warning",
+                "fa fa-star text-warning",
+                "fa fa-star text-warning",
+                "fa fa-star text-warning",
+                "fa fa-star text-warning",
+              ]}
+              emptySymbol={[
+                "fa fa-star text-muted",
+                "fa fa-star text-muted",
+                "fa fa-star text-muted",
+                "fa fa-star text-muted",
+                "fa fa-star text-muted",
+                "fa fa-star text-muted",
+              ]}
+              readonly
+            />
+            <p className="ml-3 my-2">{item} sao</p>
+          </ul>
+        </div>
+      );
+    });
+  };
+  const seeMore = () => {
+    setPaging({ offset: paging.offset + 1, limit: (paging.offset + 1) * 9 });
+  };
+
+  const renderProduct = () => {
+    return isLoading ? (
+      <div className="loadingData">
+        <Space size="middle">
+          <Spin size="large" />
+        </Space>
+      </div>
+    ) : listProduct.length > 0 ? (
+      listProduct.map((item, key) => {
+        return (
+          <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
+            <div className="card">
+              <Link to={`/product/${item._id}`}>
+                <div className="view overlay">
+                  <img src={item.image} className="card-img-top" alt="" />
+                  <div className="mask rgba-white-slight" />
+                </div>
+              </Link>
+              <div className="card-body text-center">
+                <Link to={`/product/${item._id}`}>
+                  <h5 className="text-success name-product">{item.name}</h5>
+                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
+                </Link>
+                <button className="btn btn-custom" onClick={() => addCart(item)}>
+                  Thêm vào giỏ
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    ) : (
+      <small className="text-center w-100 mt-5">Không có sản phẩm </small>
+    );
+  };
   return (
     <div className="category ">
       <div className="row pt-4">
@@ -138,64 +229,7 @@ const Category = () => {
                 <strong>Xếp hạng</strong>
               </h5>
               <div className="divider" />
-              <div className="row ml-2 mt-2">
-                <ul className="rating mb-0">
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <p className="ml-3 dark-grey-text">5 sao</p>
-                  </li>
-                </ul>
-              </div>
-              <div className="row ml-2">
-                <ul className="rating mb-0">
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-
-                  <li>
-                    <p className="ml-3 dark-grey-text">4 sao</p>
-                  </li>
-                </ul>
-              </div>
-              <div className="row ml-2">
-                <ul className="rating mb-0">
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <i className="fas fa-star blue-text" />
-                  </li>
-                  <li>
-                    <p className="ml-3 dark-grey-text">3 sao</p>
-                  </li>
-                </ul>
-              </div>
+              <div className="pb-2">{renderRating()}</div>
             </div>
           </div>
         </div>
@@ -217,39 +251,14 @@ const Category = () => {
             </div>
           </div>
           <div className="row wow fadeIn px-3">
-            {isLoading ? (
-              <div className="loadingData">
-                <Space size="middle">
-                  <Spin size="large" />
-                </Space>
-              </div>
-            ) : listProduct.length > 0 ? (
-              listProduct.map((item, key) => {
-                return (
-                  <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
-                    <div className="card">
-                      <Link to={`/product/${item._id}`}>
-                        <div className="view overlay">
-                          <img src={item.image} className="card-img-top" alt="" />
-                          <div className="mask rgba-white-slight" />
-                        </div>
-                      </Link>
-                      <div className="card-body text-center">
-                        <Link to={`/product/${item._id}`}>
-                          <h5 className="text-success name-product">{item.name}</h5>
-                          <h5 className="mt-3">{formatNumber(item.price)}</h5>
-                        </Link>
-                        <button className="btn btn-custom" onClick={() => addCart(item)}>
-                          Thêm vào giỏ
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <small className="text-center w-100 mt-5">Không có sản phẩm </small>
-            )}
+            {renderProduct()}
+            <div className="w-100 text-center">
+              {total > paging.offset * 8 && (
+                <button className="btn btn-custom " onClick={seeMore}>
+                  Xem thêm {total - paging.offset * 8} sản phẩm
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
