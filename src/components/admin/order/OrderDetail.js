@@ -26,8 +26,8 @@ function OrderDetail({ dataOrder, isModalVisible, handleAccept, handleCancel }) 
       <Divider orientation="center">
         <strong>SẢN PHẨM ĐÃ MUA</strong>
       </Divider>
-      {dataOrder?.orderDetail?.map((item) => (
-        <Descriptions>
+      {dataOrder?.orderDetail?.map((item, index) => (
+        <Descriptions key={index}>
           <Descriptions.Item labelStyle={{ fontWeight: 600 }} label="Sản phẩm">
             {item.product.name}
           </Descriptions.Item>

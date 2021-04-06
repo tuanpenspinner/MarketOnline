@@ -1,11 +1,9 @@
 import MenuVertical from "../layouts/menu-vertical/MenuVertical";
-import Product from "../components/admin/product/Product";
-import Category from "../components/admin/category/Category";
-import Blog from "../components/admin/blog/Blog";
-import Order from "../components/admin/order/Order";
-import Comment from "../components/admin/comment/Comment";
-import LoginLayout from "../layouts/login/Login";
-import Login from "../components/admin/login/Login";
+import Product from "../components/admin/product";
+import Category from "../components/admin/category";
+import Blog from "../components/admin/blog";
+import Order from "../components/admin/order";
+import Comment from "../components/admin/comment";
 
 const routes = [
   {
@@ -37,12 +35,6 @@ const routes = [
     path: "/admin/comment",
     exact: true,
     component: Comment,
-  },
-  {
-    layout: LoginLayout,
-    path: "/login",
-    exact: true,
-    component: Login,
   },
 ];
 export default routes;
