@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/MarketOnline/static/css/main.b151be0e.chunk.css",
-    "main.js": "/MarketOnline/static/js/main.697d0569.chunk.js",
-    "main.js.map": "/MarketOnline/static/js/main.697d0569.chunk.js.map",
+    "main.css": "/MarketOnline/static/css/main.88997baf.chunk.css",
+    "main.js": "/MarketOnline/static/js/main.fbe1dd9b.chunk.js",
+    "main.js.map": "/MarketOnline/static/js/main.fbe1dd9b.chunk.js.map",
     "runtime-main.js": "/MarketOnline/static/js/runtime-main.367a2bb5.js",
     "runtime-main.js.map": "/MarketOnline/static/js/runtime-main.367a2bb5.js.map",
     "static/css/2.b966dfdf.chunk.css": "/MarketOnline/static/css/2.b966dfdf.chunk.css",
-    "static/js/2.8e4c82f4.chunk.js": "/MarketOnline/static/js/2.8e4c82f4.chunk.js",
-    "static/js/2.8e4c82f4.chunk.js.map": "/MarketOnline/static/js/2.8e4c82f4.chunk.js.map",
+    "static/js/2.21d32f49.chunk.js": "/MarketOnline/static/js/2.21d32f49.chunk.js",
+    "static/js/2.21d32f49.chunk.js.map": "/MarketOnline/static/js/2.21d32f49.chunk.js.map",
     "index.html": "/MarketOnline/index.html",
     "static/css/2.b966dfdf.chunk.css.map": "/MarketOnline/static/css/2.b966dfdf.chunk.css.map",
-    "static/css/main.b151be0e.chunk.css.map": "/MarketOnline/static/css/main.b151be0e.chunk.css.map",
-    "static/js/2.8e4c82f4.chunk.js.LICENSE.txt": "/MarketOnline/static/js/2.8e4c82f4.chunk.js.LICENSE.txt",
-    "static/js/main.697d0569.chunk.js.LICENSE.txt": "/MarketOnline/static/js/main.697d0569.chunk.js.LICENSE.txt"
+    "static/css/main.88997baf.chunk.css.map": "/MarketOnline/static/css/main.88997baf.chunk.css.map",
+    "static/js/2.21d32f49.chunk.js.LICENSE.txt": "/MarketOnline/static/js/2.21d32f49.chunk.js.LICENSE.txt",
+    "static/js/main.fbe1dd9b.chunk.js.LICENSE.txt": "/MarketOnline/static/js/main.fbe1dd9b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.367a2bb5.js",
     "static/css/2.b966dfdf.chunk.css",
-    "static/js/2.8e4c82f4.chunk.js",
-    "static/css/main.b151be0e.chunk.css",
-    "static/js/main.697d0569.chunk.js"
+    "static/js/2.21d32f49.chunk.js",
+    "static/css/main.88997baf.chunk.css",
+    "static/js/main.fbe1dd9b.chunk.js"
   ]
 }
