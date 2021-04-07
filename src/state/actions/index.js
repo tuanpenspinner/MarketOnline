@@ -35,6 +35,13 @@ export const CREATE_ORDER = actionCreator("CREATE_ORDER");
 export const UPDATE_ACTIVE_ORDER = actionCreator("UPDATE_ACTIVE_ORDER");
 export const DELETE_ORDER = actionCreator("DELETE_ORDER");
 
+// comment action
+export const GET_CMT = actionCreator("GET_CMT");
+export const CREATE_CMT = actionCreator("CREATE_CMT");
+export const UPDATE_CMT = actionCreator("UPDATE_CMT");
+export const UPDATE_ACTIVE_CMT = actionCreator("UPDATE_ACTIVE_CMT");
+export const DELETE_CMT = actionCreator("DELETE_CMT");
+
 //Web action
 export const GET_PRODUCT_PAGE = actionCreator("GET_PRODUCT_PAGE");
 export const GET_LIST_CATEGORY = actionCreator("GET_LIST_CATEGORY");
