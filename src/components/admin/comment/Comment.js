@@ -4,7 +4,7 @@ import CommentForm from "./CommentForm";
 import CommentSearch from "./CommentSearch";
 import { Modal } from "react-bootstrap";
 import { Modal as ModalAntd, notification } from "antd";
-import { getCategoryAction, deleteCategoryAction, updateActiveCategoryAction } from "../../../state/actions/categoryActions";
+import { getCommentAction, deleteCommentAction, updateActiveCommentAction } from "../../../state/actions/commentActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const Category = () => {
@@ -14,7 +14,9 @@ const Category = () => {
   const [dataCategory, setDataCategory] = useState({});
   const [payload, setPayload] = useState({
     payload: {
-      filter: {},
+      filter: {
+        isBlog: true,
+      },
       paging: {
         offset: 0,
         limit: 10,
@@ -23,7 +25,7 @@ const Category = () => {
   });
 
   const dispatch = useDispatch();
-  const category = useSelector((state) => state?.category);
+  const comment = useSelector((state) => state?.comment);
 
   const handleSearch = (e) => {
     setKeyword(e.target.value);
@@ -72,7 +74,7 @@ const Category = () => {
   };
 
   const handleChangeActive = (data) => {
-    dispatch(updateActiveCategoryAction({ id: data._id }));
+    dispatch(updateActiveCommentAction({ id: data._id }));
   };
 
   const handleEdit = (data) => {
@@ -86,46 +88,54 @@ const Category = () => {
       title: "Bạn có chắc muốn xoá",
       content: "some messages...some messages...",
       onOk: () => {
-        dispatch(deleteCategoryAction({ id: data._id }));
+        dispatch(deleteCommentAction({ id: data._id }));
+      },
+    });
+  };
+
+  const handleTabsChange = (key) => {
+    setPayload({
+      ...payload,
+      payload: {
+        ...payload.payload,
+        filter: {
+          ...payload.payload.filter,
+          isBlog: key === "1" ? false : true,
+        },
       },
     });
   };
 
   useEffect(() => {
-    dispatch(getCategoryAction(payload));
+    dispatch(getCommentAction(payload));
   }, [payload, dispatch]);
 
   useEffect(() => {
-    const { created, updated, deleted, active } = category;
-    if (created.httpCode || updated.httpCode || deleted.httpCode || active.httpCode) {
-      if (created.httpCode === 200 || updated.httpCode === 200 || deleted.httpCode === 200 || active.httpCode === 200) {
+    const { deleted, active } = comment;
+    if (deleted.httpCode || active.httpCode) {
+      if (deleted.httpCode === 200 || active.httpCode === 200) {
         handleCloseForm();
-        dispatch(getCategoryAction(payload));
+        dispatch(getCommentAction(payload));
         notification.success({
           placement: "topRight",
-          message: updated.httpCode
-            ? "Cập nhật danh mục thành công !"
-            : deleted.httpCode
-            ? "Xoá danh mục thành công"
-            : active.httpCode
-            ? "Thay đổi trạng thái thành công"
-            : "Tạo danh mục thành công !",
+          message: deleted.httpCode ? "Xoá danh mục thành công" : "Thay đổi trạng thái thành công",
         });
       }
     }
-  }, [payload, dispatch, category]);
+  }, [comment, dispatch, payload]);
 
   return (
     <div>
       <CommentSearch onSearch={handleSearch} value={keyword} onSearchSubmit={handleSearchSubmit} />
       <CommentTable
-        category={category}
+        comment={comment}
         onOpenForm={handleOpenForm}
         paging={payload.payload.paging}
         onChangeTable={handleChangeTable}
         onChangeActive={handleChangeActive}
         onEdit={handleEdit}
         onDelete={handleDelete}
+        onTabsChange={handleTabsChange}
       />
       <Modal show={isCreated} onHide={handleCloseForm}>
         <CommentForm isUpdated={isUpdated} dataCategory={dataCategory} onCloseForm={handleCloseForm} />
