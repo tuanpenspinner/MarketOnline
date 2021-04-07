@@ -47,9 +47,9 @@ function CommentTable({ comment, paging, onOpenForm, onEdit, onDelete, onChangeA
       <div className="card-body">
         <div className="d-flex align-items-center justify-content-between">
           <h5 className="m-0">Danh sách bình luận</h5>
-          <button className="btn btn-custom" onClick={onOpenForm}>
+          {/* <button className="btn btn-custom" onClick={onOpenForm}>
             Thêm bình luận
-          </button>
+          </button> */}
         </div>
         <hr className="mb-0" />
         <Tabs defaultActiveKey="1" onTabClick={onTabsChange}>
