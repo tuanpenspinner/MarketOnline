@@ -79,9 +79,9 @@ export const orderProduct = (params, callback) => {
   };
 };
 
-export const sendContract = (params, callback) => {
+export const sendContact = (params, callback) => {
   return {
-    type: types.SEND_CONTRACT.REQUEST,
+    type: types.SEND_CONTACT.REQUEST,
     params,
     callback,
   };

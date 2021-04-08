@@ -13,7 +13,7 @@ const {
   getListCommunity,
   getDetailCommunity,
   orderProduct,
-  sendContract,
+  sendContact,
   registerNotification
 } = webServices;
 
@@ -201,11 +201,11 @@ export function* orderProductSaga(params) {
   }
 }
 
-export function* sendContractSaga(params) {
+export function* sendContactSaga(params) {
   try {
-    const results = yield call(sendContract, { payload: params.params });
+    const results = yield call(sendContact, { payload: params.params });
     yield put({
-      type: types.SEND_CONTRACT.SUCCESS,
+      type: types.SEND_CONTACT.SUCCESS,
       payload: {
         data: results.data.items,
         httpCode: results.httpCode,
@@ -216,7 +216,7 @@ export function* sendContractSaga(params) {
     params.callback(false);
     console.log(error);
     yield put({
-      type: types.SEND_CONTRACT.FAILURE,
+      type: types.SEND_CONTACT.FAILURE,
     });
   }
 }

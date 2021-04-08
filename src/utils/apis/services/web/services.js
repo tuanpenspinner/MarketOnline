@@ -43,8 +43,8 @@ export default {
     const result = await makeRequest(ACC_URL.ORDER_PRODUCT, HTTP_METHOD.POST, data);
     return result;
   },
-  sendContract: async (data) => {
-    const result = await makeRequest(ACC_URL.SEND_CONTRACT, HTTP_METHOD.POST, data);
+  sendContact: async (data) => {
+    const result = await makeRequest(ACC_URL.SEND_CONTACT, HTTP_METHOD.POST, data);
     return result;
   },
   registerNotification: async (data) => {

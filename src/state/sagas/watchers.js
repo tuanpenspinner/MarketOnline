@@ -12,7 +12,7 @@ import {
   getListCommunitySaga,
   getDetailCommunitySaga,
   orderProductSaga,
-  sendContractSaga,
+  sendContactSaga,
   registerNotificationSaga
 } from "./webSaga";
 import {
@@ -38,7 +38,7 @@ import { createOrderSaga, deleteOrderSaga, getOrderSaga, updateOrderActiveSaga }
 import { createBlogSaga, deleteBlogSaga, getBlogSaga, updateBlogActiveSaga, updateBlogSaga } from "./blogSaga";
 
 import * as types from "../actions";
-import { registerNotification, sendContract } from "state/actions/webActions";
+import { registerNotification, sendContact } from "state/actions/webActions";
 
 export default function* watchUserAuthentication() {
   yield takeLatest(types.GET_PRODUCT.REQUEST, getProductSaga);
@@ -85,6 +85,6 @@ export default function* watchUserAuthentication() {
   yield takeLatest(types.GET_LIST_COMMUNITY.REQUEST, getListCommunitySaga);
   yield takeLatest(types.GET_DETAIL_COMMUNITY.REQUEST, getDetailCommunitySaga);
   yield takeLatest(types.ORDER_PRODUCT.REQUEST, orderProductSaga);
-  yield takeLatest(types.SEND_CONTRACT.REQUEST, sendContractSaga);
+  yield takeLatest(types.SEND_CONTACT.REQUEST, sendContactSaga);
   yield takeLatest(types.REGISTER_NOTIFICATION.REQUEST, registerNotificationSaga);
 }

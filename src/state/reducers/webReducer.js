@@ -90,11 +90,11 @@ export default function (state = initState, { type, payload }) {
     case types.ORDER_PRODUCT.FAILURE:
       return { ...state };
     //Gửi liên hệ
-    case types.SEND_CONTRACT.REQUEST:
+    case types.SEND_CONTACT.REQUEST:
       return { ...state };
-    case types.SEND_CONTRACT.SUCCESS:
+    case types.SEND_CONTACT.SUCCESS:
       return { ...state };
-    case types.SEND_CONTRACT.FAILURE:
+    case types.SEND_CONTACT.FAILURE:
       return { ...state };
     //Đăng kí nhận thông báo
     case types.REGISTER_NOTIFICATION.REQUEST:

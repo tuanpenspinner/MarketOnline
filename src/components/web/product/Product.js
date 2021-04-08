@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Form, Col } from "react-bootstrap";
-import { Tabs, Tab } from "react-bootstrap";
+import { Form, Col, Tabs, Tab } from "react-bootstrap";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 import { Spin, Space } from "antd";

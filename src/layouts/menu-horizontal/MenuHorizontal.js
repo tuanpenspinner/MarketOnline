@@ -123,7 +123,7 @@ const MenuHorizontal = (props) => {
                 <li className="nav-item">
                   <div className="nav-link ">
                     <button className="btn btn-transparent route-menu ">
-                      <Link to="/contract">Liên hệ</Link>
+                      <Link to="/contact">Liên hệ</Link>
                     </button>
                   </div>
                 </li>
