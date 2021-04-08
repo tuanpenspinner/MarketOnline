@@ -42,24 +42,28 @@ export const getListBlog = (params) => {
     params,
   };
 };
+
 export const getDetailBlog = (params) => {
   return {
     type: types.GET_DETAIL_BLOG.REQUEST,
     params,
   };
 };
+
 export const getListCommunity = (params) => {
   return {
     type: types.GET_LIST_COMMUNITY.REQUEST,
     params,
   };
 };
+
 export const getDetailCommunity = (params) => {
   return {
     type: types.GET_DETAIL_COMMUNITY.REQUEST,
     params,
   };
 };
+
 export const setProductCart = (params) => {
   return {
     type: types.SET_PRODUCT_CART.REQUEST,
@@ -74,3 +78,20 @@ export const orderProduct = (params, callback) => {
     callback,
   };
 };
+
+export const sendContract = (params, callback) => {
+  return {
+    type: types.SEND_CONTRACT.REQUEST,
+    params,
+    callback,
+  };
+};
+
+export const registerNotification = (params, callback) => {
+  return {
+    type: types.REGISTER_NOTIFICATION.REQUEST,
+    params,
+    callback,
+  };
+};
+

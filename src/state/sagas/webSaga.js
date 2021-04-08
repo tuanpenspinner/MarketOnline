@@ -13,6 +13,8 @@ const {
   getListCommunity,
   getDetailCommunity,
   orderProduct,
+  sendContract,
+  registerNotification
 } = webServices;
 
 export function* getProductPageSaga() {
@@ -179,7 +181,7 @@ export function* setProductCartSaga({ params }) {
   });
 }
 
-export function* orderProductSage(params) {
+export function* orderProductSaga(params) {
   try {
     const results = yield call(orderProduct, { payload: params.params });
     yield put({
@@ -195,6 +197,46 @@ export function* orderProductSage(params) {
     console.log(error);
     yield put({
       type: types.ORDER_PRODUCT.FAILURE,
+    });
+  }
+}
+
+export function* sendContractSaga(params) {
+  try {
+    const results = yield call(sendContract, { payload: params.params });
+    yield put({
+      type: types.SEND_CONTRACT.SUCCESS,
+      payload: {
+        data: results.data.items,
+        httpCode: results.httpCode,
+      },
+    });
+    params.callback(results.httpCode === 200 ? true : false);
+  } catch (error) {
+    params.callback(false);
+    console.log(error);
+    yield put({
+      type: types.SEND_CONTRACT.FAILURE,
+    });
+  }
+}
+
+export function* registerNotificationSaga(params) {
+  try {
+    const results = yield call(registerNotification, { payload: params.params });
+    yield put({
+      type: types.REGISTER_NOTIFICATION.SUCCESS,
+      payload: {
+        data: results.data.items,
+        httpCode: results.httpCode,
+      },
+    });
+    params.callback(results.httpCode === 200 ? true : false);
+  } catch (error) {
+    params.callback(false);
+    console.log(error);
+    yield put({
+      type: types.REGISTER_NOTIFICATION.FAILURE,
     });
   }
 }

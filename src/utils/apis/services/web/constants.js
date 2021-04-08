@@ -10,4 +10,6 @@ export default {
   GET_LIST_COMMUNITY: `/user/charity`,
   GET_DETAIL_COMMUNITY: `/user/charity`,
   ORDER_PRODUCT: `/user/order`,
+  SEND_CONTRACT: `/user/createContactInfo`,
+  REGISTER_NOTIFICATION: `/user/registerNotification`,
 };
