@@ -139,7 +139,7 @@ const Contact = () => {
                 <Form.Control.Feedback type="invalid">Vui lòng nhập lời nhắn</Form.Control.Feedback>
               </Form.Group>
               <div className="text-center w-100">
-                <button className="btn btn-custom " type="submit">
+                <button className="btn btn-custom mb-3 " type="submit">
                   Liên hệ
                 </button>
               </div>

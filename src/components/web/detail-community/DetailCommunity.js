@@ -89,7 +89,7 @@ const DetailBlog = () => {
           <div key={index} className="w-100">
             <div className="font-weight-bold">{item.name}</div>
             <div className="d-flex">
-              <div className="ml-3">{item.content}</div>
+              <div>{item.content}</div>
             </div>
             <small className="text-muted"> {dayjs(item.createdAt).format("DD/MM/YYYY")}</small>
             <hr />

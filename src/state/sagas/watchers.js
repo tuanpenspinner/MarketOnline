@@ -13,7 +13,7 @@ import {
   getDetailCommunitySaga,
   orderProductSaga,
   sendContactSaga,
-  registerNotificationSaga
+  registerNotificationSaga,
 } from "./webSaga";
 import {
   createProductSaga,
@@ -23,13 +23,7 @@ import {
   updateProductActiveSaga,
   updateProductHighLightSaga,
 } from "./productSaga";
-import {
-  getCategorySaga,
-  createCategorySaga,
-  deleteCategorySaga,
-  updateCategoryActiveSaga,
-  updateCategorySaga,
-} from "./categorySaga";
+import { getCategorySaga, createCategorySaga, deleteCategorySaga, updateCategoryActiveSaga, updateCategorySaga } from "./categorySaga";
 
 import { deleteCommentSaga, getCommentSaga, updateCommentActiveSaga } from "./commentSaga";
 
@@ -38,7 +32,6 @@ import { createOrderSaga, deleteOrderSaga, getOrderSaga, updateOrderActiveSaga }
 import { createBlogSaga, deleteBlogSaga, getBlogSaga, updateBlogActiveSaga, updateBlogSaga } from "./blogSaga";
 
 import * as types from "../actions";
-import { registerNotification, sendContact } from "state/actions/webActions";
 
 export default function* watchUserAuthentication() {
   yield takeLatest(types.GET_PRODUCT.REQUEST, getProductSaga);

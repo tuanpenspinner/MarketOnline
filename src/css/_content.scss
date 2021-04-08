@@ -4,13 +4,57 @@
   min-height: calc(100vh - 100px);
   height: 100%;
   background-image: url(./background.jpg);
-  // padding-bottom: 40px;
   .card {
     border: none !important;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px !important;
+    .card-body-product {
+      padding: 10px 0 0 0 !important;
+      .btn-product {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        background-color: #2a272782;
+        border-radius: 10px;
+        display: none;
+        z-index: 10;
+        .btn-see-detail {
+          background-color: #8cc63f;
+          border-radius: 20px !important;
+          width: 80%;
+          color: #fff !important;
+          transition: 1s;
+          &:hover {
+            background-color: transparent;
+            border: 1px solid #8cc63f;
+          }
+        }
+        .btn-add-to-cart {
+          background-color: #faad14;
+          border-radius: 20px !important;
+          width: 80%;
+          margin-top: 20px;
+          color: #fff;
+          transition: 1s;
+          &:hover {
+            background-color: transparent;
+            border: 1px solid #faad14;
+          }
+        }
+      }
+    }
     &:hover {
       box-shadow: rgba(34, 102, 74, 0.25) 0px 13px 27px -5px, rgba(23, 43, 31, 0.3) 0px 8px 16px -8px;
+      .card-body-product {
+        .btn-product {
+          transition: 1s;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
       .overlay {
         border-radius: 10px 10px 0 0;
         overflow: hidden;
@@ -189,14 +233,17 @@
           border-bottom: 0 !important;
           .nav-link {
             border: none !important;
-            margin-right: 10px;
+            margin-right: 20px;
             font-size: 20px;
             text-transform: uppercase;
             font-weight: 600;
+            height: 40px;
+            padding: 0;
           }
           .nav-link.active {
             color: #3e8e41 !important;
-            background-color: #f5faed;
+            background-color: transparent;
+            border-bottom: 3px solid #52c41a !important;
           }
         }
       }
@@ -368,8 +415,9 @@
     width: 100%;
     max-width: 1200px;
     margin: auto;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     .list-rating {
+      padding-left: 10px;
       &:hover {
         background-color: #8cc63f;
         cursor: pointer;
@@ -386,7 +434,7 @@
         align-items: center;
         .input-range {
           width: 80% !important;
-          margin-right: 15px;
+          margin-right: 5px;
           height: 60px;
           .input-range__label-container {
             position: relative;

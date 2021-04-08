@@ -78,7 +78,7 @@ const Blog = () => {
                         <img src={item.image} className="card-img-top" alt="" />
                         <div className="mask rgba-white-slight" />
                       </div>
-                      <div className="card-body text-left">
+                      <div className="card-body p-3 text-left">
                         <h5 className="title-blog">{item.title}</h5>
                         <div className="time-blog">{dayjs(item.createdAt).format("DD/MM/YYYY")}</div>
                         <div className="content-blog">{item.content}</div>

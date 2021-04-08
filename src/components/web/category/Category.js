@@ -101,7 +101,7 @@ const Category = () => {
     return arr.map((item, key) => {
       return (
         <div className="row ml-2 mt-2 list-rating" onClick={() => onChangeRating(item)} key={key}>
-          <ul className="rating mb-2">
+          <ul className="rating">
             <Rating
               start={0}
               stop={5}
@@ -141,20 +141,21 @@ const Category = () => {
         return (
           <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
             <div className="card">
-              <Link to={`/product/${item._id}`}>
-                <div className="view overlay">
-                  <img src={item.image} className="card-img-top" alt="" />
-                  <div className="mask rgba-white-slight" />
+              <div className="view overlay">
+                <img src={item.image} className="card-img-top" alt="" />
+                <div className="mask rgba-white-slight" />
+              </div>
+              <div className="card-body card-body-product text-center">
+                <h5 className="text-success name-product">{item.name}</h5>
+                <h5 className="mt-3">{formatNumber(item.price)}</h5>
+                <div className="btn-product">
+                  <Link to={`/product/${item._id}`} className="btn btn-see-detail">
+                    Xem chi tiết
+                  </Link>
+                  <button className="btn btn-add-to-cart" onClick={() => addCart(item)}>
+                    Thêm vào giỏ
+                  </button>
                 </div>
-              </Link>
-              <div className="card-body text-center">
-                <Link to={`/product/${item._id}`}>
-                  <h5 className="text-success name-product">{item.name}</h5>
-                  <h5 className="mt-3">{formatNumber(item.price)}</h5>
-                </Link>
-                <button className="btn btn-custom" onClick={() => addCart(item)}>
-                  Thêm vào giỏ
-                </button>
               </div>
             </div>
           </div>
