@@ -5,17 +5,24 @@ import CommentSearch from "./CommentSearch";
 import { Modal } from "react-bootstrap";
 import { Modal as ModalAntd, notification } from "antd";
 import { getCommentAction, deleteCommentAction, updateActiveCommentAction } from "../../../state/actions/commentActions";
+import { getProductAction } from "../../../state/actions/productActions";
+import { getBlogAction } from "../../../state/actions/blogActions";
+
 import { useDispatch, useSelector } from "react-redux";
 
 const Category = () => {
   const [isCreated, setCreated] = useState(false);
   const [isUpdated, setUpdated] = useState(false);
-  const [keyword, setKeyword] = useState("");
+  const [values, setValues] = useState({
+    keyword: "",
+    blogId: "",
+    productId: "",
+  });
   const [dataCategory, setDataCategory] = useState({});
   const [payload, setPayload] = useState({
     payload: {
       filter: {
-        isBlog: true,
+        isBlog: false,
       },
       paging: {
         offset: 0,
@@ -26,9 +33,15 @@ const Category = () => {
 
   const dispatch = useDispatch();
   const comment = useSelector((state) => state?.comment);
+  const products = useSelector((state) => state?.product?.data?.list);
+  const blogs = useSelector((state) => state?.blog?.data?.list);
 
   const handleSearch = (e) => {
-    setKeyword(e.target.value);
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
   };
 
   const handleOpenForm = () => {
@@ -49,7 +62,7 @@ const Category = () => {
         ...payload.payload,
         filter: {
           ...payload.payload.filter,
-          keyword,
+          ...values,
         },
         paging: {
           ...payload.payload.paging,
@@ -111,6 +124,18 @@ const Category = () => {
   }, [payload, dispatch]);
 
   useEffect(() => {
+    const pl = {
+      payload: {
+        filter: {},
+        paging: {},
+      },
+    };
+    dispatch(getBlogAction(pl));
+    dispatch(getProductAction(pl));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     const { deleted, active } = comment;
     if (deleted.httpCode || active.httpCode) {
       if (deleted.httpCode === 200 || active.httpCode === 200) {
@@ -126,7 +151,14 @@ const Category = () => {
 
   return (
     <div>
-      <CommentSearch onSearch={handleSearch} value={keyword} onSearchSubmit={handleSearchSubmit} />
+      <CommentSearch
+        isBlog={payload.payload.filter.isBlog}
+        productData={products}
+        blogData={blogs}
+        onSearch={handleSearch}
+        values={values}
+        onSearchSubmit={handleSearchSubmit}
+      />
       <CommentTable
         comment={comment}
         onOpenForm={handleOpenForm}
