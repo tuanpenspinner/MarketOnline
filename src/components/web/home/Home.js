@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Slider from "react-slick";
 import { getListProductPage, setProductCart } from "../../../state/actions/webActions";
 import { Tabs, Tab } from "react-bootstrap";
 import { formatNumber } from "../../../helper/formatNumber";
 import { Spin, Space } from "antd";
+import "../../../../node_modules/slick-carousel/slick/slick.css";
+import "../../../../node_modules/slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -38,6 +41,15 @@ const Home = () => {
     dispatch(setProductCart(listProductCart));
   };
 
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
+
   if (isLoading)
     return (
       <div className="loadingData">
@@ -48,7 +60,6 @@ const Home = () => {
     );
   return (
     <div>
-      <div className="loadingData"></div>
       <div id="carouselExampleControls" className="carousel slide banner-home" data-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -79,18 +90,23 @@ const Home = () => {
           <span className="sr-only">Next</span>
         </a>
         <div className="category-carousel">
-          {dataHomepage?.categories?.map((item, key) => {
-            return (
-              <Link to={`/category/${item._id}`} key={key}>
-                <div className="item-category">
-                  <img width="100" height="100" src={item.image} alt=""></img>
-                  {item.name}
-                </div>
-              </Link>
-            );
-          })}
+          <div className="multi-slider">
+            <Slider {...settings}>
+              {dataHomepage?.categories?.map((item, key) => {
+                return (
+                  <Link to={`/category/${item._id}`} key={key}>
+                    <div className="item-category">
+                      <img width="100" height="100" src={item.image} alt=""></img>
+                      {item.name}
+                    </div>
+                  </Link>
+                );
+              })}
+            </Slider>
+          </div>
         </div>
       </div>
+
       <div className="content-home">
         <div className="best-seller ">
           <div className="title-best-seller">Sản phẩm nổi bật</div>

@@ -62,7 +62,7 @@ export default class Introduce extends Component {
               <div className="row">
                 <div className="col-md-6">
                   <div className="md-form">
-                    <input type="text" id="contact-name" className="form-control" placeholder="Họ tên" />
+                    <input type="text" className="form-control" placeholder="Họ tên" />
                     <label htmlFor="contact-name" className></label>
                   </div>
                 </div>
@@ -77,7 +77,7 @@ export default class Introduce extends Component {
               <div className="row">
                 <div className="col-md-6">
                   <div className="md-form">
-                    <input type="text" id="contact-name" className="form-control" placeholder="Số điện thoại" />
+                    <input type="text" className="form-control" placeholder="Số điện thoại" />
                     <label htmlFor="contact-name" className></label>
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export default class Introduce extends Component {
                 </div>
               </div>
               <div className="text-center">
-                <button className="btn btn-custom w-50">Gửi ngay</button>
+                <button className="btn btn-custom w-50 mb-3">Gửi ngay</button>
               </div>
             </form>
           </div>

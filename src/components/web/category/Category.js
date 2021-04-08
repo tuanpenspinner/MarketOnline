@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Spin, Space } from "antd";
+import InputRange from "react-input-range";
+import "../../../../node_modules/react-input-range/lib/css/index.css";
 import { getListProduct, setProductCart } from "../../../state/actions/webActions";
 import { formatNumber } from "../../../helper/formatNumber";
 import Rating from "react-rating";
@@ -12,10 +14,7 @@ const Category = () => {
   const dispatch = useDispatch();
   const [nameCategory, setNameCategory] = useState();
   const [keyword, setKeyWord] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [fromPrice, setFromPrice] = useState(0);
-  // eslint-disable-next-line no-unused-vars
-  const [toPrice, setToPrice] = useState(0);
+  const [rangePrice, setRangePrice] = useState({ min: 1, max: 900 });
   const [sortProductType, setSortProductType] = useState("POPULATE");
   const [rating, setRating] = useState(0);
   const [paging, setPaging] = useState({ offset: 1, limit: 9 });
@@ -35,19 +34,18 @@ const Category = () => {
     } else if (name === "keyword") {
       setKeyWord(value);
     }
-    setPaging({ offset: 1, limit: 9 });
   };
 
   const onSearchProduct = () => {
     loadListProduct();
-    setPaging({ offset: 1, limit: 9 });
   };
   const loadListProduct = () => {
-    let filter = {};
+    let filter = {
+      fromPrice: rangePrice.min * 1000,
+      toPrice: rangePrice.max * 1000,
+    };
     if (id) filter.categoryId = id;
     if (keyword) filter.keyword = keyword;
-    if (fromPrice) filter.categoryId = fromPrice;
-    if (toPrice) filter.categoryId = toPrice;
     if (rating) filter.rating = rating;
     if (sortProductType) filter.sortProductType = sortProductType;
     const payload = {
@@ -138,13 +136,7 @@ const Category = () => {
   };
 
   const renderProduct = () => {
-    return isLoading ? (
-      <div className="loadingData">
-        <Space size="middle">
-          <Spin size="large" />
-        </Space>
-      </div>
-    ) : listProduct.length > 0 ? (
+    return listProduct.length > 0 ? (
       listProduct.map((item, key) => {
         return (
           <div className="col-lg-4 col-md-6 col-6 mb-4" key={key}>
@@ -184,7 +176,6 @@ const Category = () => {
               </button>
             </div>
           </div>
-
           <div>
             <div className="row ">
               <div className="col-md-6 col-lg-12 mb-3 mt-3">
@@ -204,26 +195,23 @@ const Category = () => {
             <div className="list-category">
               <div className="">
                 <h5 className="font-weight-bold ">Lọc theo giá</h5>
-                <div className="p-2">
-                  <form className="range-field mt-3">
-                    <input className="no-border w-100" type="range" defaultValue={0} min={0} max={300} />
-                  </form>
-                  <div className="row justify-content-center">
-                    <div className="col-md-6 text-left">
-                      <p className="dark-grey-text">
-                        <strong id="resellerEarnings">0</strong>
-                      </p>
-                    </div>
-
-                    <div className="col-md-6 text-right">
-                      <p className="dark-grey-text">
-                        <strong id="clientPrice">10,000,000 đ</strong>
-                      </p>
-                    </div>
-                  </div>
+                <div className="input-range-price">
+                  <InputRange
+                    maxValue={900}
+                    minValue={1}
+                    formatLabel={(value) => `${formatNumber(value)} 000 đ`}
+                    value={rangePrice}
+                    onChange={(value) => setRangePrice(value)}
+                  />
+                </div>
+                <div className="w-100 text-center">
+                  <button className="btn btn-custom mb-2" onClick={onSearchProduct}>
+                    Lọc
+                  </button>
                 </div>
               </div>
             </div>
+
             <div className="list-category mt-3">
               <h5 className="font-weight-bold dark-grey-text">
                 <strong>Xếp hạng</strong>
@@ -252,6 +240,13 @@ const Category = () => {
           </div>
           <div className="row wow fadeIn px-3">
             {renderProduct()}
+            {isLoading && (
+              <div className="loadingDataProduct">
+                <Space size="middle">
+                  <Spin size="large" />
+                </Space>
+              </div>
+            )}
             <div className="w-100 text-center">
               {total > paging.offset * 8 && (
                 <button className="btn btn-custom " onClick={seeMore}>
