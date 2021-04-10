@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Spin, Space } from "antd";
+import { Spin, Space, Rate } from "antd";
 import InputRange from "react-input-range";
+import { formatNumber } from "../../../helper/formatNumber";
 import "../../../../node_modules/react-input-range/lib/css/index.css";
 import { getListProduct, setProductCart } from "../../../state/actions/webActions";
-import { formatNumber } from "../../../helper/formatNumber";
-import Rating from "react-rating";
 const Category = () => {
   const listCategory = useSelector((state) => state.web.listCategory);
   const listProduct = useSelector((state) => state.web.listProduct);
@@ -22,11 +21,13 @@ const Category = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    getNameCategory();
     loadListProduct();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortProductType, id, paging, rating]);
-
+  useEffect(() => {
+    getNameCategory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [listCategory, id]);
   const onChange = (e) => {
     const { value, name } = e.target;
     if (name === "sortProduct") {
@@ -102,29 +103,7 @@ const Category = () => {
       return (
         <div className="row ml-2 mt-2 list-rating" onClick={() => onChangeRating(item)} key={key}>
           <ul className="rating">
-            <Rating
-              start={0}
-              stop={5}
-              initialRating={item}
-              className="mt-2"
-              fullSymbol={[
-                "fa fa-star text-warning",
-                "fa fa-star text-warning",
-                "fa fa-star text-warning",
-                "fa fa-star text-warning",
-                "fa fa-star text-warning",
-                "fa fa-star text-warning",
-              ]}
-              emptySymbol={[
-                "fa fa-star text-muted",
-                "fa fa-star text-muted",
-                "fa fa-star text-muted",
-                "fa fa-star text-muted",
-                "fa fa-star text-muted",
-                "fa fa-star text-muted",
-              ]}
-              readonly
-            />
+            <Rate disabled defaultValue={item}></Rate>
             <p className="ml-3 my-2">{item} sao</p>
           </ul>
         </div>
@@ -147,7 +126,8 @@ const Category = () => {
               </div>
               <div className="card-body card-body-product text-center">
                 <h5 className="text-success name-product">{item.name}</h5>
-                <h5 className="mt-3">{formatNumber(item.price)}</h5>
+                <Rate defaultValue={item.rating} disabled></Rate>
+                <h5 className="price-product">{formatNumber(item.price)}</h5>
                 <div className="btn-product">
                   <Link to={`/product/${item._id}`} className="btn btn-see-detail">
                     Xem chi tiết
@@ -185,7 +165,7 @@ const Category = () => {
                   {listCategory.map((item, key) => {
                     return (
                       <Link key={key} to={`/category/${item._id}`}>
-                        <div className="title-category">{item.name}</div>
+                        <div className={`${id === item._id ? "active" : ""} title-category`}>{item.name}</div>
                       </Link>
                     );
                   })}

@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
-import { getListProductPage, setProductCart } from "../../../state/actions/webActions";
 import { Tabs, Tab } from "react-bootstrap";
+import { Spin, Space, Rate } from "antd";
 import { formatNumber } from "../../../helper/formatNumber";
-import { Spin, Space } from "antd";
+import { getListProductPage, setProductCart } from "../../../state/actions/webActions";
 import "../../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../../node_modules/slick-carousel/slick/slick-theme.css";
 
@@ -126,6 +126,7 @@ const Home = () => {
                               </div>
                               <div className="card-body card-body-product text-center">
                                 <h5 className="text-success name-product">{item.name}</h5>
+                                <Rate defaultValue={item.rating} disabled></Rate>
                                 <h5 className="price-product">{formatNumber(item.price)} đ</h5>
                                 <div className="btn-product">
                                   <Link to={`/product/${item._id}`} className="btn btn-see-detail">
@@ -157,6 +158,7 @@ const Home = () => {
                               </div>
                               <div className="card-body card-body-product text-center">
                                 <h5 className="text-success name-product">{item.name}</h5>
+                                <Rate defaultValue={item.rating} disabled></Rate>
                                 <h5 className="price-product">{formatNumber(item.price)} đ</h5>
                                 <div className="btn-product">
                                   <Link to={`/product/${item._id}`} className="btn btn-see-detail">
@@ -188,6 +190,7 @@ const Home = () => {
                               </div>
                               <div className="card-body card-body-product text-center">
                                 <h5 className="text-success name-product">{item.name}</h5>
+                                <Rate defaultValue={item.rating} disabled></Rate>
                                 <h5 className="price-product">{formatNumber(item.price)} đ</h5>
                                 <div className="btn-product">
                                   <Link to={`/product/${item._id}`} className="btn btn-see-detail">

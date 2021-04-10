@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Form, Col, Tabs, Tab } from "react-bootstrap";
-import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
-import { Spin, Space } from "antd";
+import { Spin, Space, Rate } from "antd";
 import dayjs from "dayjs";
-import { getDetailProduct, setProductCart, sendProductComment } from "../../../state/actions/webActions";
 import Swal from "sweetalert2";
+import { getDetailProduct, setProductCart, sendProductComment } from "../../../state/actions/webActions";
 import { formatNumber } from "../../../helper/formatNumber";
 
 const Product = () => {
@@ -73,9 +72,8 @@ const Product = () => {
   const onChangeRating = (value) => {
     setComment({ ...comment, rating: value });
   };
-  const onChangeCount = (e) => {
-    const { value } = e.target;
-    setCountProduct(value);
+  const onChangeCount = (count) => {
+    if (countProduct + count >= 1) setCountProduct(countProduct + count);
   };
   const resetForm = () => {
     setComment({ content: "", email: "", name: "", phone: "", rating: 5 });
@@ -83,6 +81,7 @@ const Product = () => {
   };
 
   const addCart = (item, count) => {
+    console.log(count);
     const product = {
       productId: item._id,
       name: item.name,
@@ -97,7 +96,7 @@ const Product = () => {
     }
     const findIndex = listProductCart.findIndex((item) => item.productId === product.productId);
     if (findIndex !== -1) {
-      listProductCart[findIndex].count = listProductCart[findIndex].count + 1;
+      listProductCart[findIndex].count = listProductCart[findIndex].count + parseInt(count);
     } else {
       listProductCart.push(product);
     }
@@ -110,34 +109,13 @@ const Product = () => {
       const comments = detailProduct?.comments;
       return comments.map((item, index) => {
         return (
-          <div key={index}>
+          <div key={index} className="item-comment-product">
             <div className="font-weight-bold">{item.name}</div>
-            <div className="d-flex">
-              <Rating
-                start={0}
-                stop={5}
-                initialRating={item.rating}
-                fullSymbol={[
-                  "fa fa-star text-warning",
-                  "fa fa-star text-warning",
-                  "fa fa-star text-warning",
-                  "fa fa-star text-warning",
-                  "fa fa-star text-warning",
-                  "fa fa-star text-warning",
-                ]}
-                emptySymbol={[
-                  "fa fa-star text-muted",
-                  "fa fa-star text-muted",
-                  "fa fa-star text-muted",
-                  "fa fa-star text-muted",
-                  "fa fa-star text-muted",
-                  "fa fa-star text-muted",
-                ]}
-                readonly
-              />
+            <div className="d-flex align-items-center">
+              <Rate disabled defaultValue={item.rating}></Rate>
               <div className="ml-3">{item.content}</div>
             </div>
-            <small className="text-muted"> {dayjs(item.createdAt).format("DD/MM/YYYY")}</small>
+            <small className="text-muted"> {dayjs(item.createdAt).locale("vi").fromNow()}</small>
             <hr />
           </div>
         );
@@ -175,8 +153,16 @@ const Product = () => {
               <div className="font-weight-bold mb-2">{detailProduct?.name}</div>
               {/* <p>{detailProduct.description}</p> */}
               <form className="d-flex justify-content-left">
-                <input type="number" value={countProduct} onChange={onChangeCount} className="form-control mr-2" style={{ width: "100px" }} />
-                <button className="btn btn-custom btn-md my-0 p" onClick={() => addCart(detailProduct, countProduct)}>
+                <div className="input-custom">
+                  <div className="btn-minus-input" onClick={() => onChangeCount(-1)}>
+                    <i className="fas fa-minus"></i>
+                  </div>
+                  <div className="title-count-input">{countProduct}</div>
+                  <div className="btn-add-input" onClick={() => onChangeCount(1)}>
+                    <i className="fas fa-plus"></i>
+                  </div>
+                </div>
+                <button className="btn btn-custom btn-md my-0 ml-3" onClick={() => addCart(detailProduct, countProduct)}>
                   Thêm vào giỏ
                   <i className="fas fa-shopping-cart ml-1" />
                 </button>
@@ -193,27 +179,10 @@ const Product = () => {
             </Tab>
             <Tab eventKey="profile" title={`Đánh giá(${detailProduct?.comments ? detailProduct?.comments?.length : "0"})`}>
               <div>
-                <div className="form-rating">
+                <div>
                   <h5>Đánh giá của bạn</h5>
-                  <Rating
-                    stop={5}
-                    initialRating={comment.rating}
-                    emptySymbol={[
-                      "fa fa-star text-muted",
-                      "fa fa-star text-muted",
-                      "fa fa-star text-muted",
-                      "fa fa-star text-muted",
-                      "fa fa-star text-muted",
-                    ]}
-                    fullSymbol={[
-                      "fa fa-star text-warning",
-                      "fa fa-star text-warning",
-                      "fa fa-star text-warning",
-                      "fa fa-star text-warning",
-                      "fa fa-star text-warning",
-                    ]}
-                    onChange={onChangeRating}
-                  />
+
+                  <Rate defaultValue={comment.rating} onChange={onChangeRating}></Rate>
                   <Form noValidate validated={validated} onSubmit={sendComment} className="mt-3">
                     <Form.Row>
                       <Form.Group as={Col} md="4">
@@ -293,12 +262,13 @@ const Product = () => {
                   </div>
                   <div className="card-body card-body-product text-center">
                     <h5 className="text-success name-product">{item.name}</h5>
-                    <h5 className="mt-3">1{formatNumber(item.price)}đ</h5>
+                    <Rate defaultValue={item.rating} disabled></Rate>
+                    <h5 className="price-product">1{formatNumber(item.price)}đ</h5>
                     <div className="btn-product">
                       <Link to={`/product/${item._id}`} className="btn btn-see-detail">
                         Xem chi tiết
                       </Link>
-                      <button className="btn btn-add-to-cart" onClick={() => addCart(item)}>
+                      <button className="btn btn-add-to-cart" onClick={() => addCart(item, 1)}>
                         Thêm vào giỏ
                       </button>
                     </div>

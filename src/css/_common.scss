@@ -285,3 +285,43 @@ a:hover {
   display: flex;
   justify-content: center;
 }
+.input-custom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  overflow: hidden;
+  width: 150px;
+  .btn-minus-input {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+  .title-count-input {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    width: 50px;
+    background-color: #fff;
+  }
+  .btn-add-input {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+}
