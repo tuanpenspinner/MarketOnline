@@ -21,11 +21,10 @@ const Cart = () => {
     setListProductCart(listProductCart);
     setTotalMoney(price);
   }, []);
-  const onChange = (e, data) => {
-    const { value } = e.target;
+  const onChange = (count, data) => {
     const index = listProductCart.findIndex((item) => item.productId === data.productId);
     let arr = [...listProductCart];
-    arr[index].count = parseInt(value, 10);
+    if (arr[index].count + count > 0) arr[index].count = arr[index].count + count;
     let price = 0;
     arr?.forEach((item) => {
       price += item.price * item.count;
@@ -58,7 +57,16 @@ const Cart = () => {
             <div>{item.name}</div>
           </td>
           <td>
-            <input className="form-control" onChange={(e) => onChange(e, item)} type="number" name="number" defaultValue={item.count} />
+            <div className="input-custom m-auto">
+              <div className="btn-minus-input" onClick={() => onChange(-1, item)}>
+                <i className="fas fa-minus"></i>
+              </div>
+              <div className="title-count-input">{item.count}</div>
+              <div className="btn-add-input" onClick={() => onChange(1, item)}>
+                <i className="fas fa-plus"></i>
+              </div>
+            </div>
+            {/* <input className="form-control" onChange={(e) => onChange(e, item)} type="number" name="number" defaultValue={item.count} /> */}
           </td>
           <td className="text-right">
             <div>{formatNumber(item.count * item.price)} đ</div>
@@ -94,9 +102,7 @@ const Cart = () => {
                 <th scope="col" className="text-center">
                   Số lượng
                 </th>
-                <th scope="col" className="text-right">
-                  Giá
-                </th>
+                <th scope="col">Giá</th>
                 <th style={{ width: "20px" }}> </th>
               </tr>
             </thead>

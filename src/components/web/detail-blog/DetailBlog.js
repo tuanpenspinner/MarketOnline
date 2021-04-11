@@ -81,7 +81,7 @@ const DetailBlog = () => {
             <div className="d-flex">
               <div>{item.content}</div>
             </div>
-            <small className="text-muted"> {dayjs(item.createdAt).format("DD/MM/YYYY")}</small>
+            <small className="text-muted"> {dayjs(item.createdAt).locale("vi").fromNow()}</small>
             <hr />
           </div>
         );
