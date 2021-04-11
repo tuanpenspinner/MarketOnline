@@ -4,6 +4,7 @@ import Category from "../components/admin/category";
 import Blog from "../components/admin/blog";
 import Order from "../components/admin/order";
 import Comment from "../components/admin/comment";
+import Contact from "../components/admin/contact";
 
 const routes = [
   {
@@ -35,6 +36,12 @@ const routes = [
     path: "/admin/comment",
     exact: true,
     component: Comment,
+  },
+  {
+    layout: MenuVertical,
+    path: "/admin/contact",
+    exact: true,
+    component: Contact,
   },
 ];
 export default routes;

@@ -30,6 +30,9 @@ export default class MenuVertical extends Component {
               <li className="sidebar-brand">
                 <NavLink to="/admin/comment">Bình luận</NavLink>
               </li>
+              <li className="sidebar-brand">
+                <NavLink to="/admin/contact">Thông tin khách hàng</NavLink>
+              </li>
             </ul>
           </div>
           <div id="page-content-wrapper">

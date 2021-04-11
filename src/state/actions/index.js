@@ -42,6 +42,10 @@ export const UPDATE_CMT = actionCreator("UPDATE_CMT");
 export const UPDATE_ACTIVE_CMT = actionCreator("UPDATE_ACTIVE_CMT");
 export const DELETE_CMT = actionCreator("DELETE_CMT");
 
+// contact action
+export const GET_CONTACT = actionCreator("GET_CONTACT");
+export const DELETE_CONTACT = actionCreator("DELETE_CONTACT");
+
 //Web action
 export const GET_PRODUCT_PAGE = actionCreator("GET_PRODUCT_PAGE");
 export const GET_LIST_CATEGORY = actionCreator("GET_LIST_CATEGORY");

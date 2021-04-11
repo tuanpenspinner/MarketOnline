@@ -4,6 +4,7 @@ import category from "./categoryReducer";
 import blog from "./blogReducer";
 import order from "./orderReducer";
 import comment from "./commentReducer";
+import contact from "./contactReducer";
 import web from "./webReducer";
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   blog,
   order,
   comment,
+  contact,
   web,
 });
 

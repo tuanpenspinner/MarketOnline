@@ -23,13 +23,21 @@ import {
   updateProductActiveSaga,
   updateProductHighLightSaga,
 } from "./productSaga";
-import { getCategorySaga, createCategorySaga, deleteCategorySaga, updateCategoryActiveSaga, updateCategorySaga } from "./categorySaga";
+import {
+  getCategorySaga,
+  createCategorySaga,
+  deleteCategorySaga,
+  updateCategoryActiveSaga,
+  updateCategorySaga,
+} from "./categorySaga";
 
 import { deleteCommentSaga, getCommentSaga, updateCommentActiveSaga } from "./commentSaga";
 
 import { createOrderSaga, deleteOrderSaga, getOrderSaga, updateOrderActiveSaga } from "./orderSaga";
 
 import { createBlogSaga, deleteBlogSaga, getBlogSaga, updateBlogActiveSaga, updateBlogSaga } from "./blogSaga";
+
+import { getContactSaga, deleteContactSaga } from "./contactSaga";
 
 import * as types from "../actions";
 
@@ -65,6 +73,10 @@ export default function* watchUserAuthentication() {
   yield takeLatest(types.GET_CMT.REQUEST, getCommentSaga);
   yield takeLatest(types.UPDATE_ACTIVE_CMT.REQUEST, updateCommentActiveSaga);
   yield takeLatest(types.DELETE_CMT.REQUEST, deleteCommentSaga);
+
+  // contact
+  yield takeLatest(types.GET_CONTACT.REQUEST, getContactSaga);
+  yield takeLatest(types.DELETE_CONTACT.REQUEST, deleteContactSaga);
 
   //web
   yield takeLatest(types.GET_PRODUCT_PAGE.REQUEST, getProductPageSaga);
