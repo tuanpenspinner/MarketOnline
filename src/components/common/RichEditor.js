@@ -35,7 +35,7 @@ class MyUploadAdapter {
     // integration to choose the right communication channel. This example uses
     // a POST request with JSON as a data structure but your configuration
     // could be different.
-    xhr.open("POST", "https://kadonfarm-upload.herokuapp.com/image/upload", true);
+    xhr.open("POST", "http://40.71.178.144:3001/image/upload", true);
     xhr.responseType = "json";
   }
 

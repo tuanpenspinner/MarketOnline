@@ -6,7 +6,7 @@ function api() {
   // const token = getToken();
 
   const instance = axios.create({
-    baseURL: "https://kadonfarm.herokuapp.com",
+    baseURL: "http://40.71.178.144:3000",
   });
 
   instance.interceptors.request.use((reqConfig) => {

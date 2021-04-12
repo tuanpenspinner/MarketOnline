@@ -4,16 +4,16 @@ import makeRequest, { HTTP_METHOD } from "../";
 export default {
   uploadImage: async (data) => {
     const result = await makeRequest(
-      "https://kadonfarm-upload.herokuapp.com/image/upload",
+      "http://40.71.178.144:3001/image/upload",
       HTTP_METHOD.POST,
       data,
       {
         // prettier-ignore
         headers: {
-        'Content-Type': 'multipart/form-data',
-        'authorization': "",
-        'Access-Control-Allow-Origin': '*',
-      },
+          'Content-Type': 'multipart/form-data',
+          'authorization': "",
+          'Access-Control-Allow-Origin': '*',
+        },
       }
     );
     return result;
