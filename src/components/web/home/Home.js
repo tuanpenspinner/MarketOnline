@@ -44,7 +44,7 @@ const Home = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: dataHomepage?.categories?.length >= 4 ? 4 : dataHomepage?.categories?.length - 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
