@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.bfd5ddaf.chunk.css",
-    "main.js": "/static/js/main.37d62d19.chunk.js",
-    "main.js.map": "/static/js/main.37d62d19.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c29dc3d6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c29dc3d6.js.map",
-    "static/css/2.c7f6b24f.chunk.css": "/static/css/2.c7f6b24f.chunk.css",
-    "static/js/2.3ec2e8c6.chunk.js": "/static/js/2.3ec2e8c6.chunk.js",
-    "static/js/2.3ec2e8c6.chunk.js.map": "/static/js/2.3ec2e8c6.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.c7f6b24f.chunk.css.map": "/static/css/2.c7f6b24f.chunk.css.map",
-    "static/css/main.bfd5ddaf.chunk.css.map": "/static/css/main.bfd5ddaf.chunk.css.map",
-    "static/js/2.3ec2e8c6.chunk.js.LICENSE.txt": "/static/js/2.3ec2e8c6.chunk.js.LICENSE.txt",
-    "static/js/main.37d62d19.chunk.js.LICENSE.txt": "/static/js/main.37d62d19.chunk.js.LICENSE.txt",
-    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf"
+    "main.css": "/MarketOnline/static/css/main.bfd5ddaf.chunk.css",
+    "main.js": "/MarketOnline/static/js/main.37d62d19.chunk.js",
+    "main.js.map": "/MarketOnline/static/js/main.37d62d19.chunk.js.map",
+    "runtime-main.js": "/MarketOnline/static/js/runtime-main.367a2bb5.js",
+    "runtime-main.js.map": "/MarketOnline/static/js/runtime-main.367a2bb5.js.map",
+    "static/css/2.8ca51916.chunk.css": "/MarketOnline/static/css/2.8ca51916.chunk.css",
+    "static/js/2.a29bd8a0.chunk.js": "/MarketOnline/static/js/2.a29bd8a0.chunk.js",
+    "static/js/2.a29bd8a0.chunk.js.map": "/MarketOnline/static/js/2.a29bd8a0.chunk.js.map",
+    "index.html": "/MarketOnline/index.html",
+    "static/css/2.8ca51916.chunk.css.map": "/MarketOnline/static/css/2.8ca51916.chunk.css.map",
+    "static/css/main.bfd5ddaf.chunk.css.map": "/MarketOnline/static/css/main.bfd5ddaf.chunk.css.map",
+    "static/js/2.a29bd8a0.chunk.js.LICENSE.txt": "/MarketOnline/static/js/2.a29bd8a0.chunk.js.LICENSE.txt",
+    "static/js/main.37d62d19.chunk.js.LICENSE.txt": "/MarketOnline/static/js/main.37d62d19.chunk.js.LICENSE.txt",
+    "static/media/slick-theme.css": "/MarketOnline/static/media/slick.c94f7671.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.c29dc3d6.js",
-    "static/css/2.c7f6b24f.chunk.css",
-    "static/js/2.3ec2e8c6.chunk.js",
+    "static/js/runtime-main.367a2bb5.js",
+    "static/css/2.8ca51916.chunk.css",
+    "static/js/2.a29bd8a0.chunk.js",
     "static/css/main.bfd5ddaf.chunk.css",
     "static/js/main.37d62d19.chunk.js"
   ]
